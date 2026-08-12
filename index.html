@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Schaffensmenschen — bald offen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+--wood-dark:#211c17;
+--wood-mid:#3a2f22;
+--wood-grain:#584a34;
+--mustard:#a3852f;
+--paint-cream:#f3ead6;
+--rust:#b0552b;
+--shadow-deep: rgba(0,0,0,0.55);
+}
+
+*{ box-sizing:border-box; margin:0; padding:0; }
+
+html,body{
+height:100%;
+background:var(--wood-dark);
+color:var(--paint-cream);
+font-family:'Work Sans', sans-serif;
+overflow-x:hidden;
+}
+
+body{
+position:relative;
+min-height:100vh;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:6vh 6vw;
+}
+
+body::before{
+content:"";
+position:fixed;
+inset:0;
+z-index:0;
+background:
+repeating-linear-gradient(
+95deg,
+var(--wood-dark) 0px,
+var(--wood-mid) 2px,
+var(--wood-dark) 5px,
+var(--wood-grain) 40px,
+var(--wood-dark) 80px
+);
+opacity:0.9;
+}
+body::after{
+content:"";
+position:fixed;
+inset:0;
+z-index:0;
+background:radial-gradient(ellipse at 50% 40%, rgba(163,133,47,0.18), transparent 60%),
+radial-gradient(ellipse at 80% 90%, rgba(0,0,0,0.5), transparent 55%);
+}
+
+.content{
+position:relative;
+z-index:1;
+max-width:900px;
+}
+
+.eyebrow{
+font-size:0.78rem;
+letter-spacing:0.35em;
+text-transform:uppercase;
+color:var(--mustard);
+margin-bottom:1.8rem;
+opacity:0;
+animation:fadeUp 0.8s ease-out 0.2s forwards;
+}
+
+.signature{
+position:relative;
+display:inline-block;
+margin-bottom:1.2rem;
+}
+
+.painted{
+font-family:'Permanent Marker', cursive;
+font-weight:400;
+line-height:0.95;
+color:var(--paint-cream);
+text-shadow:
+0 2px 0 rgba(0,0,0,0.35),
+0 6px 18px rgba(0,0,0,0.5);
+letter-spacing:0.01em;
+opacity:0;
+filter:blur(2px);
+animation:paintReveal 1.1s ease-out 0.5s forwards;
+}
+
+.word-offen{
+font-size:clamp(2.6rem, 9vw, 6rem);
+position:relative;
+display:inline-block;
+}
+.word-offen .strike{
+position:absolute;
+left:-2%;
+right:-2%;
+top:52%;
+height:0.16em;
+background:var(--rust);
+transform:rotate(-2deg) scaleX(0);
+transform-origin:left center;
+border-radius:2px;
+box-shadow:0 1px 3px rgba(0,0,0,0.4);
+animation:strikeIn 0.5s ease-out 1.5s forwards;
+}
+
+.word-schaffensmenschen{
+display:block;
+font-size:clamp(2.9rem, 10.5vw, 7rem);
+margin-top:0.15em;
+color:var(--paint-cream);
+opacity:0;
+animation:paintReveal 1s ease-out 1.9s forwards;
+}
+
+.tagline{
+font-size:clamp(1rem, 2.2vw, 1.25rem);
+font-weight:500;
+color:var(--paint-cream);
+opacity:0.88;
+max-width:36ch;
+margin:2.2rem auto 0;
+line-height:1.5;
+opacity:0;
+animation:fadeUp 0.8s ease-out 2.4s forwards;
+}
+
+.tagline strong{
+color:var(--rust);
+font-weight:600;
+}
+
+.divider{
+width:56px;
+height:3px;
+background:var(--mustard);
+margin:2.6rem auto;
+border-radius:2px;
+opacity:0;
+animation:fadeUp 0.8s ease-out 2.7s forwards;
+}
+
+.notify{
+opacity:0;
+animation:fadeUp 0.8s ease-out 3s forwards;
+}
+
+.notify p{
+font-size:0.95rem;
+color:rgba(243,234,214,0.65);
+margin-bottom:1rem;
+}
+
+.notify a{
+display:inline-block;
+padding:0.85rem 2.2rem;
+background:var(--rust);
+color:var(--paint-cream);
+text-decoration:none;
+font-weight:600;
+font-size:0.95rem;
+letter-spacing:0.04em;
+border-radius:3px;
+box-shadow:0 4px 14px rgba(176,85,43,0.35), inset 0 1px 0 rgba(255,255,255,0.15);
+transition:transform 0.2s ease, box-shadow 0.2s ease;
+}
+.notify a:hover{
+transform:translateY(-2px);
+box-shadow:0 8px 20px rgba(176,85,43,0.45), inset 0 1px 0 rgba(255,255,255,0.2);
+}
+
+footer{
+position:relative;
+z-index:1;
+margin-top:4rem;
+font-size:0.75rem;
+letter-spacing:0.12em;
+text-transform:uppercase;
+color:rgba(243,234,214,0.35);
+opacity:0;
+animation:fadeUp 0.8s ease-out 3.3s forwards;
+}
+
+@keyframes fadeUp{
+from{ opacity:0; transform:translateY(14px); }
+to{ opacity:1; transform:translateY(0); }
+}
+
+@keyframes paintReveal{
+from{ opacity:0; filter:blur(6px); transform:scale(0.97); }
+to{ opacity:1; filter:blur(0); transform:scale(1); }
+}
+
+@keyframes strikeIn{
+to{ transform:rotate(-2deg) scaleX(1); }
+}
+
+@media (prefers-reduced-motion: reduce){
+*{ animation-duration:0.01ms !important; animation-delay:0s !important; }
+.painted, .word-offen .strike, .word-schaffensmenschen, .eyebrow, .tagline, .divider, .notify, footer{
+opacity:1; filter:none; transform:none;
+}
+}
+</style>
+</head>
+<body>
+<div class="content">
+<p class="eyebrow">Netzwerk für Kreative</p>
+
+<div class="signature">
+<span class="painted word-offen">OFFEN
+<span class="strike"></span>
+</span>
+<span class="painted word-schaffensmenschen">Schaffensmenschen</span>
+</div>
+
+<p class="tagline">
+Wir sind noch nicht <em>offen</em> — aber bald. Ein Zuhause für <strong>Arts, Design, Entertainment, Architektur &amp; Grafik.</strong>
+</p>
+
+<div class="divider"></div>
+
+<div class="notify">
+<p>Willst du wissen, wenn wir öffnen?</p>
+<a href="mailto:info@offfen-schaffensmenschen.com">Schreib uns</a>
+</div>
+</div>
+
+<footer>Schaffensmenschen · München</footer>
+</body>
+</html>
+
