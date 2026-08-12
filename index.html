@@ -101,16 +101,27 @@ animation:paintReveal 1.1s ease-out 0.5s forwards;
 }
 
 .word-offen{
-font-size:clamp(2.6rem, 9vw, 6rem);
 position:relative;
 display:inline-block;
+width:min(560px, 78vw);
+opacity:0;
+filter:blur(2px);
+animation:paintReveal 1.1s ease-out 0.5s forwards;
+}
+.word-offen img{
+display:block;
+width:100%;
+height:auto;
+border-radius:4px;
+box-shadow:0 10px 30px rgba(0,0,0,0.5);
 }
 .word-offen .strike{
 position:absolute;
-left:-2%;
-right:-2%;
-top:52%;
-height:0.16em;
+left:2%;
+right:2%;
+top:50%;
+height:0.1em;
+min-height:5px;
 background:var(--rust);
 transform:rotate(-2deg) scaleX(0);
 transform-origin:left center;
@@ -223,7 +234,8 @@ opacity:1; filter:none; transform:none;
 <p class="eyebrow">Netzwerk für Kreative</p>
 
 <div class="signature">
-<span class="painted word-offen">OFFEN
+<span class="word-offen">
+<img src="offfen-logo.jpg" alt="Handgemalter Schriftzug OFFEN auf Holz">
 <span class="strike"></span>
 </span>
 <span class="painted word-schaffensmenschen">Schaffensmenschen</span>
