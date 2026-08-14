@@ -111,6 +111,20 @@
     display:flex;
     align-items:flex-end;
     padding:0.9rem;
+    position:relative;
+    background-blend-mode:overlay;
+    background-image:
+      repeating-linear-gradient(95deg, rgba(0,0,0,0.05) 0px, transparent 2px, transparent 6px, rgba(255,255,255,0.04) 8px, transparent 12px),
+      radial-gradient(rgba(0,0,0,0.06) 1px, transparent 1px);
+    background-size:auto, 3px 3px;
+  }
+  .tile .swatch.concrete{
+    background-blend-mode:overlay, overlay, normal;
+    background-image:
+      radial-gradient(ellipse at 30% 20%, rgba(255,255,255,0.12), transparent 55%),
+      radial-gradient(ellipse at 75% 80%, rgba(0,0,0,0.15), transparent 60%),
+      repeating-linear-gradient(97deg, rgba(0,0,0,0.06) 0px, transparent 3px, transparent 9px, rgba(255,255,255,0.05) 11px, transparent 16px);
+    background-size:auto, auto, auto;
   }
   .tile .label{
     position:relative;
@@ -147,9 +161,11 @@
     <h1>Was entsteht</h1>
     <p class="lead">Acht Disziplinen, ein Raum. Schaffensmenschen bringt zusammen, was zusammen gehört.</p>
 
+    <a href="/poster.html" style="display:block; text-align:center; font-size:0.85rem; color:var(--mustard); text-decoration:underline; text-decoration-color:rgba(163,133,47,0.4); margin-bottom:2.5rem;">Raum für Schaffen — Poster ansehen &rarr;</a>
+
     <div class="board">
       <div class="tile tall">
-        <div class="swatch" style="background:linear-gradient(155deg, #b7b3ad, #8f8b85);">
+        <div class="swatch concrete" style="background:linear-gradient(155deg, #b7b3ad, #8f8b85);">
           <span class="label">Architektur</span>
         </div>
       </div>
@@ -162,7 +178,7 @@
         </div>
       </div>
       <div class="tile">
-        <div class="swatch" style="background:linear-gradient(155deg, #b7b3ad, #6d6a65);">
+        <div class="swatch concrete" style="background:linear-gradient(155deg, #b7b3ad, #6d6a65);">
           <span class="label">Musik</span>
         </div>
       </div>
@@ -182,12 +198,12 @@
         </div>
       </div>
       <div class="tile">
-        <div class="swatch" style="background:linear-gradient(155deg, #b7b3ad, #494643);">
+        <div class="swatch concrete" style="background:linear-gradient(155deg, #b7b3ad, #494643);">
           <span class="label">Raum</span>
         </div>
       </div>
       <div class="tile tall">
-        <div class="swatch" style="background:linear-gradient(155deg, #b7b3ad, #6d6a65);">
+        <div class="swatch concrete" style="background:linear-gradient(155deg, #b7b3ad, #6d6a65);">
           <span class="label">Und mehr</span>
         </div>
       </div>
