@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Impressum — Schaffensmenschen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --wood-dark:#211c17;
+    --mustard:#a3852f;
+    --paint-cream:#f3ead6;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+
+  html,body{
+    background:var(--wood-dark);
+    color:var(--paint-cream);
+    font-family:'Work Sans', sans-serif;
+  }
+
+  body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:0;
+    background:
+      radial-gradient(rgba(243,234,214,0.025) 1px, transparent 1px),
+      var(--wood-dark);
+    background-size:3px 3px;
+  }
+
+  .wrap{
+    position:relative;
+    z-index:1;
+    max-width:680px;
+    margin:0 auto;
+    padding:5rem 6vw 6rem;
+  }
+
+  a.back{
+    display:inline-block;
+    margin-bottom:2.5rem;
+    font-size:0.85rem;
+    color:var(--mustard);
+    text-decoration:none;
+    letter-spacing:0.04em;
+  }
+
+  h1{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:400;
+    font-size:clamp(1.8rem, 5vw, 2.4rem);
+    margin-bottom:2.5rem;
+    letter-spacing:0.01em;
+  }
+
+  h2{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:500;
+    font-size:1.05rem;
+    color:var(--mustard);
+    margin-top:2.4rem;
+    margin-bottom:0.8rem;
+    letter-spacing:0.03em;
+  }
+
+  p{
+    font-size:0.95rem;
+    line-height:1.7;
+    color:rgba(243,234,214,0.85);
+    margin-bottom:0.4rem;
+  }
+
+  a{
+    color:var(--paint-cream);
+    text-decoration:underline;
+    text-decoration-color:rgba(243,234,214,0.3);
+  }
+
+  footer{
+    margin-top:4rem;
+    font-size:0.75rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:rgba(243,234,214,0.35);
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <a class="back" href="/">&larr; Zurück</a>
+
+    <h1>Impressum</h1>
+
+    <h2>Angaben gemäß § 5 TMG</h2>
+    <p>Bernd Neichsner</p>
+    <p>Untersbergstraße 70a</p>
+    <p>81539 München-Giesing</p>
+
+    <h2>Kontakt</h2>
+    <p>E-Mail: <a href="mailto:raum@offfen-schaffensmenschen.com">raum@offfen-schaffensmenschen.com</a></p>
+
+    <h2>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h2>
+    <p>Bernd Neichsner</p>
+    <p>Untersbergstraße 70a</p>
+    <p>81539 München-Giesing</p>
+
+    <footer>Schaffensmenschen · München</footer>
+  </div>
+</body>
+</html>
