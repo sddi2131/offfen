@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Design — Schaffensmenschen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#121212;
+    --paper:#f3f1ec;
+    --gold:#c8a24a;
+    --beton:#b7b3ad;
+    --ziegel:#b73228;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html,body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+  }
+
+  header.site-header{
+    display:flex;
+    align-items:center;
+    gap:0.9rem;
+    padding:1.3rem 1.6rem;
+    border-bottom:1px solid rgba(18,18,18,0.1);
+  }
+  .frame{
+    position:relative;
+    width:20px; height:24px;
+    flex-shrink:0;
+  }
+  .frame::before{
+    content:"";
+    position:absolute; inset:0;
+    border:1.4px solid var(--ink);
+    border-right:none;
+  }
+  header.site-header a.wordmark{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:400;
+    font-size:0.85rem;
+    letter-spacing:0.06em;
+    color:var(--ink);
+    text-decoration:none;
+    opacity:0.8;
+  }
+  header.site-header nav{ margin-left:auto; display:flex; gap:1.6rem; }
+  header.site-header nav a{
+    font-size:0.85rem;
+    color:rgba(18,18,18,0.5);
+    text-decoration:none;
+  }
+  header.site-header nav a.current{ color:var(--ink); font-weight:600; }
+
+  main{ max-width:1000px; margin:0 auto; padding:2.4rem 1.8rem 5rem; }
+
+  .back-link{
+    display:inline-block;
+    font-size:0.85rem;
+    color:rgba(18,18,18,0.5);
+    text-decoration:none;
+    margin-bottom:1.2rem;
+  }
+
+  h1{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:500;
+    font-size:1.9rem;
+    margin-bottom:0.4rem;
+  }
+  .subline{
+    font-size:0.95rem;
+    color:rgba(18,18,18,0.55);
+    margin-bottom:2.4rem;
+  }
+
+  .work-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:0.9rem;
+  }
+  .work-tile{
+    aspect-ratio:1;
+    border-radius:2px;
+    position:relative;
+    overflow:hidden;
+    display:flex; align-items:flex-end;
+    padding:0.7rem;
+    background-blend-mode:overlay, overlay, normal;
+    background-image:
+      radial-gradient(ellipse at 25% 20%, rgba(255,255,255,0.12), transparent 55%),
+      radial-gradient(ellipse at 80% 85%, rgba(0,0,0,0.14), transparent 60%),
+      repeating-linear-gradient(96deg, rgba(0,0,0,0.05) 0px, transparent 3px, transparent 8px, rgba(255,255,255,0.05) 10px, transparent 15px);
+  }
+  .work-tile span{
+    font-size:0.72rem;
+    color:var(--paper);
+    background:rgba(18,18,18,0.55);
+    padding:0.2rem 0.5rem;
+    border-radius:2px;
+  }
+  .work-tile .by{
+    position:absolute;
+    top:0.6rem; left:0.7rem;
+    font-size:0.68rem;
+    color:rgba(243,241,236,0.75);
+  }
+  .empty-note{
+    font-size:0.9rem;
+    color:rgba(18,18,18,0.45);
+    padding:2rem 0;
+  }
+
+  @media (max-width: 640px){
+    .work-grid{ grid-template-columns:repeat(2,1fr); }
+  }
+</style>
+</head>
+<body>
+
+  <header class="site-header">
+    <span class="frame"></span>
+    <a class="wordmark" href="/">Raum schaffen</a>
+    <nav>
+      <a href="/menschen.html">Menschen</a>
+      <a href="/disziplinen.html">Disziplinen</a>
+    </nav>
+  </header>
+
+  <main>
+    <a class="back-link" href="disziplinen.html">← Disziplinen</a>
+    <h1>Design</h1>
+    <p class="subline">Entwürfe und Projekte der Schaffensmenschen.</p>
+
+    <p class="empty-note">Noch keine Werke eingetragen — sobald ihr Design-Arbeiten hinzufügt, erscheinen sie hier als Kachel.</p>
+  </main>
+
+</body>
+</html>
