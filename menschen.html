@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menschen — Schaffensmenschen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#121212;
+    --paper:#f3f1ec;
+    --gold:#c8a24a;
+    --beton:#b7b3ad;
+    --ziegel:#b73228;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html,body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+  }
+
+  header.site-header{
+    display:flex;
+    align-items:center;
+    gap:0.9rem;
+    padding:1.3rem 1.6rem;
+    border-bottom:1px solid rgba(18,18,18,0.1);
+  }
+  .frame{
+    position:relative;
+    width:20px; height:24px;
+    flex-shrink:0;
+  }
+  .frame::before{
+    content:"";
+    position:absolute; inset:0;
+    border:1.4px solid var(--ink);
+    border-right:none;
+  }
+  header.site-header a.wordmark{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:400;
+    font-size:0.85rem;
+    letter-spacing:0.06em;
+    color:var(--ink);
+    text-decoration:none;
+    opacity:0.8;
+  }
+  header.site-header nav{ margin-left:auto; display:flex; gap:1.6rem; }
+  header.site-header nav a{
+    font-size:0.85rem;
+    color:rgba(18,18,18,0.5);
+    text-decoration:none;
+  }
+  header.site-header nav a.current{ color:var(--ink); font-weight:600; }
+
+  main{ max-width:1000px; margin:0 auto; padding:2.4rem 1.8rem 5rem; }
+
+  h1{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:500;
+    font-size:1.9rem;
+    margin-bottom:0.4rem;
+  }
+  .subline{
+    font-size:0.95rem;
+    color:rgba(18,18,18,0.55);
+    margin-bottom:2.4rem;
+  }
+
+  .people-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(220px, 1fr));
+    gap:1.4rem;
+  }
+
+  .person-card{
+    display:block;
+    text-decoration:none;
+    color:var(--ink);
+    background:#fff;
+    border-radius:3px;
+    overflow:hidden;
+    border:1px solid rgba(18,18,18,0.08);
+    transition:transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .person-card:hover{
+    transform:translateY(-3px);
+    box-shadow:0 10px 24px rgba(18,18,18,0.12);
+  }
+
+  .person-avatar{
+    aspect-ratio:1;
+    overflow:hidden;
+  }
+  .person-avatar img{
+    width:100%; height:100%;
+    object-fit:cover;
+    display:block;
+  }
+
+  .person-info{ padding:0.9rem 1rem 1.1rem; }
+  .person-name{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:500;
+    font-size:1.05rem;
+  }
+  .person-role{
+    font-size:0.8rem;
+    color:rgba(18,18,18,0.55);
+    margin-top:0.2rem;
+  }
+</style>
+</head>
+<body>
+
+  <header class="site-header">
+    <span class="frame"></span>
+    <a class="wordmark" href="/">Raum schaffen</a>
+    <nav>
+      <a href="#">Feed</a>
+      <a href="#">Suche</a>
+      <a href="/menschen.html" class="current">Menschen</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Menschen</h1>
+    <p class="subline">Die Schaffensmenschen hinter OFFFEN — Künstler, Kreative und Freigeister.</p>
+
+    <div class="people-grid">
+      <a class="person-card" href="profil.html">
+        <div class="person-avatar"><img src="IMG_4350.jpeg" alt="Herr Neichsner"></div>
+        <div class="person-info">
+          <div class="person-name">Herr Neichsner</div>
+          <div class="person-role">Performance · München-Giesing</div>
+        </div>
+      </a>
+
+      <a class="person-card" href="profil-isasi.html">
+        <div class="person-avatar"><img src="isasi-portrait.jpg" alt="S de Isasi"></div>
+        <div class="person-info">
+          <div class="person-name">S de Isasi</div>
+          <div class="person-role">Raumintervention · München</div>
+        </div>
+      </a>
+    </div>
+  </main>
+
+</body>
+</html>
