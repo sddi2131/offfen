@@ -127,14 +127,8 @@
     font-size:0.92rem;
     border-radius:2px;
   }
-  .cta.primary{
-    background:var(--ink);
-    color:var(--paper);
-  }
-  .cta.secondary{
-    border:1.5px solid var(--ink);
-    color:var(--ink);
-  }
+  .cta.primary{ background:var(--ink); color:var(--paper); }
+  .cta.secondary{ border:1.5px solid var(--ink); color:var(--ink); }
   .cta.primary:hover{ background:var(--ziegel); }
   .cta.secondary:hover{ background:var(--ink); color:var(--paper); }
 
@@ -163,3 +157,99 @@
   .statement p{
     font-family:'Space Grotesk', sans-serif;
     font-weight:500;
+    font-size:clamp(1.4rem, 3vw, 2.1rem);
+    line-height:1.35;
+    max-width:26ch;
+  }
+  .statement p .gold{ color:var(--gold); }
+
+  .ideen-werden{ margin:0 0 8vh; text-align:center; }
+  .ideen-werden .headline{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:500;
+    font-size:clamp(1.4rem, 3vw, 2.1rem);
+  }
+  .ideen-werden .sub{
+    font-size:1rem;
+    color:rgba(18,18,18,0.65);
+    margin-top:1rem;
+    max-width:40ch;
+    margin-left:auto;
+    margin-right:auto;
+  }
+  .ideen-werden .cta{ display:inline-block; margin-top:1.8rem; text-decoration:none; }
+
+  footer{
+    padding:2rem 0 3rem;
+    font-size:0.78rem;
+    letter-spacing:0.02em;
+    line-height:1.8;
+    color:rgba(18,18,18,0.45);
+  }
+  footer a{
+    color:rgba(18,18,18,0.6);
+    text-decoration:underline;
+    text-decoration-color:rgba(18,18,18,0.25);
+  }
+
+  @media (max-width: 640px){
+    .cta-row{ flex-direction:column; }
+    .cta{ justify-content:center; }
+  }
+</style>
+</head>
+<body>
+
+  <header class="site-header">
+    <span class="frame"></span>
+    <a class="wordmark" href="/">Raum schaffen</a>
+    <nav>
+      <a href="/menschen.html">Menschen</a>
+      <a href="/disziplinen.html">Disziplinen</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="eyebrow">OFFFEN — Schaffensmenschen</p>
+      <h1 class="manifest">
+        Noch nicht <span class="strike">fertig</span>. <span class="accent">Schon da.</span>
+      </h1>
+      <p class="lede">
+        Du musst nicht mit einem fertigen Werk kommen. Eine Idee, ein Zwischenstand oder eine offene Frage reicht.<br><br>
+        OFFFEN verbindet Schaffende aus Kunst, Design, Performance, Architektur, Grafik und Musik.
+      </p>
+
+      <div class="cta-row">
+        <a class="cta primary" href="/teilnehmen.html">Teil von OFFFEN werden</a>
+        <a class="cta secondary" href="/was-entsteht.html">Entdecken was entsteht</a>
+      </div>
+
+      <div class="disciplines-strip">
+        <span class="discipline-tag">Kunst</span>
+        <span class="discipline-tag">Design</span>
+        <span class="discipline-tag">Performance</span>
+        <span class="discipline-tag">Architektur</span>
+        <span class="discipline-tag">Grafik</span>
+        <span class="discipline-tag">Musik</span>
+      </div>
+    </section>
+
+    <section class="statement">
+      <p>Aus <span class="gold">Illusionen</span> werden Visionen. Aus Visionen werden Räume.</p>
+    </section>
+
+    <section class="ideen-werden">
+      <p class="headline">Ideen im Werden.</p>
+      <p class="sub">Deine Idee muss noch nicht fertig sein.</p>
+      <a class="cta primary" href="/teilnehmen.html">Ich möchte Teil des Netzwerks werden</a>
+    </section>
+
+    <footer>
+      Schreib uns · Jetzt schreiben: <a href="mailto:raum@offfen-schaffensmenschen.com">raum@offfen-schaffensmenschen.com</a><br>
+      Schaffensmenschen · München · <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a>
+    </footer>
+  </main>
+
+</body>
+</html>
