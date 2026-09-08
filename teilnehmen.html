@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teilnehmen — Schaffensmenschen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#121212;
+    --paper:#f3f1ec;
+    --gold:#c8a24a;
+    --beton:#b7b3ad;
+    --ziegel:#b73228;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html,body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+  }
+
+  header.site-header{
+    display:flex;
+    align-items:center;
+    gap:0.9rem;
+    padding:1.3rem 1.6rem;
+    border-bottom:1px solid rgba(18,18,18,0.1);
+  }
+  .frame{
+    position:relative;
+    width:20px; height:24px;
+    flex-shrink:0;
+  }
+  .frame::before{
+    content:"";
+    position:absolute; inset:0;
+    border:1.4px solid var(--ink);
+    border-right:none;
+  }
+  header.site-header a.wordmark{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:400;
+    font-size:0.85rem;
+    letter-spacing:0.06em;
+    color:var(--ink);
+    text-decoration:none;
+    opacity:0.8;
+  }
+  header.site-header nav{ margin-left:auto; display:flex; gap:1.6rem; }
+  header.site-header nav a{
+    font-size:0.85rem;
+    color:rgba(18,18,18,0.5);
+    text-decoration:none;
+  }
+
+  main{ max-width:640px; margin:0 auto; padding:5vh 1.8rem 3vh; }
+
+  h1{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    font-size:clamp(1.8rem, 4.5vw, 2.6rem);
+    line-height:1.15;
+    margin-bottom:0.8rem;
+  }
+  .lede{
+    font-size:1.05rem;
+    color:rgba(18,18,18,0.65);
+    line-height:1.55;
+    margin-bottom:2.6rem;
+  }
+
+  form{ display:flex; flex-direction:column; gap:1.2rem; }
+  label{
+    font-size:0.8rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    color:rgba(18,18,18,0.6);
+    margin-bottom:0.4rem;
+    display:block;
+  }
+  input, select, textarea{
+    width:100%;
+    padding:0.8rem 0.9rem;
+    border:1.5px solid rgba(18,18,18,0.18);
+    border-radius:2px;
+    font-family:'Work Sans', sans-serif;
+    font-size:0.95rem;
+    background:#fff;
+    color:var(--ink);
+  }
+  textarea{ min-height:100px; resize:vertical; }
+  input:focus, select:focus, textarea:focus{
+    outline:none;
+    border-color:var(--gold);
+  }
+
+  .checkbox-row{
+    display:flex;
+    align-items:center;
+    gap:0.6rem;
+  }
+  .checkbox-row input{ width:auto; }
+  .checkbox-row label{
+    margin-bottom:0;
+    text-transform:none;
+    font-weight:400;
+    font-size:0.92rem;
+    color:var(--ink);
+  }
+
+  button{
+    margin-top:0.6rem;
+    padding:0.95rem 1.6rem;
+    background:var(--ink);
+    color:var(--paper);
+    border:none;
+    border-radius:2px;
+    font-weight:600;
+    font-size:0.95rem;
+    cursor:pointer;
+    align-self:flex-start;
+  }
+  button:hover{ background:var(--ziegel); }
+
+  .hint{
+    font-size:0.78rem;
+    color:rgba(18,18,18,0.45);
+    margin-top:0.4rem;
+  }
+
+  footer{
+    max-width:640px;
+    margin:0 auto;
+    padding:3rem 1.8rem 3rem;
+    font-size:0.78rem;
+    letter-spacing:0.02em;
+    line-height:1.8;
+    color:rgba(18,18,18,0.45);
+  }
+  footer a{
+    color:rgba(18,18,18,0.6);
+    text-decoration:underline;
+    text-decoration-color:rgba(18,18,18,0.25);
+  }
+</style>
+</head>
+<body>
+
+  <header class="site-header">
+    <span class="frame"></span>
+    <a class="wordmark" href="/">Raum schaffen</a>
+    <nav>
+      <a href="/menschen.html">Menschen</a>
+      <a href="/disziplinen.html">Disziplinen</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Raum betreten</h1>
+    <p class="lede">Du brauchst kein fertiges Portfolio. Teile eine Idee, eine Frage oder einen Prozess.</p>
+
+    <form action="mailto:raum@offfen-schaffensmenschen.com" method="post" enctype="text/plain">
+      <div>
+        <label for="name">Name</label>
+        <input type="text" id="name" name="Name" required>
+      </div>
+      <div>
+        <label for="email">E-Mail-Adresse</label>
+        <input type="email" id="email" name="E-Mail-Adresse" required>
+      </div>
+      <div>
+        <label for="arbeitsbereich">Arbeitsbereich</label>
+        <select id="arbeitsbereich" name="Arbeitsbereich">
+          <option>Kunst</option>
+          <option>Design</option>
+          <option>Performance</option>
+          <option>Architektur</option>
+          <option>Grafik</option>
+          <option>Musik</option>
+          <option>Andere</option>
+        </select>
+      </div>
+      <div>
+        <label for="instagram">Instagram</label>
+        <input type="text" id="instagram" name="Instagram" placeholder="@deinprofil">
+      </div>
+      <div>
+        <label for="woran">Woran arbeitest du?</label>
+        <textarea id="woran" name="Woran arbeitest du"></textarea>
+      </div>
+      <div>
+        <label for="offen">Was ist bei dir offen?</label>
+        <textarea id="offen" name="Was ist offen"></textarea>
+      </div>
+      <div class="checkbox-row">
+        <input type="checkbox" id="vorstellen" name="Darf OFFFEN dich vorstellen" value="Ja">
+        <label for="vorstellen">Darf OFFFEN dich vorstellen?</label>
+      </div>
+      <button type="submit">Raum betreten</button>
+      <p class="hint">Öffnet dein E-Mail-Programm mit den ausgefüllten Angaben.</p>
+    </form>
+  </main>
+
+  <footer>
+    Schreib uns · Jetzt schreiben: <a href="mailto:raum@offfen-schaffensmenschen.com">raum@offfen-schaffensmenschen.com</a><br>
+    Schaffensmenschen · München · <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a>
+  </footer>
+
+</body>
+</html>
