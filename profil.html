@@ -17,7 +17,9 @@
   }
   *{ box-sizing:border-box; margin:0; padding:0; }
   html,body{
-    background:var(--paper);
+    background-color:var(--paper);
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.15  0 0 0 0 0.11  0 0 0 0 0.07  0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-repeat:repeat;
     color:var(--ink);
     font-family:'Work Sans', sans-serif;
   }
@@ -208,8 +210,10 @@
 <body>
 
   <header class="site-header">
-    <span class="frame"></span>
-    <a class="wordmark" href="/">Raum schaffen</a>
+  <a href="/" style="display:flex; align-items:center; gap:0.6rem; text-decoration:none;">
+      <img src="offfen-logo.jpeg" alt="OFFFEN Logo" style="height:28px; width:auto; border-radius:2px;">
+      <span style="font-family:'Space Grotesk', sans-serif; font-weight:400; font-size:0.85rem; letter-spacing:0.06em; color:var(--ink); opacity:0.8;">Raum schaffen</span>
+    </a>
     <nav>
       <a href="#">Feed</a>
       <a href="#">Suche</a>
