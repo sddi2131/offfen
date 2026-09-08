@@ -65,6 +65,13 @@
     font-weight:600;
     font-size:clamp(2rem, 5.5vw, 3.2rem);
     line-height:1.1;
+    margin-bottom:1.6rem;
+  }
+  .intro{
+    font-size:1.05rem;
+    color:rgba(18,18,18,0.7);
+    line-height:1.65;
+    max-width:56ch;
     margin-bottom:3.4rem;
   }
 
@@ -94,6 +101,36 @@
     line-height:1.6;
     max-width:48ch;
   }
+
+  .beispiele{
+    margin-top:1rem;
+  }
+  .beispiele .label{
+    font-size:0.78rem; letter-spacing:0.2em; text-transform:uppercase;
+    color:var(--ziegel); font-weight:600; margin-bottom:1.6rem;
+  }
+  .beispiel-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:1.6rem;
+  }
+  .beispiel-card{
+    display:block; text-decoration:none; color:inherit;
+    border:1px solid rgba(18,18,18,0.12); border-radius:4px; overflow:hidden;
+  }
+  .beispiel-card .thumb{
+    height:160px; background-size:cover; background-position:center;
+  }
+  .beispiel-card .info{ padding:1.2rem 1.3rem 1.4rem; }
+  .beispiel-card .name{
+    font-family:'Space Grotesk', sans-serif; font-weight:500; font-size:1.05rem;
+  }
+  .beispiel-card .rolle{
+    font-size:0.8rem; color:rgba(18,18,18,0.5); margin-bottom:0.7rem;
+  }
+  .beispiel-card .prozess{
+    font-size:0.9rem; color:rgba(18,18,18,0.7); line-height:1.55;
+  }
+  .beispiel-card .prozess strong{ color:var(--ink); }
+  @media (max-width: 640px){ .beispiel-grid{ grid-template-columns:1fr; } }
 
   .closing{
     margin-top:3.6rem;
@@ -149,6 +186,12 @@
 
   <main>
     <h1>Was entsteht</h1>
+    <p class="intro">
+      Bei OFFFEN entsteht selten ein fertiges Werk auf Anhieb — meistens beginnt es mit einer
+      Idee, einem Zwischenstand oder einer offenen Frage. Was aus diesem Anfang wird, entscheidet
+      sich im Austausch mit anderen Schaffensmenschen. Drei Schritte, die sich dabei immer wieder
+      zeigen:
+    </p>
 
     <div class="step">
       <div class="step-num">01</div>
@@ -171,6 +214,28 @@
       <div>
         <h2>Begegnen</h2>
         <p>Digitale Treffen und mögliche Kooperationen entstehen lassen.</p>
+      </div>
+    </div>
+
+    <div class="beispiele">
+      <p class="label">Beispielprozesse</p>
+      <div class="beispiel-grid">
+        <a class="beispiel-card" href="/profil.html">
+          <div class="thumb" style="background-image:url(bernd-performance.jpeg);"></div>
+          <div class="info">
+            <div class="name">Herr Neichsner</div>
+            <div class="rolle">Performance · Raumintervention</div>
+            <p class="prozess"><strong>Zeigen:</strong> eine erste Skizze zu einer Rauminterven­tion, ohne fertiges Konzept.<br><strong>Entdecken:</strong> Rückfragen aus dem Netzwerk zur Wirkung im Raum.<br><strong>Begegnen:</strong> daraus entstand "Intervention #1".</p>
+          </div>
+        </a>
+        <a class="beispiel-card" href="/profil-isasi.html">
+          <div class="thumb" style="background-image:url(isasi-galerie.jpg);"></div>
+          <div class="info">
+            <div class="name">S de Isasi</div>
+            <div class="rolle">Architektur · Raumintervention</div>
+            <p class="prozess"><strong>Zeigen:</strong> eine Konzeptskizze zwischen Kunst und Architektur.<br><strong>Entdecken:</strong> Austausch über Form, Licht und Material.<br><strong>Begegnen:</strong> daraus wurde die Rauminstallation.</p>
+          </div>
+        </a>
       </div>
     </div>
 
