@@ -167,7 +167,10 @@
     <h1>Raum betreten</h1>
     <p class="lede">Du brauchst kein fertiges Portfolio. Teile eine Idee, eine Frage oder einen Prozess.</p>
 
-    <form action="mailto:raum@offfen-schaffensmenschen.com" method="post" enctype="text/plain">
+    <form id="teilnehmen-form" action="https://api.web3forms.com/submit" method="POST">
+      <input type="hidden" name="access_key" value="641499a3-f4ed-466e-9cad-d609008944d8">
+      <input type="hidden" name="subject" value="Neue Anfrage über offfen-schaffensmenschen.com">
+      <input type="hidden" name="from_name" value="OFFFEN Website">
       <div>
         <label for="name">Name</label>
         <input type="text" id="name" name="Name" required>
@@ -204,9 +207,48 @@
         <input type="checkbox" id="vorstellen" name="Darf OFFFEN dich vorstellen" value="Ja">
         <label for="vorstellen">Darf OFFFEN dich vorstellen?</label>
       </div>
-      <button type="submit">Raum betreten</button>
-      <p class="hint">Öffnet dein E-Mail-Programm mit den ausgefüllten Angaben.</p>
+      <button type="submit" id="teilnehmen-submit">Raum betreten</button>
+      <p class="hint" id="teilnehmen-hint">Wir melden uns per E-Mail bei dir.</p>
     </form>
+
+    <div id="teilnehmen-success" style="display:none;">
+      <p style="font-family:'Space Grotesk', sans-serif; font-weight:600; font-size:1.3rem; margin-bottom:0.6rem;">Danke, deine Anfrage ist angekommen.</p>
+      <p class="lede" style="margin-bottom:0;">Wir melden uns bald bei dir.</p>
+    </div>
+
+    <script>
+      const form = document.getElementById('teilnehmen-form');
+      const submitBtn = document.getElementById('teilnehmen-submit');
+      const hint = document.getElementById('teilnehmen-hint');
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Wird gesendet …';
+        hint.textContent = '';
+        const data = new FormData(form);
+        fetch(form.action, {
+          method: 'POST',
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        })
+          .then((res) => res.json())
+          .then((result) => {
+            if (result.success) {
+              form.style.display = 'none';
+              document.getElementById('teilnehmen-success').style.display = 'block';
+            } else {
+              hint.textContent = 'Etwas ist schiefgelaufen. Schreib uns direkt an raum@offfen-schaffensmenschen.com.';
+              submitBtn.disabled = false;
+              submitBtn.textContent = 'Raum betreten';
+            }
+          })
+          .catch(() => {
+            hint.textContent = 'Etwas ist schiefgelaufen. Schreib uns direkt an raum@offfen-schaffensmenschen.com.';
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Raum betreten';
+          });
+      });
+    </script>
   </main>
 
   <footer>
