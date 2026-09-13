@@ -132,6 +132,44 @@
   .beispiel-card .prozess strong{ color:var(--ink); }
   @media (max-width: 640px){ .beispiel-grid{ grid-template-columns:1fr; } }
 
+
+  .prozess-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:1.6rem;
+  }
+  .prozess-card{
+    display:block; text-decoration:none; color:inherit;
+    border:1px solid rgba(18,18,18,0.12); border-radius:4px; overflow:hidden;
+    transition:border-color .2s, transform .2s;
+  }
+  .prozess-card:hover{ border-color:var(--ziegel); transform:translateY(-3px); }
+  .prozess-card .thumb{ height:190px; background-size:cover; background-position:center; }
+  .prozess-card .info{ padding:1.3rem 1.3rem 1.5rem; }
+  .prozess-card .name{
+    font-family:'Space Grotesk', sans-serif; font-weight:500; font-size:1.1rem; line-height:1.25;
+  }
+  .prozess-card .meta{
+    font-size:0.74rem; letter-spacing:0.1em; text-transform:uppercase;
+    color:var(--ziegel); margin:0.5rem 0 0.9rem; font-weight:600;
+  }
+  .prozess-card .frage{
+    font-size:0.94rem; color:rgba(18,18,18,0.72); line-height:1.55; margin-bottom:1rem;
+  }
+  .prozess-card .link{
+    font-size:0.85rem; font-weight:600; color:var(--ink);
+  }
+  @media (max-width: 860px){ .prozess-grid{ grid-template-columns:1fr; } }
+
+  .closing-sub{
+    font-family:'Work Sans', sans-serif !important; font-weight:400 !important;
+    font-size:1rem !important; color:rgba(18,18,18,0.7); max-width:46ch; margin:0 auto 2rem !important;
+    line-height:1.6;
+  }
+  .closing-note{
+    font-family:'Work Sans', sans-serif !important; font-weight:400 !important;
+    font-size:0.9rem !important; color:rgba(18,18,18,0.55); max-width:48ch;
+    margin:2rem auto 0 !important; line-height:1.6;
+  }
+
   .closing{
     margin-top:3.6rem;
     text-align:center;
@@ -217,30 +255,43 @@
     </div>
 
     <div class="beispiele">
-      <p class="label">Beispielprozesse</p>
-      <div class="beispiel-grid">
-        <a class="beispiel-card" href="/profil.html">
-          <div class="thumb" style="background-image:url(bernd-performance.jpeg);"></div>
+      <p class="label">Prozesse</p>
+      <div class="prozess-grid">
+        <a class="prozess-card" href="/prozess-zwischenraum.html">
+          <div class="thumb" style="background-image:url(prozess-tinte.jpg);"></div>
           <div class="info">
-            <div class="name">Herr Neichsner</div>
-            <div class="rolle">Performance · Raumintervention</div>
-            <p class="prozess"><strong>Zeigen:</strong> eine erste Skizze zu einer Rauminterven­tion, ohne fertiges Konzept.<br><strong>Entdecken:</strong> Rückfragen aus dem Netzwerk zur Wirkung im Raum.<br><strong>Begegnen:</strong> daraus entstand "Intervention #1".</p>
+            <div class="name">Freiheit im Zwischenraum</div>
+            <div class="meta">Arts · In Entwicklung · Tinte</div>
+            <p class="frage">Was wird für dich Freiheit, wenn Grenzen brechen?</p>
+            <span class="link">Prozess ansehen →</span>
           </div>
         </a>
-        <a class="beispiel-card" href="/profil-isasi.html">
-          <div class="thumb" style="background-image:url(isasi-avatar-wippe.jpg);"></div>
+        <a class="prozess-card" href="/prozess-was-passiert.html">
+          <div class="thumb" style="background-image:url(prozess-wachs.jpg);"></div>
           <div class="info">
-            <div class="name">S de Isasi</div>
-            <div class="rolle">Architektur · Raumintervention</div>
-            <p class="prozess"><strong>Zeigen:</strong> eine Konzeptskizze zwischen Kunst und Architektur.<br><strong>Entdecken:</strong> Austausch über Form, Licht und Material.<br><strong>Begegnen:</strong> daraus wurde die Rauminstallation.</p>
+            <div class="name">Was passiert?</div>
+            <div class="meta">Arts · In Entwicklung · Wachs</div>
+            <p class="frage">Was entsteht, wenn Vielfalt Raum bekommt?</p>
+            <span class="link">Prozess ansehen →</span>
+          </div>
+        </a>
+        <a class="prozess-card" href="/prozess-geradlinig.html">
+          <div class="thumb" style="background-image:url(prozess-material.jpg);"></div>
+          <div class="info">
+            <div class="name">Raum muss geradlinig sein?</div>
+            <div class="meta">Arts · In Entwicklung · Freies Material</div>
+            <p class="frage">Muss Raum geradlinig sein, um entstehen zu können?</p>
+            <span class="link">Prozess ansehen →</span>
           </div>
         </a>
       </div>
     </div>
 
     <div class="closing">
-      <p>Was ist bei dir gerade offen?</p>
-      <a class="cta" href="/teilnehmen.html">Dein Prozess einreichen</a>
+      <p>Dein Prozess muss nicht fertig sein.</p>
+      <p class="closing-sub">Ein Fragment, eine Skizze, ein Materialversuch oder eine offene Frage reicht. Zeig, was bei dir entsteht.</p>
+      <a class="cta" href="/teilnehmen.html">Teil von OFFFEN werden</a>
+      <p class="closing-note">Du arbeitest an Kunst, Design, Architektur, Performance oder einer eigenen Idee? Teile deinen aktuellen Prozess mit OFFFEN.</p>
     </div>
   </main>
 
