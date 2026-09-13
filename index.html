@@ -31,24 +31,6 @@
     color:var(--cream); font-family:'Work Sans', sans-serif;
   }
 
-  .opener{
-    min-height:92vh; display:flex; flex-direction:column; align-items:center; justify-content:center;
-    text-align:center; padding:0 1.8rem;
-  }
-  .opener .word{
-    font-family:'Space Grotesk', sans-serif; font-weight:600;
-    font-size:clamp(3rem, 12vw, 7rem); letter-spacing:-0.01em; color:var(--cream); line-height:1;
-  }
-  .opener .line{
-    font-family:'Space Grotesk', sans-serif; font-weight:500;
-    font-size:clamp(1.2rem, 3vw, 1.8rem); color:var(--gold); margin-top:1.6rem; line-height:1.4;
-  }
-  .opener .scroll{
-    margin-top:3.4rem; font-size:0.85rem; letter-spacing:0.15em; text-transform:uppercase;
-    color:rgba(240,230,210,0.5); animation:bob 2s ease-in-out infinite;
-  }
-  @keyframes bob{ 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(6px); } }
-
   header.site-header{
     display:flex; align-items:center; gap:0.9rem; padding:1.3rem 1.6rem;
     border-bottom:1px solid rgba(240,230,210,0.12);
@@ -182,12 +164,6 @@
       <a href="/disziplinen.html">Zimmer</a>
     </nav>
   </header>
-
-  <section class="opener">
-    <p class="word">OFFEN</p>
-    <p class="line">das ist kein zustand.<br>das ist ein riss.</p>
-    <p class="scroll">scroll ↓</p>
-  </section>
 
   <main>
     <section class="hero">
