@@ -100,6 +100,47 @@
     border-color:var(--gold);
   }
 
+  /* Bereich- und Bedarfs-Auswahl als Chips (ersetzt Dropdown/Doppel-Freitext) */
+  .chip-group{
+    display:flex;
+    flex-wrap:wrap;
+    gap:0.6rem;
+    margin-top:0.2rem;
+  }
+  .chip{ position:relative; }
+  .chip input{
+    position:absolute;
+    opacity:0;
+    width:100%;
+    height:100%;
+    margin:0;
+    cursor:pointer;
+  }
+  .chip span{
+    display:inline-block;
+    padding:0.6rem 1.1rem;
+    font-size:0.88rem;
+    font-family:'Work Sans', sans-serif;
+    border:1.5px solid rgba(18,18,18,0.18);
+    border-radius:2px;
+    background:#fff;
+    color:var(--ink);
+    transition:all 0.15s ease;
+  }
+  .chip input:checked + span{
+    background:var(--ink);
+    border-color:var(--ink);
+    color:var(--paper);
+  }
+  .chip input:focus + span{
+    border-color:var(--gold);
+  }
+  .other-field{
+    margin-top:0.6rem;
+    display:none;
+  }
+  .other-field.visible{ display:block; }
+
   .checkbox-row{
     display:flex;
     align-items:center;
@@ -165,48 +206,56 @@
 
   <main>
     <h1>Raum betreten</h1>
-    <p class="lede">Du brauchst kein fertiges Portfolio. Teile eine Idee, eine Frage oder einen Prozess.</p>
+    <p class="lede">Du brauchst kein fertiges Portfolio. Zeig, was gerade entsteht.</p>
 
     <form id="teilnehmen-form" action="https://api.web3forms.com/submit" method="POST">
       <input type="hidden" name="access_key" value="641499a3-f4ed-466e-9cad-d609008944d8">
       <input type="hidden" name="subject" value="Neue Anfrage über offfen-schaffensmenschen.com">
       <input type="hidden" name="from_name" value="OFFFEN Website">
+
       <div>
         <label for="name">Name</label>
         <input type="text" id="name" name="Name" required>
       </div>
+
       <div>
         <label for="email">E-Mail-Adresse</label>
         <input type="email" id="email" name="E-Mail-Adresse" required>
       </div>
+
       <div>
-        <label for="arbeitsbereich">Arbeitsbereich</label>
-        <select id="arbeitsbereich" name="Arbeitsbereich">
-          <option>Kunst</option>
-          <option>Design</option>
-          <option>Performance</option>
-          <option>Architektur</option>
-          <option>Grafik</option>
-          <option>Musik</option>
-          <option>Andere</option>
-        </select>
+        <label>Bereich</label>
+        <div class="chip-group">
+          <label class="chip"><input type="radio" name="Bereich" value="Kunst"><span>Kunst</span></label>
+          <label class="chip"><input type="radio" name="Bereich" value="Design"><span>Design</span></label>
+          <label class="chip"><input type="radio" name="Bereich" value="Performance"><span>Performance</span></label>
+          <label class="chip"><input type="radio" name="Bereich" value="Architektur"><span>Architektur</span></label>
+          <label class="chip"><input type="radio" name="Bereich" value="Grafik"><span>Grafik</span></label>
+          <label class="chip"><input type="radio" name="Bereich" value="Musik"><span>Musik</span></label>
+          <label class="chip"><input type="radio" name="Bereich" value="Andere"><span>Andere</span></label>
+        </div>
       </div>
+
       <div>
-        <label for="instagram">Instagram</label>
-        <input type="text" id="instagram" name="Instagram" placeholder="@deinprofil">
-      </div>
-      <div>
-        <label for="woran">Woran arbeitest du?</label>
+        <label for="woran">Woran arbeitest du gerade?</label>
         <textarea id="woran" name="Woran arbeitest du"></textarea>
       </div>
+
       <div>
-        <label for="offen">Was ist bei dir offen?</label>
-        <textarea id="offen" name="Was ist offen"></textarea>
+        <label>Was brauchst du momentan?</label>
+        <div class="chip-group">
+          <label class="chip"><input type="checkbox" name="Was brauchst du" value="Sichtbarkeit"><span>Sichtbarkeit</span></label>
+          <label class="chip"><input type="checkbox" name="Was brauchst du" value="Austausch"><span>Austausch</span></label>
+          <label class="chip"><input type="checkbox" name="Was brauchst du" value="Feedback"><span>Feedback</span></label>
+          <label class="chip"><input type="checkbox" name="Was brauchst du" value="Mitstreiter*innen"><span>Mitstreiter*innen</span></label>
+          <label class="chip"><input type="checkbox" name="Was brauchst du" value="Raum für Präsentation"><span>Raum für Präsentation</span></label>
+          <label class="chip" id="other-chip"><input type="checkbox" name="Was brauchst du" value="Sonstiges" id="other-checkbox"><span>Noch etwas anderes</span></label>
+        </div>
+        <div class="other-field" id="other-textfield">
+          <input type="text" name="Sonstiges - Beschreibung" placeholder="Kurz beschreiben …">
+        </div>
       </div>
-      <div class="checkbox-row">
-        <input type="checkbox" id="vorstellen" name="Darf OFFFEN dich vorstellen" value="Ja">
-        <label for="vorstellen">Darf OFFFEN dich vorstellen?</label>
-      </div>
+
       <button type="submit" id="teilnehmen-submit">Raum betreten</button>
       <p class="hint" id="teilnehmen-hint">Wir melden uns per E-Mail bei dir.</p>
     </form>
@@ -220,6 +269,14 @@
       const form = document.getElementById('teilnehmen-form');
       const submitBtn = document.getElementById('teilnehmen-submit');
       const hint = document.getElementById('teilnehmen-hint');
+
+      // "Sonstiges"-Freitextfeld nur zeigen, wenn die Chip-Option angehakt ist
+      const otherCheckbox = document.getElementById('other-checkbox');
+      const otherTextfield = document.getElementById('other-textfield');
+      otherCheckbox.addEventListener('change', () => {
+        otherTextfield.classList.toggle('visible', otherCheckbox.checked);
+      });
+
       form.addEventListener('submit', function (e) {
         e.preventDefault();
         submitBtn.disabled = true;
