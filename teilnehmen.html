@@ -51,12 +51,41 @@
     text-decoration:none;
     opacity:0.8;
   }
-  header.site-header nav{ margin-left:auto; display:flex; gap:1.6rem; }
+  header.site-header nav{ margin-left:auto; display:flex; align-items:center; gap:1.6rem; }
   header.site-header nav a{
     font-size:0.85rem;
     color:rgba(18,18,18,0.5);
     text-decoration:none;
   }
+  .lang-toggle{
+    display:flex;
+    gap:0.3rem;
+    font-size:0.8rem;
+    letter-spacing:0.04em;
+  }
+  .lang-toggle button{
+    background:none;
+    border:none;
+    font-family:'Work Sans', sans-serif;
+    font-size:0.8rem;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    color:rgba(18,18,18,0.45);
+    cursor:pointer;
+    padding:0.2rem 0.3rem;
+  }
+  .lang-toggle button.active{
+    color:var(--ink);
+    font-weight:600;
+    border-bottom:2px solid var(--ziegel);
+  }
+
+  [data-i18n]{ display:none; }
+  [data-i18n].lang-active{ display:inline; }
+  h1 [data-i18n].lang-active,
+  p [data-i18n].lang-active,
+  label [data-i18n].lang-active{ display:inline; }
+  div [data-i18n].lang-active{ display:block; }
 
   main{ max-width:640px; margin:0 auto; padding:5vh 1.8rem 3vh; }
 
@@ -201,12 +230,23 @@
     <nav>
       <a href="/menschen.html">Menschen</a>
       <a href="/disziplinen.html">Zimmer</a>
+      <div class="lang-toggle">
+        <button type="button" data-lang="de" class="active">DE</button>
+        <span style="color:rgba(18,18,18,0.3);">/</span>
+        <button type="button" data-lang="en">EN</button>
+      </div>
     </nav>
   </header>
 
   <main>
-    <h1>Raum betreten</h1>
-    <p class="lede">Du brauchst kein fertiges Portfolio. Zeig, was gerade entsteht.</p>
+    <h1>
+      <span data-i18n="de" class="lang-active">Raum betreten</span>
+      <span data-i18n="en">Enter the room</span>
+    </h1>
+    <p class="lede">
+      <span data-i18n="de" class="lang-active">Du brauchst kein fertiges Portfolio. Zeig, was gerade entsteht.</span>
+      <span data-i18n="en">You don't need a finished portfolio. Show what's taking shape.</span>
+    </p>
 
     <form id="teilnehmen-form" action="https://api.web3forms.com/submit" method="POST">
       <input type="hidden" name="access_key" value="641499a3-f4ed-466e-9cad-d609008944d8">
@@ -214,61 +254,88 @@
       <input type="hidden" name="from_name" value="OFFFEN Website">
 
       <div>
-        <label for="name">Name</label>
+        <label for="name"><span data-i18n="de" class="lang-active">Name</span><span data-i18n="en">Name</span></label>
         <input type="text" id="name" name="Name" required>
       </div>
 
       <div>
-        <label for="email">E-Mail-Adresse</label>
+        <label for="email"><span data-i18n="de" class="lang-active">E-Mail-Adresse</span><span data-i18n="en">Email address</span></label>
         <input type="email" id="email" name="E-Mail-Adresse" required>
       </div>
 
       <div>
-        <label>Bereich</label>
+        <label><span data-i18n="de" class="lang-active">Bereich</span><span data-i18n="en">Field</span></label>
         <div class="chip-group">
-          <label class="chip"><input type="radio" name="Bereich" value="Kunst"><span>Kunst</span></label>
-          <label class="chip"><input type="radio" name="Bereich" value="Design"><span>Design</span></label>
-          <label class="chip"><input type="radio" name="Bereich" value="Performance"><span>Performance</span></label>
-          <label class="chip"><input type="radio" name="Bereich" value="Architektur"><span>Architektur</span></label>
-          <label class="chip"><input type="radio" name="Bereich" value="Grafik"><span>Grafik</span></label>
-          <label class="chip"><input type="radio" name="Bereich" value="Musik"><span>Musik</span></label>
-          <label class="chip"><input type="radio" name="Bereich" value="Andere"><span>Andere</span></label>
+          <label class="chip"><input type="radio" name="Bereich" value="Kunst"><span><span data-i18n="de" class="lang-active">Kunst</span><span data-i18n="en">Art</span></span></label>
+          <label class="chip"><input type="radio" name="Bereich" value="Design"><span><span data-i18n="de" class="lang-active">Design</span><span data-i18n="en">Design</span></span></label>
+          <label class="chip"><input type="radio" name="Bereich" value="Performance"><span><span data-i18n="de" class="lang-active">Performance</span><span data-i18n="en">Performance</span></span></label>
+          <label class="chip"><input type="radio" name="Bereich" value="Architektur"><span><span data-i18n="de" class="lang-active">Architektur</span><span data-i18n="en">Architecture</span></span></label>
+          <label class="chip"><input type="radio" name="Bereich" value="Grafik"><span><span data-i18n="de" class="lang-active">Grafik</span><span data-i18n="en">Graphic Design</span></span></label>
+          <label class="chip"><input type="radio" name="Bereich" value="Musik"><span><span data-i18n="de" class="lang-active">Musik</span><span data-i18n="en">Music</span></span></label>
+          <label class="chip"><input type="radio" name="Bereich" value="Andere"><span><span data-i18n="de" class="lang-active">Andere</span><span data-i18n="en">Other</span></span></label>
         </div>
       </div>
 
       <div>
-        <label for="woran">Woran arbeitest du gerade?</label>
+        <label for="woran"><span data-i18n="de" class="lang-active">Woran arbeitest du gerade?</span><span data-i18n="en">What are you working on right now?</span></label>
         <textarea id="woran" name="Woran arbeitest du"></textarea>
       </div>
 
       <div>
-        <label>Was brauchst du momentan?</label>
+        <label><span data-i18n="de" class="lang-active">Was brauchst du momentan?</span><span data-i18n="en">What do you need right now?</span></label>
         <div class="chip-group">
-          <label class="chip"><input type="checkbox" name="Was brauchst du" value="Sichtbarkeit"><span>Sichtbarkeit</span></label>
-          <label class="chip"><input type="checkbox" name="Was brauchst du" value="Austausch"><span>Austausch</span></label>
-          <label class="chip"><input type="checkbox" name="Was brauchst du" value="Feedback"><span>Feedback</span></label>
-          <label class="chip"><input type="checkbox" name="Was brauchst du" value="Mitstreiter*innen"><span>Mitstreiter*innen</span></label>
-          <label class="chip"><input type="checkbox" name="Was brauchst du" value="Raum für Präsentation"><span>Raum für Präsentation</span></label>
-          <label class="chip" id="other-chip"><input type="checkbox" name="Was brauchst du" value="Sonstiges" id="other-checkbox"><span>Noch etwas anderes</span></label>
+          <label class="chip"><input type="checkbox" name="Was brauchst du" value="Sichtbarkeit"><span><span data-i18n="de" class="lang-active">Sichtbarkeit</span><span data-i18n="en">Visibility</span></span></label>
+          <label class="chip"><input type="checkbox" name="Was brauchst du" value="Austausch"><span><span data-i18n="de" class="lang-active">Austausch</span><span data-i18n="en">Exchange</span></span></label>
+          <label class="chip"><input type="checkbox" name="Was brauchst du" value="Feedback"><span><span data-i18n="de" class="lang-active">Feedback</span><span data-i18n="en">Feedback</span></span></label>
+          <label class="chip"><input type="checkbox" name="Was brauchst du" value="Mitstreiter*innen"><span><span data-i18n="de" class="lang-active">Mitstreiter*innen</span><span data-i18n="en">Collaborators</span></span></label>
+          <label class="chip"><input type="checkbox" name="Was brauchst du" value="Raum für Präsentation"><span><span data-i18n="de" class="lang-active">Raum für Präsentation</span><span data-i18n="en">Space to present</span></span></label>
+          <label class="chip" id="other-chip"><input type="checkbox" name="Was brauchst du" value="Sonstiges" id="other-checkbox"><span><span data-i18n="de" class="lang-active">Noch etwas anderes</span><span data-i18n="en">Something else</span></span></label>
         </div>
         <div class="other-field" id="other-textfield">
-          <input type="text" name="Sonstiges - Beschreibung" placeholder="Kurz beschreiben …">
+          <input type="text" name="Sonstiges - Beschreibung" id="other-input" placeholder="Kurz beschreiben …">
         </div>
       </div>
 
-      <button type="submit" id="teilnehmen-submit">Raum betreten</button>
-      <p class="hint" id="teilnehmen-hint">Wir melden uns per E-Mail bei dir.</p>
+      <button type="submit" id="teilnehmen-submit">
+        <span data-i18n="de" class="lang-active">Raum betreten</span>
+        <span data-i18n="en">Enter the room</span>
+      </button>
+      <p class="hint" id="teilnehmen-hint">
+        <span data-i18n="de" class="lang-active">Wir melden uns per E-Mail bei dir.</span>
+        <span data-i18n="en">We'll get back to you by email.</span>
+      </p>
     </form>
 
     <div id="teilnehmen-success" style="display:none;">
-      <p style="font-family:'Space Grotesk', sans-serif; font-weight:600; font-size:1.3rem; margin-bottom:0.6rem;">Danke, deine Anfrage ist angekommen.</p>
-      <p class="lede" style="margin-bottom:0;">Wir melden uns bald bei dir.</p>
+      <p style="font-family:'Space Grotesk', sans-serif; font-weight:600; font-size:1.3rem; margin-bottom:0.6rem;">
+        <span data-i18n="de" class="lang-active">Danke, deine Anfrage ist angekommen.</span>
+        <span data-i18n="en">Thanks, your request has arrived.</span>
+      </p>
+      <p class="lede" style="margin-bottom:0;">
+        <span data-i18n="de" class="lang-active">Wir melden uns bald bei dir.</span>
+        <span data-i18n="en">We'll be in touch soon.</span>
+      </p>
     </div>
 
     <script>
       const form = document.getElementById('teilnehmen-form');
       const submitBtn = document.getElementById('teilnehmen-submit');
       const hint = document.getElementById('teilnehmen-hint');
+
+      // Sprachumschalter DE/EN
+      const langButtons = document.querySelectorAll('.lang-toggle button');
+      langButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const lang = btn.dataset.lang;
+          langButtons.forEach(b => b.classList.toggle('active', b === btn));
+          document.querySelectorAll('[data-i18n]').forEach(el => {
+            el.classList.toggle('lang-active', el.dataset.i18n === lang);
+          });
+          document.documentElement.lang = lang;
+          const otherInput = document.getElementById('other-input');
+          otherInput.placeholder = lang === 'de' ? 'Kurz beschreiben …' : 'Briefly describe …';
+        });
+      });
 
       // "Sonstiges"-Freitextfeld nur zeigen, wenn die Chip-Option angehakt ist
       const otherCheckbox = document.getElementById('other-checkbox');
