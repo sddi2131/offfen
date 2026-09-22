@@ -7,7 +7,7 @@
 <meta name="description" content="OFFFEN — Schaffensmenschen. Ein Netzwerk für Kreative aus Kunst, Design, Performance, Architektur, Grafik und Musik.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Ein Zuhause für Schaffende — OFFFEN">
-<meta property="og:description" content="Du musst nicht mit einem fertigen Werk kommen. Eine Idee, ein Zwischenstand oder eine offene Frage reicht.">
+<meta property="og:description" content="Kein fertiges Werk. Keine Bewerbung. Ein Raum ohne Verpflichtung.">
 <meta property="og:url" content="https://offfen-schaffensmenschen.com">
 <meta property="og:locale" content="de_DE">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -59,7 +59,7 @@
 
   .manifest{
     font-family:'Space Grotesk', sans-serif; font-weight:600;
-    font-size:clamp(2.2rem, 6.5vw, 4.8rem); line-height:1.06; letter-spacing:-0.01em;
+    font-size:clamp(2rem, 6vw, 4.2rem); line-height:1.1; letter-spacing:-0.01em;
     color:var(--cream);
   }
   .manifest .accent{ color:var(--gold); }
@@ -67,6 +67,17 @@
   .manifest .strike::after{
     content:""; position:absolute; left:-2%; right:-2%; top:50%; height:0.06em;
     background:var(--ziegel); transform:translateY(-50%) rotate(-2deg);
+  }
+
+  .no-list{
+    font-family:'Space Grotesk', sans-serif; font-weight:500;
+    font-size:clamp(1.1rem, 2.4vw, 1.5rem); color:rgba(240,230,210,0.55);
+    margin-top:1.8rem;
+  }
+  .no-list .strike{ position:relative; }
+  .no-list .strike::after{
+    content:""; position:absolute; left:-3%; right:-3%; top:50%; height:0.07em;
+    background:var(--ziegel); transform:translateY(-50%) rotate(-1.5deg);
   }
 
   .lede{
@@ -172,14 +183,19 @@
       </div>
       <p class="eyebrow">OFFFEN — Schaffensmenschen</p>
       <h1 class="manifest">
-        Noch nicht <span class="strike">fertig</span>. <span class="accent">Schon da.</span>
+        Wir sprengen Grenzen.<br>
+        Wir schaffen <span class="accent">Raum</span>.
       </h1>
+      <p class="no-list">
+        Keine <span class="strike">Werkstatt</span>. Keine <span class="strike">Galerie</span>. Kein <span class="strike">Atelier</span>.
+      </p>
       <p class="lede">
-        Du musst nicht mit einem fertigen Werk kommen. Eine Idee, ein Zwischenstand oder eine offene Frage reicht.<br><br>
-        OFFFEN verbindet Schaffende aus Kunst, Design, Performance, Architektur, Grafik und Musik.
+        Ein Raum ohne Verpflichtung.<br><br>
+        Mach mit, wenn du Prozesse und Ideen im Entstehen zeigen willst.
+        Kein fertiges Werk. Keine Bewerbung.
       </p>
       <div class="cta-row">
-        <a class="cta primary" href="/teilnehmen.html">Teil von OFFFEN werden</a>
+        <a class="cta primary" href="mailto:raum@offfen-schaffensmenschen.com">Schreib uns</a>
         <a class="cta secondary" href="/was-entsteht.html">Entdecken was entsteht</a>
       </div>
       <div class="disciplines-strip">
@@ -231,7 +247,7 @@
     <section class="ideen-werden">
       <p class="headline">Ideen im Werden.</p>
       <p class="sub">Deine Idee muss noch nicht fertig sein.</p>
-      <a class="cta primary" href="/teilnehmen.html">Ich möchte Teil des Netzwerks werden</a>
+      <a class="cta primary" href="mailto:raum@offfen-schaffensmenschen.com">Schreib uns</a>
     </section>
 
     <footer>
