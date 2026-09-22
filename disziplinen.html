@@ -31,17 +31,6 @@
     padding:1.3rem 1.6rem;
     border-bottom:1px solid rgba(18,18,18,0.1);
   }
-  .frame{
-    position:relative;
-    width:20px; height:24px;
-    flex-shrink:0;
-  }
-  .frame::before{
-    content:"";
-    position:absolute; inset:0;
-    border:1.4px solid var(--ink);
-    border-right:none;
-  }
   header.site-header a.wordmark{
     font-family:'Space Grotesk', sans-serif;
     font-weight:400;
@@ -71,6 +60,8 @@
     font-size:0.95rem;
     color:rgba(18,18,18,0.55);
     margin-bottom:2.4rem;
+    max-width:52ch;
+    line-height:1.5;
   }
 
   .discipline-grid{
@@ -103,11 +94,32 @@
       radial-gradient(ellipse at 25% 20%, rgba(255,255,255,0.14), transparent 55%),
       radial-gradient(ellipse at 80% 85%, rgba(0,0,0,0.18), transparent 60%);
   }
-  .discipline-card span{
+
+  /* Nummer statt Kategorie-Name — immer sichtbar, dezent */
+  .discipline-card .num{
+    position:relative;
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:300;
+    font-size:0.78rem;
+    letter-spacing:0.15em;
+    opacity:0.55;
+    margin-bottom:0.6rem;
+  }
+
+  /* Name erscheint erst beim Hover — kein vordefiniertes Etikett auf den ersten Blick */
+  .discipline-card .label{
     position:relative;
     font-family:'Space Grotesk', sans-serif;
     font-weight:500;
-    font-size:1.15rem;
+    font-size:1.05rem;
+    opacity:0;
+    transform:translateY(4px);
+    transition:opacity 0.2s ease, transform 0.2s ease;
+  }
+  .discipline-card:hover .label,
+  .discipline-card:focus .label{
+    opacity:0.92;
+    transform:translateY(0);
   }
 
   .c-arts{ background:linear-gradient(155deg, #b73228, #7c211a); }
@@ -117,12 +129,27 @@
   .c-grafik{ background:linear-gradient(155deg, #4a5568, #2d3340); }
   .c-musik{ background:linear-gradient(155deg, #3f5147, #1f2b25); }
   .c-vielesmehr{ background:linear-gradient(155deg, #7a6a4f, #453b2a); }
+
+  footer{
+    max-width:1000px;
+    margin:0 auto;
+    padding:2rem 1.8rem 3rem;
+    font-size:0.78rem;
+    letter-spacing:0.02em;
+    line-height:1.8;
+    color:rgba(18,18,18,0.45);
+  }
+  footer a{
+    color:rgba(18,18,18,0.6);
+    text-decoration:underline;
+    text-decoration-color:rgba(18,18,18,0.25);
+  }
 </style>
 </head>
 <body>
 
   <header class="site-header">
-<a href="/" style="display:flex; align-items:center; gap:0.6rem; text-decoration:none;">
+    <a href="/" style="display:flex; align-items:center; gap:0.6rem; text-decoration:none;">
       <img src="offfen-logo.jpeg" alt="OFFFEN Logo" style="height:28px; width:auto; border-radius:2px;">
       <span style="font-family:'Space Grotesk', sans-serif; font-weight:400; font-size:0.85rem; letter-spacing:0.06em; color:var(--ink); opacity:0.8;">Raum schaffen</span>
     </a>
@@ -133,17 +160,17 @@
   </header>
 
   <main>
-    <h1>Zimmer</h1>
-    <p class="subline">Sieben Bereiche, ein Raum — stöbere in den Werken der Schaffensmenschen.</p>
+    <h1>Ein Raum. Viele Spuren.</h1>
+    <p class="subline">Kein Ordner, keine Schublade. Bewege dich — was du findest, entscheidet sich beim Anschauen, nicht vorher.</p>
 
     <div class="discipline-grid">
-      <a class="discipline-card c-arts" href="galerie-kunst.html"><span>Kunst</span></a>
-      <a class="discipline-card c-design" href="galerie-design.html"><span>Design</span></a>
-      <a class="discipline-card c-entertainment" href="galerie-performance.html"><span>Performance</span></a>
-      <a class="discipline-card c-architektur" href="galerie-architektur.html"><span>Architektur</span></a>
-      <a class="discipline-card c-grafik" href="galerie-grafik.html"><span>Grafik</span></a>
-      <a class="discipline-card c-musik" href="galerie-musik.html"><span>Musik</span></a>
-      <a class="discipline-card c-vielesmehr" href="galerie-vieles-mehr.html"><span>Vieles mehr</span></a>
+      <a class="discipline-card c-arts" href="galerie-kunst.html"><span class="num">01</span><span class="label">Kunst</span></a>
+      <a class="discipline-card c-design" href="galerie-design.html"><span class="num">02</span><span class="label">Design</span></a>
+      <a class="discipline-card c-entertainment" href="galerie-performance.html"><span class="num">03</span><span class="label">Performance</span></a>
+      <a class="discipline-card c-architektur" href="galerie-architektur.html"><span class="num">04</span><span class="label">Architektur</span></a>
+      <a class="discipline-card c-grafik" href="galerie-grafik.html"><span class="num">05</span><span class="label">Grafik</span></a>
+      <a class="discipline-card c-musik" href="galerie-musik.html"><span class="num">06</span><span class="label">Musik</span></a>
+      <a class="discipline-card c-vielesmehr" href="galerie-vieles-mehr.html"><span class="num">07</span><span class="label">Vieles mehr</span></a>
     </div>
   </main>
 
