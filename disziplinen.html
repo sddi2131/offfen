@@ -10,9 +10,9 @@
 <style>
   :root{
     --ink:#121212;
-    --paper:#ecdfc4;
-    --wood-line:rgba(139,98,45,0.05);
+    --paper:#efe0b8;
     --gold:#c8a24a;
+    --gold-line:rgba(139,98,45,0.16);
     --beton:#b7b3ad;
     --ziegel:#b73228;
   }
@@ -20,8 +20,9 @@
   html,body{
     background-color:var(--paper);
     background-image:
-      repeating-linear-gradient(90deg, var(--wood-line) 0px, var(--wood-line) 1px, transparent 1px, transparent 7px),
-      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.55  0 0 0 0 0.38  0 0 0 0 0.16  0 0 0 0.06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      repeating-linear-gradient(90deg, var(--gold-line) 0px, var(--gold-line) 1px, transparent 1px, transparent 96px),
+      repeating-linear-gradient(0deg, var(--gold-line) 0px, var(--gold-line) 1px, transparent 1px, transparent 96px),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.6  0 0 0 0 0.42  0 0 0 0 0.16  0 0 0 0.07 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     background-repeat:repeat;
     color:var(--ink);
     font-family:'Work Sans', sans-serif;
@@ -32,7 +33,7 @@
     align-items:center;
     gap:0.9rem;
     padding:1.3rem 1.6rem;
-    border-bottom:1px solid rgba(18,18,18,0.1);
+    border-bottom:1px solid var(--gold-line);
   }
   header.site-header a.wordmark{
     font-family:'Space Grotesk', sans-serif;
@@ -61,65 +62,86 @@
   }
   .subline{
     font-size:0.95rem;
-    color:rgba(18,18,18,0.55);
+    color:rgba(18,18,18,0.6);
     margin-bottom:3rem;
     max-width:52ch;
     line-height:1.5;
   }
 
-  /* Strukturiertes Grid mit unterschiedlichen Kachelgrößen — kein Überlappen, klar ausgerichtet */
+  /* Galeriewand: klar geordnetes Raster, jede Kachel wie gerahmt */
   .wall{
     display:grid;
-    grid-template-columns:repeat(6, 1fr);
-    grid-auto-rows:80px;
-    grid-auto-flow:row dense;
-    gap:1rem;
+    grid-template-columns:repeat(4, 1fr);
+    grid-template-rows:repeat(4, 130px);
+    grid-template-areas:
+      "a a b c"
+      "a a b c"
+      "d e e f"
+      "d g g f";
+    gap:1.6rem;
   }
 
   .discipline-card{
-    display:flex;
-    flex-direction:column;
-    justify-content:flex-end;
-    padding:1.2rem;
-    border-radius:3px;
+    display:block;
     text-decoration:none;
-    color:var(--paper);
+    background:var(--paper);
+    padding:9px;
+    border-radius:2px;
+    box-shadow:0 14px 26px rgba(18,18,18,0.22), 0 2px 0 rgba(255,255,255,0.25) inset;
+  }
+
+  .frame-inner{
+    width:100%; height:100%;
+    border:2px solid var(--gold);
+    display:flex;
+    align-items:flex-end;
+    padding:1.1rem;
     position:relative;
     overflow:hidden;
-    box-shadow:0 8px 20px rgba(18,18,18,0.16);
-    transition:transform 0.15s ease, box-shadow 0.15s ease;
+    color:var(--paper);
+    transition:filter 0.15s ease;
   }
-  .discipline-card:hover{
-    transform:translateY(-4px);
-    box-shadow:0 14px 28px rgba(18,18,18,0.22);
-  }
-  .discipline-card::before{
+  .discipline-card:hover .frame-inner{ filter:brightness(1.08); }
+  .frame-inner::before{
     content:"";
     position:absolute; inset:0;
     background-image:
       radial-gradient(ellipse at 25% 20%, rgba(255,255,255,0.14), transparent 55%),
-      radial-gradient(ellipse at 80% 85%, rgba(0,0,0,0.18), transparent 60%);
+      radial-gradient(ellipse at 80% 85%, rgba(0,0,0,0.2), transparent 60%);
   }
-  .discipline-card span{
+  .frame-inner span{
     position:relative;
     font-family:'Space Grotesk', sans-serif;
     font-weight:500;
     font-size:1.1rem;
   }
 
-  /* Größe je Kachel — bewusst unterschiedlich, aber im Raster ausgerichtet */
-  .c-arts{ background:linear-gradient(155deg, #b73228, #7c211a); grid-column:span 3; grid-row:span 4; }
-  .c-design{ background:linear-gradient(155deg, #121212, #3a3a3a); grid-column:span 3; grid-row:span 3; }
-  .c-entertainment{ background:linear-gradient(155deg, #c8a24a, #8a6c2f); grid-column:span 2; grid-row:span 3; }
-  .c-architektur{ background:linear-gradient(155deg, #b7b3ad, #6d6a65); grid-column:span 4; grid-row:span 3; }
-  .c-grafik{ background:linear-gradient(155deg, #4a5568, #2d3340); grid-column:span 3; grid-row:span 3; }
-  .c-musik{ background:linear-gradient(155deg, #3f5147, #1f2b25); grid-column:span 3; grid-row:span 4; }
-  .c-vielesmehr{ background:linear-gradient(155deg, #7a6a4f, #453b2a); grid-column:span 3; grid-row:span 3; }
+  .a-kunst .frame-inner{ background:linear-gradient(155deg, #b73228, #7c211a); }
+  .a-design .frame-inner{ background:linear-gradient(155deg, #121212, #3a3a3a); }
+  .a-performance .frame-inner{ background:linear-gradient(155deg, #c8a24a, #8a6c2f); }
+  .a-architektur .frame-inner{ background:linear-gradient(155deg, #b7b3ad, #6d6a65); }
+  .a-grafik .frame-inner{ background:linear-gradient(155deg, #4a5568, #2d3340); }
+  .a-musik .frame-inner{ background:linear-gradient(155deg, #3f5147, #1f2b25); }
+  .a-vielesmehr .frame-inner{ background:linear-gradient(155deg, #7a6a4f, #453b2a); }
+
+  .g-a{ grid-area:a; }
+  .g-b{ grid-area:b; }
+  .g-c{ grid-area:c; }
+  .g-d{ grid-area:d; }
+  .g-e{ grid-area:e; }
+  .g-f{ grid-area:f; }
+  .g-g{ grid-area:g; }
 
   /* Mobil: einfache, gestapelte Ein-Spalten-Ansicht */
   @media (max-width: 700px){
-    .wall{ grid-template-columns:1fr; grid-auto-rows:180px; }
-    .discipline-card{ grid-column:span 1 !important; grid-row:span 1 !important; }
+    .wall{
+      grid-template-columns:1fr;
+      grid-template-rows:none;
+      grid-template-areas:none;
+      gap:1.1rem;
+    }
+    .discipline-card{ grid-area:auto !important; }
+    .frame-inner{ height:170px; }
   }
 
   footer{
@@ -129,12 +151,12 @@
     font-size:0.78rem;
     letter-spacing:0.02em;
     line-height:1.8;
-    color:rgba(18,18,18,0.45);
+    color:rgba(18,18,18,0.5);
   }
   footer a{
-    color:rgba(18,18,18,0.6);
+    color:rgba(18,18,18,0.65);
     text-decoration:underline;
-    text-decoration-color:rgba(18,18,18,0.25);
+    text-decoration-color:rgba(18,18,18,0.3);
   }
 </style>
 </head>
@@ -156,13 +178,13 @@
     <p class="subline">Kein Ordner, keine Schublade. Bewege dich frei — nichts hier ist ausgerichtet, nichts ist fertig sortiert.</p>
 
     <div class="wall">
-      <a class="discipline-card c-arts" href="galerie-kunst.html"><span>Kunst</span></a>
-      <a class="discipline-card c-design" href="galerie-design.html"><span>Design</span></a>
-      <a class="discipline-card c-entertainment" href="galerie-performance.html"><span>Performance</span></a>
-      <a class="discipline-card c-architektur" href="galerie-architektur.html"><span>Architektur</span></a>
-      <a class="discipline-card c-grafik" href="galerie-grafik.html"><span>Grafik</span></a>
-      <a class="discipline-card c-musik" href="galerie-musik.html"><span>Musik</span></a>
-      <a class="discipline-card c-vielesmehr" href="galerie-vieles-mehr.html"><span>Vieles mehr</span></a>
+      <a class="discipline-card a-kunst g-a" href="galerie-kunst.html"><div class="frame-inner"><span>Kunst</span></div></a>
+      <a class="discipline-card a-design g-b" href="galerie-design.html"><div class="frame-inner"><span>Design</span></div></a>
+      <a class="discipline-card a-performance g-c" href="galerie-performance.html"><div class="frame-inner"><span>Performance</span></div></a>
+      <a class="discipline-card a-grafik g-d" href="galerie-grafik.html"><div class="frame-inner"><span>Grafik</span></div></a>
+      <a class="discipline-card a-architektur g-e" href="galerie-architektur.html"><div class="frame-inner"><span>Architektur</span></div></a>
+      <a class="discipline-card a-vielesmehr g-f" href="galerie-vieles-mehr.html"><div class="frame-inner"><span>Vieles mehr</span></div></a>
+      <a class="discipline-card a-musik g-g" href="galerie-musik.html"><div class="frame-inner"><span>Musik</span></div></a>
     </div>
   </main>
 
