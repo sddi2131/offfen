@@ -44,13 +44,27 @@
     text-decoration:none;
     opacity:0.8;
   }
-  header.site-header nav{ margin-left:auto; display:flex; gap:1.6rem; }
+  header.site-header nav{ margin-left:auto; display:flex; align-items:center; gap:1.6rem; }
   header.site-header nav a{
     font-size:0.85rem;
     color:rgba(18,18,18,0.5);
     text-decoration:none;
   }
   header.site-header nav a.current{ color:var(--ink); font-weight:600; }
+
+  .lang-toggle{ display:flex; gap:0.3rem; font-size:0.8rem; letter-spacing:0.04em; }
+  .lang-toggle button{
+    background:none; border:none; font-family:'Work Sans', sans-serif;
+    font-size:0.8rem; letter-spacing:0.04em; text-transform:uppercase;
+    color:rgba(18,18,18,0.45); cursor:pointer; padding:0.2rem 0.3rem;
+  }
+  .lang-toggle button.active{
+    color:var(--ink); font-weight:600; border-bottom:2px solid var(--ziegel);
+  }
+
+  [data-i18n]{ display:none; }
+  [data-i18n].lang-active{ display:inline; }
+  p[data-i18n].lang-active{ display:block; }
 
   main{ max-width:1080px; margin:0 auto; padding:2.4rem 1.8rem 6rem; }
 
@@ -168,30 +182,60 @@
       <span style="font-family:'Space Grotesk', sans-serif; font-weight:400; font-size:0.85rem; letter-spacing:0.06em; color:var(--ink); opacity:0.8;">Raum schaffen</span>
     </a>
     <nav>
-      <a href="/menschen.html">Menschen</a>
-      <a href="/disziplinen.html" class="current">Zimmer</a>
+      <a href="/menschen.html"><span data-i18n="de" class="lang-active">Menschen</span><span data-i18n="en">People</span></a>
+      <a href="/disziplinen.html" class="current"><span data-i18n="de" class="lang-active">Zimmer</span><span data-i18n="en">Rooms</span></a>
+      <div class="lang-toggle">
+        <button type="button" data-lang="de" class="active">DE</button>
+        <span style="color:rgba(18,18,18,0.3);">/</span>
+        <button type="button" data-lang="en">EN</button>
+      </div>
     </nav>
   </header>
 
   <main>
-    <h1>Ein Raum. Viele Spuren.</h1>
-    <p class="subline">Kein Ordner, keine Schublade. Bewege dich frei — nichts hier ist ausgerichtet, nichts ist fertig sortiert.</p>
+    <h1><span data-i18n="de" class="lang-active">Ein Raum. Viele Spuren.</span><span data-i18n="en">One room. Many traces.</span></h1>
+    <p class="subline">
+      <span data-i18n="de" class="lang-active">Kein Ordner, keine Schublade. Bewege dich frei — nichts hier ist ausgerichtet, nichts ist fertig sortiert.</span>
+      <span data-i18n="en">No folder, no drawer. Move freely — nothing here is aligned, nothing is sorted yet.</span>
+    </p>
 
     <div class="wall">
-      <a class="discipline-card a-kunst g-a" href="galerie-kunst.html"><div class="frame-inner"><span>Kunst</span></div></a>
+      <a class="discipline-card a-kunst g-a" href="galerie-kunst.html"><div class="frame-inner"><span><span data-i18n="de" class="lang-active">Kunst</span><span data-i18n="en">Art</span></span></div></a>
       <a class="discipline-card a-design g-b" href="galerie-design.html"><div class="frame-inner"><span>Design</span></div></a>
       <a class="discipline-card a-performance g-c" href="galerie-performance.html"><div class="frame-inner"><span>Performance</span></div></a>
-      <a class="discipline-card a-grafik g-d" href="galerie-grafik.html"><div class="frame-inner"><span>Grafik</span></div></a>
-      <a class="discipline-card a-architektur g-e" href="galerie-architektur.html"><div class="frame-inner"><span>Architektur</span></div></a>
-      <a class="discipline-card a-vielesmehr g-f" href="galerie-vieles-mehr.html"><div class="frame-inner"><span>Vieles mehr</span></div></a>
-      <a class="discipline-card a-musik g-g" href="galerie-musik.html"><div class="frame-inner"><span>Musik</span></div></a>
+      <a class="discipline-card a-grafik g-d" href="galerie-grafik.html"><div class="frame-inner"><span><span data-i18n="de" class="lang-active">Grafik</span><span data-i18n="en">Graphic Design</span></span></div></a>
+      <a class="discipline-card a-architektur g-e" href="galerie-architektur.html"><div class="frame-inner"><span><span data-i18n="de" class="lang-active">Architektur</span><span data-i18n="en">Architecture</span></span></div></a>
+      <a class="discipline-card a-vielesmehr g-f" href="galerie-vieles-mehr.html"><div class="frame-inner"><span><span data-i18n="de" class="lang-active">Vieles mehr</span><span data-i18n="en">Much more</span></span></div></a>
+      <a class="discipline-card a-musik g-g" href="galerie-musik.html"><div class="frame-inner"><span><span data-i18n="de" class="lang-active">Musik</span><span data-i18n="en">Music</span></span></div></a>
     </div>
   </main>
 
   <footer>
-    Schreib uns · Jetzt schreiben: <a href="mailto:raum@offfen-schaffensmenschen.com">raum@offfen-schaffensmenschen.com</a><br>
-    Schaffensmenschen · München · <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a>
+    <span data-i18n="de" class="lang-active">Schreib uns</span><span data-i18n="en">Write to us</span> ·
+    <span data-i18n="de" class="lang-active">Jetzt schreiben</span><span data-i18n="en">Write now</span>:
+    <a href="mailto:raum@offfen-schaffensmenschen.com">raum@offfen-schaffensmenschen.com</a><br>
+    Schaffensmenschen · München ·
+    <a href="/impressum.html"><span data-i18n="de" class="lang-active">Impressum</span><span data-i18n="en">Legal notice</span></a> ·
+    <a href="/datenschutz.html"><span data-i18n="de" class="lang-active">Datenschutz</span><span data-i18n="en">Privacy</span></a><br><br>
+    <span data-i18n="de" class="lang-active">Alle gezeigten Werke, Ideen und Prozesse bleiben geistiges Eigentum der jeweiligen Urheber:innen.
+    Nutzung, Vervielfältigung oder Weiterverwendung nur mit deren Zustimmung.</span>
+    <span data-i18n="en">All works, ideas and processes shown remain the intellectual property of their respective creators.
+    Use, reproduction or further use only with their consent.</span>
   </footer>
+
+  <script>
+    const langButtons = document.querySelectorAll('.lang-toggle button');
+    langButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const lang = btn.dataset.lang;
+        langButtons.forEach(b => b.classList.toggle('active', b === btn));
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+          el.classList.toggle('lang-active', el.dataset.i18n === lang);
+        });
+        document.documentElement.lang = lang;
+      });
+    });
+  </script>
 
 </body>
 </html>
