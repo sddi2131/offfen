@@ -93,12 +93,16 @@
     overflow:hidden;
     display:flex; align-items:flex-end;
     padding:0.7rem;
+    text-decoration:none;
+    color:inherit;
     background-blend-mode:overlay, overlay, normal;
     background-image:
       radial-gradient(ellipse at 25% 20%, rgba(255,255,255,0.12), transparent 55%),
       radial-gradient(ellipse at 80% 85%, rgba(0,0,0,0.14), transparent 60%),
       repeating-linear-gradient(96deg, rgba(0,0,0,0.05) 0px, transparent 3px, transparent 8px, rgba(255,255,255,0.05) 10px, transparent 15px);
+    transition:transform 0.15s ease;
   }
+  .work-tile:hover{ transform:translateY(-3px); }
   .work-tile span{
     font-size:0.72rem;
     color:var(--paper);
@@ -137,24 +141,34 @@
     <p class="subline">Skizzen, Entwürfe und Rauminterventionen der Schaffensmenschen.</p>
 
     <div class="work-grid">
-      <div class="work-tile" style="background-image:url(isasi-galerie.jpg); background-size:cover; background-position:center;">
+      <a class="work-tile" href="profil-isasi.html" style="background-image:url(isasi-galerie.jpg); background-size:cover; background-position:center;">
         <span class="by">S de Isasi</span>
         <span>Rauminstallation</span>
-      </div>
+      </a>
       <div class="work-tile" style="background:linear-gradient(155deg, #b7b3ad, #6d6a65);">
         <span class="by">S de Isasi</span>
         <span>Konzeptskizze</span>
       </div>
-      <div class="work-tile" style="background:linear-gradient(155deg, #b73228, #7c211a);">
+      <a class="work-tile" href="profil-isasi.html" style="background-image:url(isasi-entwurfsprozess-v2.jpg); background-size:cover; background-position:center;">
         <span class="by">S de Isasi</span>
         <span>Entwurfsprozess</span>
-      </div>
+      </a>
+      <a class="work-tile" href="profil-isasi.html" style="background-image:url(s-de-isasi-profil-prozessfoto.jpg); background-size:cover; background-position:center;">
+        <span class="by">S de Isasi</span>
+        <span>Werkprozess</span>
+      </a>
+      <a class="work-tile" href="profil-isasi.html" style="background-image:url(isasi-ideenraum-v2.jpg); background-size:cover; background-position:center;">
+        <span class="by">S de Isasi</span>
+        <span>Ideenraum</span>
+      </a>
     </div>
   </main>
 
   <footer>
     Schreib uns · Jetzt schreiben: <a href="mailto:raum@offfen-schaffensmenschen.com">raum@offfen-schaffensmenschen.com</a><br>
-    Schaffensmenschen · München · <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a>
+    Schaffensmenschen · München · <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a><br><br>
+    Alle gezeigten Werke, Ideen und Prozesse bleiben geistiges Eigentum der jeweiligen Urheber:innen.
+    Nutzung, Vervielfältigung oder Weiterverwendung nur mit deren Zustimmung.
   </footer>
 
 </body>
