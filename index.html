@@ -39,8 +39,23 @@
     font-family:'Space Grotesk', sans-serif; font-weight:400; font-size:0.85rem;
     letter-spacing:0.06em; color:var(--cream); text-decoration:none; opacity:0.85;
   }
-  header.site-header nav{ margin-left:auto; display:flex; gap:1.6rem; }
+  header.site-header nav{ margin-left:auto; display:flex; align-items:center; gap:1.6rem; }
   header.site-header nav a{ font-size:0.85rem; color:rgba(240,230,210,0.55); text-decoration:none; }
+
+  .lang-toggle{ display:flex; gap:0.3rem; font-size:0.8rem; letter-spacing:0.04em; }
+  .lang-toggle button{
+    background:none; border:none; font-family:'Work Sans', sans-serif;
+    font-size:0.8rem; letter-spacing:0.04em; text-transform:uppercase;
+    color:rgba(240,230,210,0.5); cursor:pointer; padding:0.2rem 0.3rem;
+  }
+  .lang-toggle button.active{
+    color:var(--cream); font-weight:600; border-bottom:2px solid var(--gold);
+  }
+
+  [data-i18n]{ display:none; }
+  [data-i18n].lang-active{ display:inline; }
+  p[data-i18n].lang-active,
+  div[data-i18n].lang-active{ display:block; }
 
   main{ max-width:1000px; margin:0 auto; padding:0 1.8rem; }
 
@@ -173,6 +188,11 @@
     <nav>
       <a href="/menschen.html">Menschen</a>
       <a href="/disziplinen.html">Zimmer</a>
+      <div class="lang-toggle">
+        <button type="button" data-lang="de" class="active">DE</button>
+        <span style="color:rgba(240,230,210,0.3);">/</span>
+        <button type="button" data-lang="en">EN</button>
+      </div>
     </nav>
   </header>
 
@@ -183,76 +203,131 @@
       </div>
       <p class="eyebrow">OFFFEN — Schaffensmenschen</p>
       <h1 class="manifest">
-        Wir sprengen Grenzen.<br>
-        Wir schaffen <span class="accent">Raum</span>.
+        <span data-i18n="de" class="lang-active">Wir sprengen Grenzen.<br>Wir schaffen <span class="accent">Raum</span>.</span>
+        <span data-i18n="en">We break boundaries.<br>We create <span class="accent">space</span>.</span>
       </h1>
       <p class="no-list">
-        Keine <span class="strike">Werkstatt</span>. Keine <span class="strike">Galerie</span>. Kein <span class="strike">Atelier</span>.
+        <span data-i18n="de" class="lang-active">Keine <span class="strike">Werkstatt</span>. Keine <span class="strike">Galerie</span>. Kein <span class="strike">Atelier</span>.</span>
+        <span data-i18n="en">No <span class="strike">workshop</span>. No <span class="strike">gallery</span>. No <span class="strike">studio</span>.</span>
       </p>
       <p class="lede">
-        Ein Raum ohne Verpflichtung.<br><br>
-        Mach mit, wenn du Prozesse und Ideen im Entstehen zeigen willst.
-        Kein fertiges Werk. Keine Bewerbung.
+        <span data-i18n="de" class="lang-active">Ein Raum ohne Verpflichtung.<br><br>Mach mit, wenn du Prozesse und Ideen im Entstehen zeigen willst.
+        Kein fertiges Werk. Keine Bewerbung.</span>
+        <span data-i18n="en">A space without obligation.<br><br>Join in if you want to show processes and ideas as they take shape.
+        No finished work. No application.</span>
       </p>
       <div class="cta-row">
-        <a class="cta primary" href="mailto:raum@offfen-schaffensmenschen.com">Schreib uns</a>
-        <a class="cta secondary" href="/was-entsteht.html">Entdecken was entsteht</a>
+        <a class="cta primary" href="mailto:raum@offfen-schaffensmenschen.com">
+          <span data-i18n="de" class="lang-active">Schreib uns</span><span data-i18n="en">Write to us</span>
+        </a>
+        <a class="cta secondary" href="/was-entsteht.html">
+          <span data-i18n="de" class="lang-active">Entdecken was entsteht</span><span data-i18n="en">Discover what's emerging</span>
+        </a>
       </div>
     </section>
 
     <section class="statement">
-      <p>Aus <span class="gold">Illusionen</span> werden Visionen. Aus Visionen werden Räume.</p>
+      <p>
+        <span data-i18n="de" class="lang-active">Aus <span class="gold">Illusionen</span> werden Visionen. Aus Visionen werden Räume.</span>
+        <span data-i18n="en">From <span class="gold">illusions</span> come visions. From visions come spaces.</span>
+      </p>
     </section>
 
     <section class="warum">
-      <p class="headline">Warum <span class="gold">OFFFEN</span>.</p>
+      <p class="headline">
+        <span data-i18n="de" class="lang-active">Warum <span class="gold">OFFFEN</span>.</span>
+        <span data-i18n="en">Why <span class="gold">OFFFEN</span>.</span>
+      </p>
       <p class="body">
-        Weil Schaffen selten geradlinig ist. Bevor aus einer Idee ein fertiges Werk wird, gibt es Zwischenstände,
+        <span data-i18n="de" class="lang-active">Weil Schaffen selten geradlinig ist. Bevor aus einer Idee ein fertiges Werk wird, gibt es Zwischenstände,
         offene Fragen und Versuche, die noch keinen Namen haben. Für genau diesen Zustand fehlte ein Ort.
         OFFFEN ist ein Zuhause, in dem der Weg genauso viel zählt wie das Ergebnis — Raum für Schaffensmenschen,
-        die zeigen wollen, was gerade entsteht.
+        die zeigen wollen, was gerade entsteht.</span>
+        <span data-i18n="en">Because creating is rarely a straight line. Before an idea becomes a finished work, there are stages,
+        open questions and attempts that have no name yet. That state needed a place.
+        OFFFEN is a home where the way matters as much as the result — a space for creators
+        who want to show what's emerging.</span>
       </p>
       <p class="body" style="font-weight:600; color:var(--ink); margin-top:1.6rem;">
-        Anders heißt: ohne Erlaubnis.
+        <span data-i18n="de" class="lang-active">Anders heißt: ohne Erlaubnis.</span>
+        <span data-i18n="en">Different means: without permission.</span>
       </p>
     </section>
 
     <section class="was-fuer-wen">
       <div class="col">
-        <p class="label">Was</p>
-        <p>Ein Netzwerk für Schaffensmenschen — ein digitales Zuhause, in dem Ideen, Zwischenstände und
-          fertige Arbeiten gleichermaßen ihren Platz haben.</p>
+        <p class="label"><span data-i18n="de" class="lang-active">Was</span><span data-i18n="en">What</span></p>
+        <p>
+          <span data-i18n="de" class="lang-active">Ein Netzwerk für Schaffensmenschen — ein digitales Zuhause, in dem Ideen, Zwischenstände und
+          fertige Arbeiten gleichermaßen ihren Platz haben.</span>
+          <span data-i18n="en">A network for creators — a digital home where ideas, works in progress and
+          finished pieces all have their place.</span>
+        </p>
       </div>
       <div class="col">
-        <p class="label">Für wen</p>
-        <p>Für alle, die etwas schaffen — ganz gleich in welcher Form, welchem Stadium oder welcher Sprache.
-          Mit oder ohne fertiges Portfolio.</p>
+        <p class="label"><span data-i18n="de" class="lang-active">Für wen</span><span data-i18n="en">For whom</span></p>
+        <p>
+          <span data-i18n="de" class="lang-active">Für alle, die etwas schaffen — ganz gleich in welcher Form, welchem Stadium oder welcher Sprache.
+          Mit oder ohne fertiges Portfolio.</span>
+          <span data-i18n="en">For anyone who creates — in whatever form, stage or language.
+          With or without a finished portfolio.</span>
+        </p>
       </div>
       <div class="col">
-        <p class="label">Was kann ich tun</p>
-        <p>Zeigen, was entsteht. Andere Schaffensmenschen entdecken. Sich austauschen — offen, ohne
-          Erwartung an Perfektion.</p>
+        <p class="label"><span data-i18n="de" class="lang-active">Was kann ich tun</span><span data-i18n="en">What can I do</span></p>
+        <p>
+          <span data-i18n="de" class="lang-active">Zeigen, was entsteht. Andere Schaffensmenschen entdecken. Sich austauschen — offen, ohne
+          Erwartung an Perfektion.</span>
+          <span data-i18n="en">Show what's emerging. Discover other creators. Connect — openly, with no
+          expectation of perfection.</span>
+        </p>
       </div>
     </section>
 
     <section class="ideen-werden">
-      <p class="headline">Ideen im Werden.</p>
-      <p class="sub">Deine Idee muss noch nicht fertig sein.</p>
-      <a class="cta primary" href="mailto:raum@offfen-schaffensmenschen.com">Schreib uns</a>
+      <p class="headline"><span data-i18n="de" class="lang-active">Ideen im Werden.</span><span data-i18n="en">Ideas in the making.</span></p>
+      <p class="sub"><span data-i18n="de" class="lang-active">Deine Idee muss noch nicht fertig sein.</span><span data-i18n="en">Your idea doesn't need to be finished yet.</span></p>
+      <a class="cta primary" href="mailto:raum@offfen-schaffensmenschen.com">
+        <span data-i18n="de" class="lang-active">Schreib uns</span><span data-i18n="en">Write to us</span>
+      </a>
     </section>
 
     <section style="text-align:center; margin:0 0 6vh; padding-top:2.6rem; border-top:1px solid rgba(240,230,210,0.14);">
-      <p style="font-size:0.78rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); font-weight:600; margin-bottom:0.8rem;">Folg dem Prozess</p>
+      <p style="font-size:0.78rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); font-weight:600; margin-bottom:0.8rem;">
+        <span data-i18n="de" class="lang-active">Folg dem Prozess</span><span data-i18n="en">Follow the process</span>
+      </p>
       <a href="https://instagram.com/offfen.schaffensmenschen" target="_blank" rel="noopener" style="font-family:'Space Grotesk', sans-serif; font-size:1.3rem; color:var(--cream); text-decoration:none; border-bottom:1px solid rgba(240,230,210,0.4);">
         @offfen.schaffensmenschen
       </a>
     </section>
 
     <footer>
-      Schreib uns · Jetzt schreiben: <a href="mailto:raum@offfen-schaffensmenschen.com">raum@offfen-schaffensmenschen.com</a><br>
-      Schaffensmenschen · München · <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a>
+      <span data-i18n="de" class="lang-active">Schreib uns</span><span data-i18n="en">Write to us</span> ·
+      <span data-i18n="de" class="lang-active">Jetzt schreiben</span><span data-i18n="en">Write now</span>:
+      <a href="mailto:raum@offfen-schaffensmenschen.com">raum@offfen-schaffensmenschen.com</a><br>
+      Schaffensmenschen · München ·
+      <a href="/impressum.html"><span data-i18n="de" class="lang-active">Impressum</span><span data-i18n="en">Legal notice</span></a> ·
+      <a href="/datenschutz.html"><span data-i18n="de" class="lang-active">Datenschutz</span><span data-i18n="en">Privacy</span></a><br><br>
+      <span data-i18n="de" class="lang-active">Alle gezeigten Werke, Ideen und Prozesse bleiben geistiges Eigentum der jeweiligen Urheber:innen.
+      Nutzung, Vervielfältigung oder Weiterverwendung nur mit deren Zustimmung.</span>
+      <span data-i18n="en">All works, ideas and processes shown remain the intellectual property of their respective creators.
+      Use, reproduction or further use only with their consent.</span>
     </footer>
   </main>
+
+  <script>
+    const langButtons = document.querySelectorAll('.lang-toggle button');
+    langButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const lang = btn.dataset.lang;
+        langButtons.forEach(b => b.classList.toggle('active', b === btn));
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+          el.classList.toggle('lang-active', el.dataset.i18n === lang);
+        });
+        document.documentElement.lang = lang;
+      });
+    });
+  </script>
 
 </body>
 </html>
