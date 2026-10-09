@@ -7,6 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --ink:#121212;
@@ -172,6 +173,59 @@
     text-decoration:underline;
     text-decoration-color:rgba(18,18,18,0.3);
   }
+
+  /* ===== Schiefertafel-Look (passend zur Startseite) ===== */
+  :root{ --ink:#efe6c8; --paper:#2e2b24; --gold:#cdb98a; --gold-line:rgba(239,230,200,0.07); --beton:#a89f75; --ziegel:#cdb98a; }
+  html,body{ background-color:#2e2b24 !important; color:#efe6c8 !important; font-family:'Jost','Work Sans',sans-serif !important;
+    background-image:linear-gradient(90deg, rgba(239,230,200,0.045) 1px, transparent 1px), linear-gradient(0deg, rgba(239,230,200,0.045) 1px, transparent 1px) !important;
+    background-size:72px 72px !important; background-repeat:repeat !important; }
+  body *{ text-transform:lowercase; }
+  h1,h2,h3,.person-name,.profile-meta h1,.stat strong{ font-family:'Jost',sans-serif !important; font-weight:500 !important; color:#efe6c8 !important; }
+  body::after{ content:""; position:fixed; inset:0; pointer-events:none; z-index:50; opacity:0.55; mix-blend-mode:soft-light;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.93  0 0 0 0 0.9  0 0 0 0 0.78  0 0 0 0.55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+  header.site-header{ position:relative; border-bottom:1px solid rgba(239,230,200,0.2) !important; }
+  header.site-header::after{ content:""; position:absolute; left:0; right:0; bottom:-4px; height:3px; pointer-events:none;
+    background:linear-gradient(180deg, rgba(126,118,83,0.55) 0 1px, rgba(168,159,117,0.35) 1px 2px, rgba(126,118,83,0.2) 2px 3px);
+    -webkit-mask:linear-gradient(90deg, transparent 0, #000 6%, #000 55%, rgba(0,0,0,0.35) 70%, #000 82%, transparent 100%);
+            mask:linear-gradient(90deg, transparent 0, #000 6%, #000 55%, rgba(0,0,0,0.35) 70%, #000 82%, transparent 100%); }
+  header.site-header a span, header.site-header nav a{ font-family:'Jost',sans-serif !important; letter-spacing:0.18em !important; font-size:0.74rem !important; font-weight:500 !important; color:rgba(239,230,200,0.6) !important; opacity:1 !important; }
+  header.site-header nav a.current{ color:#efe6c8 !important; }
+  .lang-toggle button{ text-transform:lowercase !important; font-family:'Jost',sans-serif !important; color:rgba(239,230,200,0.5) !important; letter-spacing:0.18em !important; }
+  .lang-toggle button.active{ color:#efe6c8 !important; border-bottom:2px solid #cdb98a !important; }
+  .lang-toggle span{ color:rgba(239,230,200,0.3) !important; }
+  .subline,.person-role,.profile-meta .role-line,.bio,.empty-note,.stat span,.back-link{ color:rgba(239,230,200,0.68) !important; }
+  .back-link{ letter-spacing:0.14em; }
+  footer, footer *{ color:rgba(239,230,200,0.55) !important; }
+  footer a{ text-decoration-color:rgba(239,230,200,0.3) !important; }
+  /* Karten und Kacheln */
+  .person-card{ background:rgba(239,230,200,0.04) !important; border:1px solid rgba(239,230,200,0.2) !important; border-radius:0 !important; color:#efe6c8 !important; }
+  .person-card:hover{ box-shadow:0 10px 24px rgba(0,0,0,0.4) !important; }
+  .person-avatar img{ filter:saturate(0.85) sepia(0.12); }
+  .work-tile{ border:1px solid rgba(239,230,200,0.18); border-radius:0 !important; }
+  .work-tile span{ background:rgba(46,43,36,0.78) !important; color:#efe6c8 !important; letter-spacing:0.06em; }
+  .work-tile .by{ background:none !important; color:rgba(239,230,200,0.85) !important; }
+  /* Profil */
+  .cover{ background:linear-gradient(180deg, #4c4731, #2e2b24) !important; border-bottom:1px solid rgba(239,230,200,0.2); border-radius:0 !important; }
+  .avatar{ border:2px solid #cdb98a !important; border-radius:0 !important; }
+  .follow-btn{ background:#cdb98a !important; color:#2e2b24 !important; border-radius:0 !important; font-family:'Jost',sans-serif !important; letter-spacing:0.14em; }
+  .chip{ border:1px solid rgba(239,230,200,0.3) !important; color:rgba(239,230,200,0.75) !important; border-radius:0 !important; }
+  .chip.primary{ background:#cdb98a !important; border-color:#cdb98a !important; color:#2e2b24 !important; }
+  .stats,.section-tabs{ border-bottom-color:rgba(239,230,200,0.2) !important; }
+  .section-tab{ color:rgba(239,230,200,0.45) !important; }
+  .section-tab.active{ color:#efe6c8 !important; }
+  .section-tab.active::after{ background:#cdb98a !important; }
+  /* Zimmer: Wand mit Rahmen in den Logo-Tönen */
+  .discipline-card{ background:transparent !important; box-shadow:none !important; border:1px solid rgba(239,230,200,0.28); border-radius:0 !important; padding:8px !important; }
+  .frame-inner{ border:1.5px solid #cdb98a !important; color:#efe6c8 !important; }
+  .frame-inner span{ font-family:'Jost',sans-serif !important; letter-spacing:0.14em; font-weight:500 !important; }
+  .a-kunst .frame-inner{ background:linear-gradient(155deg,#6b5f33,#3f3820) !important; }
+  .a-design .frame-inner{ background:linear-gradient(155deg,#3f3c33,#26231c) !important; }
+  .a-performance .frame-inner{ background:linear-gradient(155deg,#8a7430,#54461b) !important; }
+  .a-architektur .frame-inner{ background:linear-gradient(155deg,#7e7653,#4a452f) !important; }
+  .a-grafik .frame-inner{ background:linear-gradient(155deg,#55524a,#33312b) !important; }
+  .a-musik .frame-inner{ background:linear-gradient(155deg,#5a4e2c,#352e1a) !important; }
+  .a-vielesmehr .frame-inner{ background:linear-gradient(155deg,#a89f75,#6c6547) !important; color:#26231c !important; }
+  @media (max-width:640px){ header.site-header{ flex-wrap:wrap; gap:0.7rem 1rem !important; padding:1rem 1.1rem !important; } header.site-header nav{ margin-left:0 !important; width:100%; flex-wrap:wrap; gap:0.5rem 1.1rem !important; } header.site-header a span, header.site-header nav a{ letter-spacing:0.12em !important; } }
 </style>
 </head>
 <body>
