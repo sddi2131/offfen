@@ -297,10 +297,21 @@
   body::after{ content:""; position:fixed; inset:0; pointer-events:none; z-index:50; opacity:0.55; mix-blend-mode:soft-light;
     background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.93  0 0 0 0 0.9  0 0 0 0 0.78  0 0 0 0.55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
   header.site-header{ position:relative; }
-  header.site-header::after{ content:""; position:absolute; left:0; right:0; bottom:-7px; height:6px; pointer-events:none;
-    background:linear-gradient(180deg, rgba(126,118,83,0.85) 0 2px, rgba(160,129,23,0.55) 2px 4px, rgba(168,159,117,0.6) 4px 6px);
+  header.site-header::after{ content:""; position:absolute; left:0; right:0; bottom:-4px; height:3px; pointer-events:none;
+    background:linear-gradient(180deg, rgba(126,118,83,0.55) 0 1px, rgba(168,159,117,0.35) 1px 2px, rgba(126,118,83,0.2) 2px 3px);
     -webkit-mask:linear-gradient(90deg, transparent 0, #000 6%, #000 55%, rgba(0,0,0,0.35) 70%, #000 82%, transparent 100%);
             mask:linear-gradient(90deg, transparent 0, #000 6%, #000 55%, rgba(0,0,0,0.35) 70%, #000 82%, transparent 100%); }
+
+  /* ===== Gründer ===== */
+  .gruender{ max-width:760px; margin:0 auto 9vh; padding:2.2rem 1.8rem 0; border-top:1px solid rgba(239,230,200,0.14); display:flex; gap:1.8rem; align-items:center; text-align:left; }
+  .gruender .foto{ width:118px; height:118px; flex-shrink:0; border:1.5px solid #cdb98a; padding:5px; }
+  .gruender .foto img{ width:100%; height:100%; object-fit:cover; display:block; filter:none; }
+  .gruender .label{ font-size:0.74rem; letter-spacing:0.2em; text-transform:lowercase; color:#cdb98a; font-weight:600; margin-bottom:0.5rem; }
+  .gruender .name{ font-family:'Jost',sans-serif; font-size:1.5rem; font-weight:500; text-transform:lowercase; color:var(--cream); }
+  .gruender .rolle{ font-size:0.88rem; color:rgba(239,230,200,0.6); text-transform:lowercase; margin:0.2rem 0 0.8rem; }
+  .gruender .text{ font-size:0.98rem; line-height:1.6; color:rgba(239,230,200,0.8); }
+  .gruender a{ color:#cdb98a; text-decoration:none; border-bottom:1px solid rgba(205,185,138,0.5); font-size:0.84rem; letter-spacing:0.12em; text-transform:lowercase; display:inline-block; margin-top:0.8rem; }
+  @media (max-width:560px){ .gruender{ flex-direction:column; align-items:flex-start; gap:1.2rem; } }
 </style>
 </head>
 <body>
@@ -378,6 +389,20 @@
         <span data-i18n="de" class="lang-active">Anders heißt: ohne Erlaubnis.</span>
         <span data-i18n="en">Different means: without permission.</span>
       </p>
+    </section>
+
+    <section class="gruender">
+      <div class="foto"><img src="bernd-neichsner.jpg" alt="Bernd Neichsner"></div>
+      <div>
+        <p class="label"><span data-i18n="de" class="lang-active">Die Idee</span><span data-i18n="en">The idea</span></p>
+        <p class="name">Bernd Neichsner</p>
+        <p class="rolle"><span data-i18n="de" class="lang-active">Gründer und Visionär von OFFFEN</span><span data-i18n="en">Founder and visionary of OFFFEN</span></p>
+        <p class="text">
+          <span data-i18n="de" class="lang-active">Von ihm stammt die Idee: ein Raum, in dem Schaffende zeigen, was entsteht — bevor es fertig ist.</span>
+          <span data-i18n="en">The idea is his: a space where creators show what is taking shape — before it is finished.</span>
+        </p>
+        <a href="profil.html"><span data-i18n="de" class="lang-active">Zum Profil</span><span data-i18n="en">To the profile</span></a>
+      </div>
     </section>
 
     <section class="was-fuer-wen">
