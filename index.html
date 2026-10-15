@@ -313,14 +313,18 @@
   .gruender a{ color:#cdb98a; text-decoration:none; border-bottom:1px solid rgba(205,185,138,0.5); font-size:0.84rem; letter-spacing:0.12em; text-transform:lowercase; display:inline-block; margin-top:0.8rem; }
   @media (max-width:560px){ .gruender{ flex-direction:column; align-items:flex-start; gap:1.2rem; } }
 
-  /* ===== Kreidestriche wie im Logo ===== */
-  .manifest .frame::before,.manifest .frame::after,.manifest .sp::before,.manifest .l2::after,.manifest .l2::before{ border-color:#efe6c8 !important; border-width:4px !important; filter:url(#chalk); opacity:0.92; border-radius:3px; }
-  .manifest .l1::after{ filter:url(#chalk); opacity:0.8; }
-  .manifest .flick{ stroke:#efe6c8 !important; stroke-width:4; filter:url(#chalk); opacity:0.92; }
+  /* ===== Kreidestriche wie im Logo (ohne Filter, läuft auch in Safari) ===== */
+  .manifest .frame::before,.manifest .frame::after,.manifest .sp::before,.manifest .l2::after,.manifest .l2::before{ border:0 !important; filter:none !important; opacity:1; background-repeat:no-repeat; background-size:100% 100%; }
+  .manifest .frame::before{ width:10px; left:calc(-0.5em - 5px); background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 100' preserveAspectRatio='none'%3E%3Cpath d='M5 0 C3.6 25 6.6 55 4.8 100' fill='none' stroke='%23efe6c8' stroke-width='5' stroke-linecap='round' vector-effect='non-scaling-stroke' opacity='.92'/%3E%3Cpath d='M6.2 0 C4.8 30 6.4 60 5.6 100' fill='none' stroke='%23efe6c8' stroke-width='2.5' stroke-dasharray='18 5 9 7 26 4' vector-effect='non-scaling-stroke' opacity='.5'/%3E%3C/svg%3E"); }
+  .manifest .frame::after{ width:10px; right:calc(-0.5em - 5px); background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 100' preserveAspectRatio='none'%3E%3Cpath d='M5 0 C3.6 25 6.6 55 4.8 100' fill='none' stroke='%23efe6c8' stroke-width='5' stroke-linecap='round' vector-effect='non-scaling-stroke' opacity='.92'/%3E%3Cpath d='M6.2 0 C4.8 30 6.4 60 5.6 100' fill='none' stroke='%23efe6c8' stroke-width='2.5' stroke-dasharray='18 5 9 7 26 4' vector-effect='non-scaling-stroke' opacity='.5'/%3E%3C/svg%3E"); }
+  .manifest .sp::before{ height:10px; top:calc(-0.14em - 5px); background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 10' preserveAspectRatio='none'%3E%3Cpath d='M0 5 C25 3.6 55 6.6 100 4.8' fill='none' stroke='%23efe6c8' stroke-width='5' stroke-linecap='round' vector-effect='non-scaling-stroke' opacity='.92'/%3E%3Cpath d='M0 6.2 C30 4.8 60 6.4 100 5.6' fill='none' stroke='%23efe6c8' stroke-width='2.5' stroke-dasharray='18 5 9 7 26 4' vector-effect='non-scaling-stroke' opacity='.5'/%3E%3C/svg%3E"); }
+  .manifest .l2::after{ height:10px; bottom:calc(-0.02em - 5px); left:calc(-0.5em - 5px); right:calc(-0.5em - 5px); background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 10' preserveAspectRatio='none'%3E%3Cpath d='M0 5 C25 3.6 55 6.6 100 4.8' fill='none' stroke='%23efe6c8' stroke-width='5' stroke-linecap='round' vector-effect='non-scaling-stroke' opacity='.92'/%3E%3Cpath d='M0 6.2 C30 4.8 60 6.4 100 5.6' fill='none' stroke='%23efe6c8' stroke-width='2.5' stroke-dasharray='18 5 9 7 26 4' vector-effect='non-scaling-stroke' opacity='.5'/%3E%3C/svg%3E"); }
+  .manifest .l2::before{ width:10px; margin-left:-5px; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 100' preserveAspectRatio='none'%3E%3Cpath d='M5 0 C3.6 25 6.6 55 4.8 100' fill='none' stroke='%23efe6c8' stroke-width='5' stroke-linecap='round' vector-effect='non-scaling-stroke' opacity='.92'/%3E%3Cpath d='M6.2 0 C4.8 30 6.4 60 5.6 100' fill='none' stroke='%23efe6c8' stroke-width='2.5' stroke-dasharray='18 5 9 7 26 4' vector-effect='non-scaling-stroke' opacity='.5'/%3E%3C/svg%3E"); }
+  .manifest .l1::after{ filter:none; opacity:0.85; }
+  .manifest .flick{ stroke:#efe6c8 !important; stroke-width:3.5; filter:none; opacity:0.92; }
 </style>
 </head>
 <body>
-<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><filter id="chalk" filterUnits="userSpaceOnUse" x="-2000" y="-2000" width="6000" height="6000"><feTurbulence type="fractalNoise" baseFrequency="0.045" numOctaves="2" seed="4" result="w"/><feDisplacementMap in="SourceGraphic" in2="w" scale="4" result="d"/><feTurbulence type="fractalNoise" baseFrequency="0.95" numOctaves="2" seed="9" result="g"/><feColorMatrix in="g" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1.3 1.5" result="m"/><feComposite in="d" in2="m" operator="in"/></filter></defs></svg>
 
   <header class="site-header">
     <a class="wordmark" href="/">Raum schaffen</a>
