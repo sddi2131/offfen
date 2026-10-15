@@ -262,6 +262,17 @@
   /* fix: footer & profile head */
   footer{ max-width:900px; margin:0 auto; padding:2rem 1.8rem 3rem; font-size:0.82rem; line-height:1.7; }
   .profile-head{ position:relative; z-index:2; }
+
+  /* Info-Reiter */
+  .tab-panel[hidden]{ display:none !important; }
+  .section-tab{ cursor:pointer; }
+  .info-list{ list-style:none; margin:0; padding:0.4rem 0 0; }
+  .info-list li{ display:flex; gap:1rem; align-items:baseline; padding:0.8rem 0; border-bottom:1px solid rgba(239,230,200,0.15); }
+  .info-list .k{ flex:0 0 6.5rem; font-size:0.78rem; letter-spacing:0.14em; text-transform:lowercase; color:rgba(239,230,200,0.5); }
+  .info-list .v{ color:#efe6c8; word-break:break-word; }
+  .info-list .v a{ color:#cdb98a; }
+  .info-list .v.leer{ color:rgba(239,230,200,0.35); }
+  .info-hint{ margin-top:1rem; font-size:0.82rem; color:rgba(239,230,200,0.5); }
 </style>
 </head>
 <body>
@@ -285,7 +296,7 @@
       <div class="avatar"><img src="bernd-neichsner.jpg" alt="Bernd Neichsner"></div>
       <div class="profile-meta">
         <h1>Bernd Neichsner</h1>
-        <div class="role-line">Performance · München-Giesing</div>
+        <div class="role-line">Visionär hinter OFFFEN · Performance</div>
       </div>
       <button class="follow-btn">Folgen</button>
     </div>
@@ -294,10 +305,10 @@
       <span class="chip primary">Performance</span>
     </div>
 
-    <p class="bio">hier entsteht gerade ein profil. mehr folgt, sobald es etwas zu zeigen gibt.</p>
+    <p class="bio">bernd neichsner ist der visionär hinter offfen. von ihm stammt die idee: ein raum, in dem schaffende zeigen, was sie bewegt und inspiriert und wie aus einer idee ein werk wird.<br><br>er arbeitet mit performance. in münchen-giesing und an anderen orten setzt er sich in beziehung zu bildern, wänden und räumen und lässt den körper antworten.<br><br>sein gedanke hinter offfen: nicht nur das ergebnis ist interessant, sondern der prozess dahinter. was bewegt? was inspiriert? wie wird aus einer idee ein werk?</p>
 
     <div class="stats">
-      <div class="stat"><strong>4</strong><span>Beiträge</span></div>
+      <div class="stat"><strong>3</strong><span>Beiträge</span></div>
       <div class="stat"><strong>0</strong><span>Folgt</span></div>
       <div class="stat"><strong>0</strong><span>Folgen</span></div>
     </div>
@@ -308,11 +319,18 @@
       <div class="section-tab">Gespeichert</div>
     </div>
 
-    <div class="work-grid">
+    <div id="panel-arbeiten" class="tab-panel"><div class="work-grid">
       <div class="work-tile" style="background-image:url(bernd-performance.jpeg); background-size:cover; background-position:center;"><span>Performance</span></div>
       <div class="work-tile" style="background-image:url(bernd-bank.jpg); background-size:cover; background-position:center;"><span>Vor dem Wandbild</span></div>
-      <div class="work-tile" style="background-image:url(bernd-skulptur.jpg); background-size:210%; background-position:18% 44%;"><span>Mit der Skulptur</span></div>
       <div class="work-tile" style="background-image:url(bernd-portrait-blau.jpeg); background-size:cover; background-position:center;"><span>Spiegelung</span></div>
+    </div></div>
+    <div id="panel-info" class="tab-panel" hidden>
+      <ul class="info-list">
+        <li><span class="k">e-mail</span><span class="v leer">noch nicht eingetragen</span></li>
+        <li><span class="k">instagram</span><span class="v leer">noch nicht eingetragen</span></li>
+        <li><span class="k">telefon</span><span class="v leer">noch nicht eingetragen</span></li>
+      </ul>
+      <p class="info-hint">jede person entscheidet selbst, was hier steht.</p>
     </div>
     <p class="bio" style="margin-top:1.6rem"><a href="mailto:raum@offfen-schaffensmenschen.com?subject=Ein%20Detail%20von%20mir">schick ein detail</a> von dir.</p>
   </main>
@@ -322,5 +340,18 @@
     Alle gezeigten Werke, Ideen und Prozesse bleiben geistiges Eigentum der jeweiligen Urheber:innen.
     Nutzung, Vervielfältigung oder Weiterverwendung nur mit deren Zustimmung.
   </footer>
+<script>
+    (function(){
+      var tabs=document.querySelectorAll('.section-tab');
+      var panels={'Arbeiten':'panel-arbeiten','Info':'panel-info'};
+      tabs.forEach(function(t){
+        t.addEventListener('click',function(){
+          var id=panels[t.textContent.trim()]; if(!id) return;
+          tabs.forEach(function(x){ x.classList.toggle('active',x===t); });
+          Object.keys(panels).forEach(function(k){ var el=document.getElementById(panels[k]); if(el) el.hidden=(panels[k]!==id); });
+        });
+      });
+    })();
+  </script>
 </body>
 </html>

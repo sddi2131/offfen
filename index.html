@@ -7,7 +7,7 @@
 <meta name="description" content="OFFFEN — Schaffensmenschen. Ein Raum für Kreative aus Kunst, Design, Performance, Architektur, Grafik und Musik.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Ein Zuhause für Schaffende — OFFFEN">
-<meta property="og:description" content="Kein fertiges Werk. Keine Bewerbung. Ein Raum ohne Verpflichtung.">
+<meta property="og:description" content="Ein Raum ohne Verpflichtung. Zeig, was gerade entsteht. Worauf wartest du?">
 <meta property="og:url" content="https://offfen-schaffensmenschen.com">
 <meta property="og:locale" content="de_DE">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -312,9 +312,15 @@
   .gruender .text{ font-size:0.98rem; line-height:1.6; color:rgba(239,230,200,0.8); }
   .gruender a{ color:#cdb98a; text-decoration:none; border-bottom:1px solid rgba(205,185,138,0.5); font-size:0.84rem; letter-spacing:0.12em; text-transform:lowercase; display:inline-block; margin-top:0.8rem; }
   @media (max-width:560px){ .gruender{ flex-direction:column; align-items:flex-start; gap:1.2rem; } }
+
+  /* ===== Kreidestriche wie im Logo ===== */
+  .manifest .frame::before,.manifest .frame::after,.manifest .sp::before,.manifest .l2::after,.manifest .l2::before{ border-color:#efe6c8 !important; border-width:4px !important; filter:url(#chalk); opacity:0.92; border-radius:3px; }
+  .manifest .l1::after{ filter:url(#chalk); opacity:0.8; }
+  .manifest .flick{ stroke:#efe6c8 !important; stroke-width:4; filter:url(#chalk); opacity:0.92; }
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><filter id="chalk" filterUnits="userSpaceOnUse" x="-2000" y="-2000" width="6000" height="6000"><feTurbulence type="fractalNoise" baseFrequency="0.045" numOctaves="2" seed="4" result="w"/><feDisplacementMap in="SourceGraphic" in2="w" scale="4" result="d"/><feTurbulence type="fractalNoise" baseFrequency="0.95" numOctaves="2" seed="9" result="g"/><feColorMatrix in="g" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1.3 1.5" result="m"/><feComposite in="d" in2="m" operator="in"/></filter></defs></svg>
 
   <header class="site-header">
     <a class="wordmark" href="/">Raum schaffen</a>
@@ -325,6 +331,8 @@
         <button type="button" data-lang="de" class="active">DE</button>
         <span style="color:rgba(239,230,200,0.3);">/</span>
         <button type="button" data-lang="en">EN</button>
+        <span style="color:rgba(239,230,200,0.3);">/</span>
+        <button type="button" data-lang="es">ES</button>
       </div>
     </nav>
   </header>
@@ -337,20 +345,21 @@
       <p class="eyebrow"><img class="logo-inline" src="offfen-logo.jpeg" alt="offfen"> — Schaffensmenschen</p>
       <h1 class="manifest">
         <span data-i18n="de" class="lang-active"><span class="frame"><span class="ln l1"><span class="sp">Wir sprengen</span> <span class="gr">Grenzen<svg class="flick" viewBox="0 0 260 110" aria-hidden="true"><path d="M0,55 L92,55 C114,55 136,48 139,31 C142,14 120,9 109,22 C98,35 111,54 133,51 L222,-6"/></svg></span>.</span><span class="ln l2">Wir schaffen Raum.</span></span></span>
-        <span data-i18n="en"><span class="frame"><span class="ln l1"><span class="sp">We break</span> <span class="gr">boundaries<svg class="flick" viewBox="0 0 260 110" aria-hidden="true"><path d="M0,55 L92,55 C114,55 136,48 139,31 C142,14 120,9 109,22 C98,35 111,54 133,51 L222,-6"/></svg></span>.</span><span class="ln l2">We create space.</span></span></span>
+        <span data-i18n="en"><span class="frame"><span class="ln l1"><span class="sp">We break</span> <span class="gr">boundaries<svg class="flick" viewBox="0 0 260 110" aria-hidden="true"><path d="M0,55 L92,55 C114,55 136,48 139,31 C142,14 120,9 109,22 C98,35 111,54 133,51 L222,-6"/></svg></span>.</span><span class="ln l2">We create space.</span></span></span><span data-i18n="es"><span class="frame"><span class="ln l1"><span class="sp">Rompemos</span> <span class="gr">límites<svg class="flick" viewBox="0 0 260 110" aria-hidden="true"><path d="M0,55 L92,55 C114,55 136,48 139,31 C142,14 120,9 109,22 C98,35 111,54 133,51 L222,-6"/></svg></span>.</span><span class="ln l2">Creamos espacio.</span></span></span>
       </h1>
       <p class="lede">
         <span data-i18n="de" class="lang-active">Ein Raum ohne Verpflichtung.<br><br>Zeig, was gerade entsteht — ein Foto, eine Skizze, eine Frage.
-        Kein fertiges Werk. Keine Bewerbung.</span>
+        Worauf wartest du?</span>
         <span data-i18n="en">A space without obligation.<br><br>Show what's taking shape — a photo, a sketch, a question.
-        No finished work. No application.</span>
+        What are you waiting for?</span><span data-i18n="es">Un espacio sin compromiso.<br><br>Muestra lo que está surgiendo: una foto, un boceto, una pregunta.
+        ¿Qué esperas?</span>
       </p>
       <div class="cta-row">
         <a class="cta primary" href="mailto:raum@offfen-schaffensmenschen.com?subject=Ein%20Detail%20von%20mir">
-          <span data-i18n="de" class="lang-active">Schick ein Detail</span><span data-i18n="en">Send a detail</span>
+          <span data-i18n="de" class="lang-active">Schick ein Detail</span><span data-i18n="en">Send a detail</span><span data-i18n="es">Envía un detalle</span>
         </a>
         <a class="cta secondary" href="/was-entsteht.html">
-          <span data-i18n="de" class="lang-active">Entdecken was entsteht</span><span data-i18n="en">Discover what's emerging</span>
+          <span data-i18n="de" class="lang-active">Entdecken was entsteht</span><span data-i18n="en">Discover what's emerging</span><span data-i18n="es">Descubre lo que está surgiendo</span>
         </a>
       </div>
     </section>
@@ -359,8 +368,8 @@
       <figure>
         <img src="werk-wirbel.webp" alt="Wirbel aus schwarzer und blauer Farbe mit einem Punkt in der Mitte" width="1000" height="1333" loading="lazy">
         <figcaption>
-          <span data-i18n="de" class="lang-active">Was erkennst du?</span><span data-i18n="en">What do you see?</span>
-          <small><span data-i18n="de" class="lang-active">Prozess der Woche</span><span data-i18n="en">Process of the week</span></small>
+          <span data-i18n="de" class="lang-active">Was erkennst du?</span><span data-i18n="en">What do you see?</span><span data-i18n="es">¿Qué ves?</span>
+          <small><span data-i18n="de" class="lang-active">Prozess der Woche</span><span data-i18n="en">Process of the week</span><span data-i18n="es">Proceso de la semana</span></small>
         </figcaption>
       </figure>
     </section>
@@ -368,51 +377,54 @@
     <section class="statement">
       <p>
         <span data-i18n="de" class="lang-active">Aus <span class="gold">Illusionen</span> werden Visionen. Aus Visionen werden Räume.</span>
-        <span data-i18n="en">From <span class="gold">illusions</span> come visions. From visions come spaces.</span>
+        <span data-i18n="en">From <span class="gold">illusions</span> come visions. From visions come spaces.</span><span data-i18n="es">De <span class="gold">ilusiones</span> nacen visiones. De visiones nacen espacios.</span>
       </p>
     </section>
 
     <section class="warum">
       <p class="headline">
         <span data-i18n="de" class="lang-active">Warum <img class="logo-inline" src="offfen-logo.jpeg" alt="offfen">.</span>
-        <span data-i18n="en">Why <img class="logo-inline" src="offfen-logo.jpeg" alt="offfen">.</span>
+        <span data-i18n="en">Why <img class="logo-inline" src="offfen-logo.jpeg" alt="offfen">.</span><span data-i18n="es">Por qué <img class="logo-inline" src="offfen-logo.jpeg" alt="offfen">.</span>
       </p>
       <p class="body">
-        <span data-i18n="de" class="lang-active">Schaffen ist selten geradlinig. Bevor ein Werk fertig ist, gibt es Zwischenstände, offene Fragen
-        und Versuche ohne Namen. Dafür fehlte ein Ort.
-        <img class="logo-inline" src="offfen-logo.jpeg" alt="offfen"> ist dieser Ort: Hier zählt der Weg so viel wie das Ergebnis.</span>
-        <span data-i18n="en">Creating is rarely a straight line. Before a work is finished, there are stages, open questions
-        and attempts without a name. That needed a place.
-        <img class="logo-inline" src="offfen-logo.jpeg" alt="offfen"> is that place: here the way counts as much as the result.</span>
+        <span data-i18n="de" class="lang-active">Ein Werk ist mehr als sein Ergebnis. Dahinter stehen Fragen: Was bewegt dich? Was inspiriert dich? Wo hat es angefangen?
+        Zwischenstände, Umwege und Versuche ohne Namen hatten bisher keinen Ort.
+        <img class="logo-inline" src="offfen-logo.jpeg" alt="offfen"> ist dieser Ort: Hier ist der Prozess genauso interessant wie das Ergebnis selbst.</span>
+        <span data-i18n="en">A work is more than its result. Behind it are questions: What moves you? What inspires you? Where did it begin?
+        Stages, detours and attempts without a name had no place to go.
+        <img class="logo-inline" src="offfen-logo.jpeg" alt="offfen"> is that place: here the process is as interesting as the result itself.</span><span data-i18n="es">Una obra es más que su resultado. Detrás hay preguntas: ¿Qué te mueve? ¿Qué te inspira? ¿Dónde empezó?
+        Las etapas intermedias, los desvíos y los intentos sin nombre no tenían dónde ir.
+        <img class="logo-inline" src="offfen-logo.jpeg" alt="offfen"> es ese lugar: aquí el proceso es tan interesante como el resultado mismo.</span>
       </p>
       <p class="body" style="font-weight:600; color:var(--ink); margin-top:1.6rem;">
         <span data-i18n="de" class="lang-active">Anders heißt: ohne Erlaubnis.</span>
-        <span data-i18n="en">Different means: without permission.</span>
+        <span data-i18n="en">Different means: without permission.</span><span data-i18n="es">Diferente significa: sin pedir permiso.</span>
       </p>
     </section>
 
     <section class="was-fuer-wen">
       <div class="col">
-        <p class="label"><span data-i18n="de" class="lang-active">Was</span><span data-i18n="en">What</span></p>
+        <p class="label"><span data-i18n="de" class="lang-active">Was</span><span data-i18n="en">What</span><span data-i18n="es">Qué</span></p>
         <p>
-          <span data-i18n="de" class="lang-active">Hier zeigst du, wie etwas entsteht, bevor es fertig ist. Skizzen, Versuche, Fragen — und ab und zu das fertige Werk.</span>
-          <span data-i18n="en">Here you show how something comes to be, before it is finished. Sketches, attempts, questions — and sometimes the finished work.</span>
+          <span data-i18n="de" class="lang-active">Hier zeigst du, was dich bewegt und inspiriert und wie daraus etwas wird. Skizzen, Versuche, Fragen — und ab und zu das fertige Werk.</span>
+          <span data-i18n="en">Here you show what moves and inspires you, and how something grows from it. Sketches, attempts, questions — and sometimes the finished work.</span><span data-i18n="es">Aquí muestras lo que te mueve y te inspira, y cómo de eso nace algo. Bocetos, intentos, preguntas, y de vez en cuando la obra terminada.</span>
         </p>
       </div>
       <div class="col">
-        <p class="label"><span data-i18n="de" class="lang-active">Für wen</span><span data-i18n="en">For whom</span></p>
+        <p class="label"><span data-i18n="de" class="lang-active">Für wen</span><span data-i18n="en">For whom</span><span data-i18n="es">Para quién</span></p>
         <p>
           <span data-i18n="de" class="lang-active">Für alle, die etwas schaffen — ganz gleich in welcher Form, welchem Stadium oder welcher Sprache.
           Mit oder ohne fertiges Portfolio.</span>
           <span data-i18n="en">For anyone who creates — in whatever form, stage or language.
-          With or without a finished portfolio.</span>
+          With or without a finished portfolio.</span><span data-i18n="es">Para todas las personas que crean, sea cual sea la forma, la etapa o el idioma.
+          Con o sin portafolio terminado.</span>
         </p>
       </div>
       <div class="col">
-        <p class="label"><span data-i18n="de" class="lang-active">Was kann ich tun</span><span data-i18n="en">What can I do</span></p>
+        <p class="label"><span data-i18n="de" class="lang-active">Was kann ich tun</span><span data-i18n="en">What can I do</span><span data-i18n="es">Qué puedo hacer</span></p>
         <p>
           <span data-i18n="de" class="lang-active">Zeig, was gerade entsteht, ein Foto reicht. Sieh, woran andere arbeiten. Gib Rückmeldung und hol dir welche.</span>
-          <span data-i18n="en">Show what's taking shape, a photo is enough. See what others are working on. Give feedback and get some.</span>
+          <span data-i18n="en">Show what's taking shape, a photo is enough. See what others are working on. Give feedback and get some.</span><span data-i18n="es">Muestra lo que está surgiendo, una foto basta. Mira en qué trabajan otras personas. Da tu opinión y recibe la de ellas.</span>
         </p>
       </div>
     </section>
@@ -420,28 +432,28 @@
     <section class="gruender">
       <div class="foto"><img src="bernd-neichsner.jpg" alt="Bernd Neichsner"></div>
       <div>
-        <p class="label"><span data-i18n="de" class="lang-active">Die Idee</span><span data-i18n="en">The idea</span></p>
+        <p class="label"><span data-i18n="de" class="lang-active">Die Idee</span><span data-i18n="en">The idea</span><span data-i18n="es">La idea</span></p>
         <p class="name">Bernd Neichsner</p>
-        <p class="rolle"><span data-i18n="de" class="lang-active">Visionär hinter OFFFEN</span><span data-i18n="en">Visionary behind OFFFEN</span></p>
+        <p class="rolle"><span data-i18n="de" class="lang-active">Visionär hinter OFFFEN</span><span data-i18n="en">Visionary behind OFFFEN</span><span data-i18n="es">Visionario detrás de OFFFEN</span></p>
         <p class="text">
-          <span data-i18n="de" class="lang-active">Von ihm stammt die Idee: ein Raum, in dem Schaffende zeigen, was entsteht — bevor es fertig ist.</span>
-          <span data-i18n="en">The idea is his: a space where creators show what is taking shape — before it is finished.</span>
+          <span data-i18n="de" class="lang-active">Von ihm stammt die Idee: ein Raum, in dem Schaffende zeigen, was sie bewegt und wie ihr Werk entsteht — der Prozess ist so interessant wie das Ergebnis.</span>
+          <span data-i18n="en">The idea is his: a space where creators show what moves them and how their work comes to be — the process is as interesting as the result.</span><span data-i18n="es">Suya es la idea: un espacio donde quienes crean muestran lo que los mueve y cómo nace su obra: el proceso es tan interesante como el resultado.</span>
         </p>
-        <a href="profil.html"><span data-i18n="de" class="lang-active">Zum Profil</span><span data-i18n="en">To the profile</span></a>
+        <a href="profil.html"><span data-i18n="de" class="lang-active">Zum Profil</span><span data-i18n="en">To the profile</span><span data-i18n="es">Ir al perfil</span></a>
       </div>
     </section>
 
     <section class="ideen-werden">
-      <p class="headline"><span data-i18n="de" class="lang-active">Ideen im Werden.</span><span data-i18n="en">Ideas in the making.</span></p>
-      <p class="sub"><span data-i18n="de" class="lang-active">Deine Idee muss noch nicht fertig sein.</span><span data-i18n="en">Your idea doesn't need to be finished yet.</span></p>
+      <p class="headline"><span data-i18n="de" class="lang-active">Ideen im Werden.</span><span data-i18n="en">Ideas in the making.</span><span data-i18n="es">Ideas en proceso.</span></p>
+      <p class="sub"><span data-i18n="de" class="lang-active">Deine Idee muss noch nicht fertig sein.</span><span data-i18n="en">Your idea doesn't need to be finished yet.</span><span data-i18n="es">Tu idea todavía no tiene que estar terminada.</span></p>
       <a class="cta primary" href="mailto:raum@offfen-schaffensmenschen.com?subject=Ein%20Detail%20von%20mir">
-        <span data-i18n="de" class="lang-active">Schick ein Detail</span><span data-i18n="en">Send a detail</span>
+        <span data-i18n="de" class="lang-active">Schick ein Detail</span><span data-i18n="en">Send a detail</span><span data-i18n="es">Envía un detalle</span>
       </a>
     </section>
 
     <section style="text-align:center; margin:0 0 6vh; padding-top:2.6rem; border-top:1px solid rgba(239,230,200,0.14);">
       <p style="font-size:0.78rem; letter-spacing:0.2em; text-transform:lowercase; color:var(--gold); font-weight:600; margin-bottom:0.8rem;">
-        <span data-i18n="de" class="lang-active">Folg dem Prozess</span><span data-i18n="en">Follow the process</span>
+        <span data-i18n="de" class="lang-active">Folg dem Prozess</span><span data-i18n="en">Follow the process</span><span data-i18n="es">Sigue el proceso</span>
       </p>
       <a href="https://instagram.com/offfen.schaffensmenschen" target="_blank" rel="noopener" style="font-family:'Space Grotesk', sans-serif; font-size:1.3rem; color:var(--cream); text-decoration:none; border-bottom:1px solid rgba(239,230,200,0.4);">
         @offfen.schaffensmenschen
@@ -449,16 +461,17 @@
     </section>
 
     <footer>
-      <span data-i18n="de" class="lang-active">Schreib uns</span><span data-i18n="en">Write to us</span> ·
-      <span data-i18n="de" class="lang-active">Jetzt schreiben</span><span data-i18n="en">Write now</span>:
+      <span data-i18n="de" class="lang-active">Schreib uns</span><span data-i18n="en">Write to us</span><span data-i18n="es">Escríbenos</span> ·
+      <span data-i18n="de" class="lang-active">Jetzt schreiben</span><span data-i18n="en">Write now</span><span data-i18n="es">Escribe ahora</span>:
       <a href="mailto:raum@offfen-schaffensmenschen.com">raum@offfen-schaffensmenschen.com</a><br>
       Schaffensmenschen · München ·
-      <a href="/impressum.html"><span data-i18n="de" class="lang-active">Impressum</span><span data-i18n="en">Legal notice</span></a> ·
-      <a href="/datenschutz.html"><span data-i18n="de" class="lang-active">Datenschutz</span><span data-i18n="en">Privacy</span></a><br><br>
+      <a href="/impressum.html"><span data-i18n="de" class="lang-active">Impressum</span><span data-i18n="en">Legal notice</span><span data-i18n="es">Aviso legal</span></a> ·
+      <a href="/datenschutz.html"><span data-i18n="de" class="lang-active">Datenschutz</span><span data-i18n="en">Privacy</span><span data-i18n="es">Privacidad</span></a><br><br>
       <span data-i18n="de" class="lang-active">Alle gezeigten Werke, Ideen und Prozesse bleiben geistiges Eigentum der jeweiligen Urheber:innen.
       Nutzung, Vervielfältigung oder Weiterverwendung nur mit deren Zustimmung.</span>
       <span data-i18n="en">All works, ideas and processes shown remain the intellectual property of their respective creators.
-      Use, reproduction or further use only with their consent.</span>
+      Use, reproduction or further use only with their consent.</span><span data-i18n="es">Todas las obras, ideas y procesos mostrados siguen siendo propiedad intelectual de sus respectivos autores y autoras.
+      Uso, reproducción o cualquier uso posterior solo con su consentimiento.</span>
     </footer>
   </main>
 
