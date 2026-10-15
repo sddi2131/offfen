@@ -210,8 +210,7 @@
   /* ===== Schiefertafel-Look (passend zur Startseite) ===== */
   :root{ --ink:#efe6c8; --paper:#2e2b24; --gold:#cdb98a; --gold-line:rgba(239,230,200,0.07); --beton:#a89f75; --ziegel:#cdb98a; }
   html,body{ background-color:#2e2b24 !important; color:#efe6c8 !important; font-family:'Jost','Work Sans',sans-serif !important;
-    background-image:linear-gradient(90deg, rgba(239,230,200,0.045) 1px, transparent 1px), linear-gradient(0deg, rgba(239,230,200,0.045) 1px, transparent 1px) !important;
-    background-size:72px 72px !important; background-repeat:repeat !important; }
+    background-image:none !important; }
   body *{ text-transform:lowercase; }
   h1,h2,h3,.person-name,.profile-meta h1,.stat strong{ font-family:'Jost',sans-serif !important; font-weight:500 !important; color:#efe6c8 !important; }
   body::after{ content:""; position:fixed; inset:0; pointer-events:none; z-index:50; opacity:0.55; mix-blend-mode:soft-light;
@@ -263,6 +262,17 @@
   /* fix: footer & profile head */
   footer{ max-width:900px; margin:0 auto; padding:2rem 1.8rem 3rem; font-size:0.82rem; line-height:1.7; }
   .profile-head{ position:relative; z-index:2; }
+
+  /* Info-Reiter */
+  .tab-panel[hidden]{ display:none !important; }
+  .section-tab{ cursor:pointer; }
+  .info-list{ list-style:none; margin:0; padding:0.4rem 0 0; }
+  .info-list li{ display:flex; gap:1rem; align-items:baseline; padding:0.8rem 0; border-bottom:1px solid rgba(239,230,200,0.15); }
+  .info-list .k{ flex:0 0 6.5rem; font-size:0.78rem; letter-spacing:0.14em; text-transform:lowercase; color:rgba(239,230,200,0.5); }
+  .info-list .v{ color:#efe6c8; word-break:break-word; }
+  .info-list .v a{ color:#cdb98a; }
+  .info-list .v.leer{ color:rgba(239,230,200,0.35); }
+  .info-hint{ margin-top:1rem; font-size:0.82rem; color:rgba(239,230,200,0.5); }
 </style>
 </head>
 <body>
@@ -283,7 +293,7 @@
     <div class="cover"></div>
 
     <div class="profile-head">
-      <div class="avatar"><img src="sddi-avatar.jpg?v=2" alt="S de Isasi"></div>
+      <div class="avatar"><img src="isasi-avatar-wippe.jpg" alt="S de Isasi"></div>
       <div class="profile-meta">
         <h1>S de Isasi</h1>
         <div class="role-line">Raumintervention · München</div>
@@ -313,7 +323,7 @@
       <div class="section-tab">Gespeichert</div>
     </div>
 
-    <div class="work-grid">
+    <div id="panel-arbeiten" class="tab-panel"><div class="work-grid">
       <div class="work-tile" style="background-image:url(isasi-rauminstallation.jpg); background-size:cover; background-position:center;"><span>Rauminstallation</span></div>
       <div class="work-tile" style="background-image:url(s-de-isasi-profil-prozessfoto.jpg); background-size:cover; background-position:center;"><span>Werkprozess</span></div>
       <div class="work-tile" style="background-image:url(isasi-entwurfsprozess-v2.jpg); background-size:cover; background-position:center;"><span>Entwurfsprozess</span></div>
@@ -328,6 +338,14 @@
       <div class="work-tile" style="background-image:url(isasi-raumstudie.jpeg); background-size:cover; background-position:center;"><span>Raumstudie</span></div>
       <div class="work-tile" style="background-image:url(isasi-studie.jpeg); background-size:cover; background-position:center;"><span>Studie</span></div>
       <div class="work-tile" style="background-image:url(isasi-wein-blut.jpeg); background-size:cover; background-position:center;"><span>Rotstudie</span></div>
+    </div></div>
+    <div id="panel-info" class="tab-panel" hidden>
+      <ul class="info-list">
+        <li><span class="k">e-mail</span><span class="v leer">noch nicht eingetragen</span></li>
+        <li><span class="k">instagram</span><span class="v leer">noch nicht eingetragen</span></li>
+        <li><span class="k">telefon</span><span class="v leer">noch nicht eingetragen</span></li>
+      </ul>
+      <p class="info-hint">jede person entscheidet selbst, was hier steht.</p>
     </div>
   </main>
   <footer>
@@ -336,5 +354,18 @@
     Alle gezeigten Werke, Ideen und Prozesse bleiben geistiges Eigentum der jeweiligen Urheber:innen.
     Nutzung, Vervielfältigung oder Weiterverwendung nur mit deren Zustimmung.
   </footer>
+<script>
+    (function(){
+      var tabs=document.querySelectorAll('.section-tab');
+      var panels={'Arbeiten':'panel-arbeiten','Info':'panel-info'};
+      tabs.forEach(function(t){
+        t.addEventListener('click',function(){
+          var id=panels[t.textContent.trim()]; if(!id) return;
+          tabs.forEach(function(x){ x.classList.toggle('active',x===t); });
+          Object.keys(panels).forEach(function(k){ var el=document.getElementById(panels[k]); if(el) el.hidden=(panels[k]!==id); });
+        });
+      });
+    })();
+  </script>
 </body>
 </html>
