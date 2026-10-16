@@ -293,6 +293,16 @@
   .lb-prev{ left:.8rem; top:42%; }
   .lb-next{ right:.8rem; top:42%; }
   @media (max-width:640px){ .lb-prev{ left:.4rem; top:auto; bottom:1rem; } .lb-next{ right:.4rem; top:auto; bottom:1rem; } .lb-img{ max-height:58vh; } }
+
+  /* ===== sprachumschalter ===== */
+  .lang-toggle{ display:flex; gap:0.3rem; font-size:0.8rem; letter-spacing:0.04em; align-items:center; }
+  .lang-toggle button{ background:none; border:none; font-family:'Jost',sans-serif; font-size:0.8rem; letter-spacing:0.04em;
+    text-transform:uppercase; color:rgba(239,230,200,0.5); cursor:pointer; padding:0.2rem 0.3rem; }
+  .lang-toggle button.active{ color:#efe6c8; font-weight:600; border-bottom:2px solid #cdb98a; }
+  [data-i18n]{ display:none; }
+  [data-i18n].lang-active{ display:inline; }
+  .work-tile span span{ background:none !important; padding:0 !important; }
+  header.site-header nav{ display:flex; align-items:center; gap:1.1rem; flex-wrap:wrap; }
 </style>
 </head>
 <body>
@@ -303,9 +313,17 @@
       <span style="font-family:'Space Grotesk', sans-serif; font-weight:400; font-size:0.85rem; letter-spacing:0.06em; color:var(--ink); opacity:0.8;">Raum schaffen</span>
     </a>
     <nav>
-      <a href="#">Feed</a>
-      <a href="#">Suche</a>
-      <a href="#" class="current">Profil</a>
+      <a href="#"><span data-i18n="de" class="lang-active">Feed</span><span data-i18n="en">Feed</span><span data-i18n="es">Feed</span></a>
+      <a href="#"><span data-i18n="de" class="lang-active">Suche</span><span data-i18n="en">Search</span><span data-i18n="es">Buscar</span></a>
+      <a href="/menschen.html" class="current"><span data-i18n="de" class="lang-active">Menschen</span><span data-i18n="en">People</span><span data-i18n="es">Personas</span></a>
+      <a href="/disziplinen.html"><span data-i18n="de" class="lang-active">Zimmer</span><span data-i18n="en">Rooms</span><span data-i18n="es">Espacios</span></a>
+      <div class="lang-toggle">
+        <button type="button" data-lang="de" class="active">DE</button>
+        <span>/</span>
+        <button type="button" data-lang="en">EN</button>
+        <span>/</span>
+        <button type="button" data-lang="es">ES</button>
+      </div>
     </nav>
   </header>
 
@@ -316,49 +334,48 @@
       <div class="avatar"><img src="bernd-neichsner.jpg" alt="Bernd Neichsner"></div>
       <div class="profile-meta">
         <h1>Bernd Neichsner</h1>
-        <div class="role-line">Visionär hinter OFFFEN · Performance</div>
+        <div class="role-line"><span data-i18n="de" class="lang-active">Visionär hinter OFFFEN · Performance</span><span data-i18n="en">Visionary behind OFFFEN · Performance</span><span data-i18n="es">Visionario detrás de OFFFEN · Performance</span></div>
       </div>
-      <button class="follow-btn">Folgen</button>
+      <button class="follow-btn"><span data-i18n="de" class="lang-active">Folgen</span><span data-i18n="en">Follow</span><span data-i18n="es">Seguir</span></button>
     </div>
 
     <div class="chips">
       <span class="chip primary">Performance</span>
     </div>
 
-    <p class="bio">bernd neichsner ist der visionär hinter offfen. von ihm stammt die idee: ein raum, in dem schaffende zeigen, was sie bewegt und inspiriert und wie aus einer idee ein werk wird.<br><br>er arbeitet mit performance. in münchen-giesing und an anderen orten setzt er sich in beziehung zu bildern, wänden und räumen und lässt den körper antworten.<br><br>sein gedanke hinter offfen: nicht nur das ergebnis ist interessant, sondern der prozess dahinter. was bewegt? was inspiriert? wie wird aus einer idee ein werk?</p>
+    <p class="bio"><span data-i18n="de" class="lang-active">bernd neichsner ist der visionär hinter offfen. von ihm stammt die idee: ein raum, in dem schaffende zeigen, was sie bewegt und inspiriert und wie aus einer idee ein werk wird.<br><br>er arbeitet mit performance. in münchen-giesing und an anderen orten setzt er sich in beziehung zu bildern, wänden und räumen und lässt den körper antworten.<br><br>sein gedanke hinter offfen: nicht nur das ergebnis ist interessant, sondern der prozess dahinter. was bewegt? was inspiriert? wie wird aus einer idee ein werk?</span><span data-i18n="en">Bernd Neichsner is the visionary behind OFFFEN. The idea is his: a space where creators show what moves and inspires them, and how an idea becomes a work.<br><br>He works with performance. In Munich-Giesing and other places he relates to images, walls and spaces and lets the body respond.<br><br>His thought behind OFFFEN: not only the result is interesting, but the process behind it. What moves? What inspires? How does an idea become a work?</span><span data-i18n="es">Bernd Neichsner es el visionario detrás de OFFFEN. La idea es suya: un espacio en el que las personas creadoras muestran lo que las mueve y las inspira, y cómo una idea se convierte en obra.<br><br>Trabaja con performance. En Múnich-Giesing y en otros lugares se pone en relación con imágenes, muros y espacios y deja que el cuerpo responda.<br><br>Su idea detrás de OFFFEN: no solo el resultado es interesante, sino el proceso que hay detrás. ¿Qué mueve? ¿Qué inspira? ¿Cómo una idea se convierte en obra?</span></p>
 
     <div class="stats">
-      <div class="stat"><strong>3</strong><span>Beiträge</span></div>
-      <div class="stat"><strong>0</strong><span>Folgt</span></div>
-      <div class="stat"><strong>0</strong><span>Folgen</span></div>
+      <div class="stat"><strong>3</strong><span><span data-i18n="de" class="lang-active">Beiträge</span><span data-i18n="en">Posts</span><span data-i18n="es">Publicaciones</span></span></div>
+      <div class="stat"><strong>0</strong><span><span data-i18n="de" class="lang-active">Folgt</span><span data-i18n="en">Following</span><span data-i18n="es">Siguiendo</span></span></div>
+      <div class="stat"><strong>0</strong><span><span data-i18n="de" class="lang-active">Folgen</span><span data-i18n="en">Followers</span><span data-i18n="es">Seguidores</span></span></div>
     </div>
 
     <div class="section-tabs">
-      <div class="section-tab active">Arbeiten</div>
-      <div class="section-tab">Info</div>
-      <div class="section-tab">Gespeichert</div>
+      <div class="section-tab active" data-tab="arbeiten"><span data-i18n="de" class="lang-active">Arbeiten</span><span data-i18n="en">Works</span><span data-i18n="es">Obras</span></div>
+      <div class="section-tab" data-tab="info">Info</div>
+      <div class="section-tab" data-tab="gespeichert"><span data-i18n="de" class="lang-active">Gespeichert</span><span data-i18n="en">Saved</span><span data-i18n="es">Guardado</span></div>
     </div>
 
     <div id="panel-arbeiten" class="tab-panel"><div class="work-grid">
-      <div class="work-tile" style="background-image:url(bernd-performance.jpeg); background-size:cover; background-position:center;"><span>Performance</span></div>
-      <div class="work-tile" style="background-image:url(bernd-bank.jpg); background-size:cover; background-position:center;"><span>Vor dem Wandbild</span></div>
-      <div class="work-tile" style="background-image:url(bernd-portrait-blau.jpeg); background-size:cover; background-position:center;"><span>Spiegelung</span></div>
+      <div class="work-tile" style="background-image:url(bernd-performance.jpeg); background-size:cover; background-position:center;"><span><span data-i18n="de" class="lang-active">Performance</span><span data-i18n="en">Performance</span><span data-i18n="es">Performance</span></span></div>
+      <div class="work-tile" style="background-image:url(bernd-bank.jpg); background-size:cover; background-position:center;"><span><span data-i18n="de" class="lang-active">Vor dem Wandbild</span><span data-i18n="en">In front of the mural</span><span data-i18n="es">Frente al mural</span></span></div>
+      <div class="work-tile" style="background-image:url(bernd-portrait-blau.jpeg); background-size:cover; background-position:center;"><span><span data-i18n="de" class="lang-active">Spiegelung</span><span data-i18n="en">Reflection</span><span data-i18n="es">Reflejo</span></span></div>
     </div></div>
     <div id="panel-info" class="tab-panel" hidden>
       <ul class="info-list">
         <li><span class="k">e-mail</span><span class="v"><a href="mailto:raum@offfen-schaffensmenschen.com">raum@offfen-schaffensmenschen.com</a></span></li>
         <li><span class="k">instagram</span><span class="v"><a href="https://www.instagram.com/offfen.schaffensmenschen/" target="_blank" rel="noopener">@offfen.schaffensmenschen</a></span></li>
-        <li><span class="k">telefon</span><span class="v"><a href="tel:+4917643821813">017643821813</a></span></li>
+        <li><span class="k"><span data-i18n="de" class="lang-active">telefon</span><span data-i18n="en">phone</span><span data-i18n="es">teléfono</span></span><span class="v"><a href="tel:+4917643821813">017643821813</a></span></li>
       </ul>
-      <p class="info-hint">jede person entscheidet selbst, was hier steht.</p>
+      <p class="info-hint"><span data-i18n="de" class="lang-active">jede person entscheidet selbst, was hier steht.</span><span data-i18n="en">each person decides what appears here.</span><span data-i18n="es">cada persona decide qué aparece aquí.</span></p>
     </div>
-    <p class="bio" style="margin-top:1.6rem"><a href="mailto:raum@offfen-schaffensmenschen.com?subject=Ein%20Detail%20von%20mir">schick ein detail</a> von dir.</p>
+    <p class="bio" style="margin-top:1.6rem"><span data-i18n="de" class="lang-active"><a href="mailto:raum@offfen-schaffensmenschen.com?subject=Ein%20Detail%20von%20mir">schick ein detail</a> von dir.</span><span data-i18n="en"><a href="mailto:raum@offfen-schaffensmenschen.com?subject=A%20detail%20from%20me">send a detail</a> of your own.</span><span data-i18n="es"><a href="mailto:raum@offfen-schaffensmenschen.com?subject=Un%20detalle%20m%C3%ADo">envía un detalle</a> tuyo.</span></p>
   </main>
   <footer>
-    Schreib uns · Jetzt schreiben: <a href="mailto:raum@offfen-schaffensmenschen.com">raum@offfen-schaffensmenschen.com</a><br>
-    Schaffensmenschen · München · <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a><br><br>
-    Alle gezeigten Werke, Ideen und Prozesse bleiben geistiges Eigentum der jeweiligen Urheber:innen.
-    Nutzung, Vervielfältigung oder Weiterverwendung nur mit deren Zustimmung.
+    <span data-i18n="de" class="lang-active">Schreib uns</span><span data-i18n="en">Write to us</span><span data-i18n="es">Escríbenos</span> · <span data-i18n="de" class="lang-active">Jetzt schreiben</span><span data-i18n="en">Write now</span><span data-i18n="es">Escribe ahora</span>: <a href="mailto:raum@offfen-schaffensmenschen.com">raum@offfen-schaffensmenschen.com</a><br>
+    Schaffensmenschen · München · <a href="/impressum.html"><span data-i18n="de" class="lang-active">Impressum</span><span data-i18n="en">Legal notice</span><span data-i18n="es">Aviso legal</span></a> · <a href="/datenschutz.html"><span data-i18n="de" class="lang-active">Datenschutz</span><span data-i18n="en">Privacy</span><span data-i18n="es">Privacidad</span></a><br><br>
+    <span data-i18n="de" class="lang-active">Alle gezeigten Werke, Ideen und Prozesse bleiben geistiges Eigentum der jeweiligen Urheber:innen. Nutzung, Vervielfältigung oder Weiterverwendung nur mit deren Zustimmung.</span><span data-i18n="en">All works, ideas and processes shown remain the intellectual property of their respective creators. Use, reproduction or further use only with their consent.</span><span data-i18n="es">Todas las obras, ideas y procesos mostrados siguen siendo propiedad intelectual de sus respectivos autores y autoras. Uso, reproducción o cualquier uso posterior solo con su consentimiento.</span>
   </footer>
 
   <div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="grosse ansicht" hidden>
@@ -373,10 +390,10 @@
 <script>
     (function(){
       var tabs=document.querySelectorAll('.section-tab');
-      var panels={'Arbeiten':'panel-arbeiten','Info':'panel-info'};
+      var panels={'arbeiten':'panel-arbeiten','info':'panel-info'};
       tabs.forEach(function(t){
         t.addEventListener('click',function(){
-          var id=panels[t.textContent.trim()]; if(!id) return;
+          var id=panels[t.getAttribute('data-tab')]; if(!id) return;
           tabs.forEach(function(x){ x.classList.toggle('active',x===t); });
           Object.keys(panels).forEach(function(k){ var el=document.getElementById(panels[k]); if(el) el.hidden=(panels[k]!==id); });
         });
@@ -391,10 +408,10 @@
       var img=document.getElementById('lb-img'), ti=document.getElementById('lb-title'), tx=document.getElementById('lb-text');
       var cur=0, lastFocus=null;
       function urlOf(t){ var m=(t.style.backgroundImage||'').match(/url\(["']?([^"')]+)["']?\)/); return m?m[1]:''; }
-      function titleOf(t){ var s=t.querySelector('span'); return s?s.textContent.trim():''; }
+      function titleOf(t){ var s=t.querySelector('span'); if(!s) return ''; var a=s.querySelector('[data-i18n].lang-active'); return (a||s).textContent.trim(); }
       function show(i){
         cur=(i+tiles.length)%tiles.length; var t=tiles[cur];
-        img.src=urlOf(t); img.alt=titleOf(t); ti.textContent=titleOf(t); tx.textContent=t.getAttribute('data-text')||'';
+        img.src=urlOf(t); img.alt=titleOf(t); ti.textContent=titleOf(t); var lg=document.documentElement.lang||'de'; tx.textContent=t.getAttribute('data-text-'+lg)||t.getAttribute('data-text')||'';
       }
       function open(i){ lastFocus=document.activeElement; show(i); lb.hidden=false; lb.classList.add('open'); document.body.style.overflow='hidden'; document.getElementById('lb-close').focus(); }
       function close(){ lb.classList.remove('open'); lb.hidden=true; document.body.style.overflow=''; if(lastFocus&&lastFocus.focus) lastFocus.focus(); }
@@ -404,6 +421,7 @@
         t.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); open(i); } });
       });
       document.getElementById('lb-close').addEventListener('click',close);
+      document.addEventListener('langchange',function(){ if(!lb.hidden) show(cur); });
       document.getElementById('lb-prev').addEventListener('click',function(e){ e.stopPropagation(); show(cur-1); });
       document.getElementById('lb-next').addEventListener('click',function(e){ e.stopPropagation(); show(cur+1); });
       lb.addEventListener('click',function(e){ if(e.target===lb||e.target.classList.contains('lb-box')) close(); });
@@ -413,6 +431,23 @@
       });
       var sx=null; lb.addEventListener('touchstart',function(e){ sx=e.touches[0].clientX; },{passive:true});
       lb.addEventListener('touchend',function(e){ if(sx===null) return; var dx=e.changedTouches[0].clientX-sx; sx=null; if(Math.abs(dx)>50) show(cur+(dx<0?1:-1)); },{passive:true});
+    })();
+  </script>
+
+<script>
+    (function(){
+      var buttons=document.querySelectorAll('.lang-toggle button');
+      function apply(lang){
+        buttons.forEach(function(b){ b.classList.toggle('active', b.getAttribute('data-lang')===lang); });
+        document.querySelectorAll('[data-i18n]').forEach(function(el){ el.classList.toggle('lang-active', el.getAttribute('data-i18n')===lang); });
+        document.documentElement.lang=lang;
+        try{ document.dispatchEvent(new CustomEvent('langchange',{detail:lang})); }catch(e){}
+      }
+      buttons.forEach(function(b){ b.addEventListener('click',function(){
+        var l=b.getAttribute('data-lang'); apply(l); try{ localStorage.setItem('offfen-lang',l); }catch(e){}
+      }); });
+      var saved=null; try{ saved=localStorage.getItem('offfen-lang'); }catch(e){}
+      if(saved && saved!=='de') apply(saved);
     })();
   </script>
 </body>

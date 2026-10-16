@@ -280,17 +280,19 @@
   </footer>
 
   <script>
-    const langButtons = document.querySelectorAll('.lang-toggle button');
-    langButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const lang = btn.dataset.lang;
-        langButtons.forEach(b => b.classList.toggle('active', b === btn));
-        document.querySelectorAll('[data-i18n]').forEach(el => {
-          el.classList.toggle('lang-active', el.dataset.i18n === lang);
-        });
-        document.documentElement.lang = lang;
-      });
-    });
+    (function(){
+      var buttons=document.querySelectorAll('.lang-toggle button');
+      function apply(lang){
+        buttons.forEach(function(b){ b.classList.toggle('active', b.getAttribute('data-lang')===lang); });
+        document.querySelectorAll('[data-i18n]').forEach(function(el){ el.classList.toggle('lang-active', el.getAttribute('data-i18n')===lang); });
+        document.documentElement.lang=lang;
+      }
+      buttons.forEach(function(b){ b.addEventListener('click',function(){
+        var l=b.getAttribute('data-lang'); apply(l); try{ localStorage.setItem('offfen-lang',l); }catch(e){}
+      }); });
+      var saved=null; try{ saved=localStorage.getItem('offfen-lang'); }catch(e){}
+      if(saved && saved!=='de') apply(saved);
+    })();
   </script>
 
 </body>

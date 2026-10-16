@@ -293,6 +293,16 @@
   .lb-prev{ left:.8rem; top:42%; }
   .lb-next{ right:.8rem; top:42%; }
   @media (max-width:640px){ .lb-prev{ left:.4rem; top:auto; bottom:1rem; } .lb-next{ right:.4rem; top:auto; bottom:1rem; } .lb-img{ max-height:58vh; } }
+
+  /* ===== sprachumschalter ===== */
+  .lang-toggle{ display:flex; gap:0.3rem; font-size:0.8rem; letter-spacing:0.04em; align-items:center; }
+  .lang-toggle button{ background:none; border:none; font-family:'Jost',sans-serif; font-size:0.8rem; letter-spacing:0.04em;
+    text-transform:uppercase; color:rgba(239,230,200,0.5); cursor:pointer; padding:0.2rem 0.3rem; }
+  .lang-toggle button.active{ color:#efe6c8; font-weight:600; border-bottom:2px solid #cdb98a; }
+  [data-i18n]{ display:none; }
+  [data-i18n].lang-active{ display:inline; }
+  .work-tile span span{ background:none !important; padding:0 !important; }
+  header.site-header nav{ display:flex; align-items:center; gap:1.1rem; flex-wrap:wrap; }
 </style>
 </head>
 <body>
@@ -303,9 +313,17 @@
       <span style="font-family:'Space Grotesk', sans-serif; font-weight:400; font-size:0.85rem; letter-spacing:0.06em; color:var(--ink); opacity:0.8;">Raum schaffen</span>
     </a>
     <nav>
-      <a href="#">Feed</a>
-      <a href="#">Suche</a>
-      <a href="#" class="current">Profil</a>
+      <a href="#"><span data-i18n="de" class="lang-active">Feed</span><span data-i18n="en">Feed</span><span data-i18n="es">Feed</span></a>
+      <a href="#"><span data-i18n="de" class="lang-active">Suche</span><span data-i18n="en">Search</span><span data-i18n="es">Buscar</span></a>
+      <a href="/menschen.html" class="current"><span data-i18n="de" class="lang-active">Menschen</span><span data-i18n="en">People</span><span data-i18n="es">Personas</span></a>
+      <a href="/disziplinen.html"><span data-i18n="de" class="lang-active">Zimmer</span><span data-i18n="en">Rooms</span><span data-i18n="es">Espacios</span></a>
+      <div class="lang-toggle">
+        <button type="button" data-lang="de" class="active">DE</button>
+        <span>/</span>
+        <button type="button" data-lang="en">EN</button>
+        <span>/</span>
+        <button type="button" data-lang="es">ES</button>
+      </div>
     </nav>
   </header>
 
@@ -316,63 +334,62 @@
       <div class="avatar"><img src="isasi-avatar-wippe.jpg" alt="S de Isasi"></div>
       <div class="profile-meta">
         <h1>S de Isasi</h1>
-        <div class="role-line">Raumintervention · München</div>
+        <div class="role-line"><span data-i18n="de" class="lang-active">Raumintervention · München</span><span data-i18n="en">Spatial intervention · Munich</span><span data-i18n="es">Intervención espacial · Múnich</span></div>
       </div>
-      <button class="follow-btn">Folgen</button>
+      <button class="follow-btn"><span data-i18n="de" class="lang-active">Folgen</span><span data-i18n="en">Follow</span><span data-i18n="es">Seguir</span></button>
     </div>
 
     <div class="chips">
-      <span class="chip primary">Raumintervention</span>
-      <span class="chip">Architektur</span>
-      <span class="chip">Konzeptkunst</span>
+      <span class="chip primary"><span data-i18n="de" class="lang-active">Raumintervention</span><span data-i18n="en">Spatial intervention</span><span data-i18n="es">Intervención espacial</span></span>
+      <span class="chip"><span data-i18n="de" class="lang-active">Architektur</span><span data-i18n="en">Architecture</span><span data-i18n="es">Arquitectura</span></span>
+      <span class="chip"><span data-i18n="de" class="lang-active">Konzeptkunst</span><span data-i18n="en">Conceptual art</span><span data-i18n="es">Arte conceptual</span></span>
     </div>
 
-    <p class="bio">Ich bin nicht nur Architektin und Künstlerin, sondern vielmehr eine Suchende nach Ideen, die Räume entstehen lassen. Grenzenlos unterwegs, frei von Definitionen, bewege ich mich zwischen den Disziplinen, dort, wo aus Illusionen Visionen werden und aus Visionen Räume. Für mich beginnt Gestaltung mit der Emotion: jeder Entwurf ist ein Ausdruck dessen, was sich nicht immer in Worte fassen lässt, aber in Form, Licht und Material sichtbar wird. Ideen sind für mich kein Ziel, sondern ein Weg: Sie führen mich durch Räume, die noch nicht existieren, und lassen mich das entdecken, was zwischen Kunst und Architektur liegt.</p>
+    <p class="bio"><span data-i18n="de" class="lang-active">Ich bin nicht nur Architektin und Künstlerin, sondern vielmehr eine Suchende nach Ideen, die Räume entstehen lassen. Grenzenlos unterwegs, frei von Definitionen, bewege ich mich zwischen den Disziplinen, dort, wo aus Illusionen Visionen werden und aus Visionen Räume. Für mich beginnt Gestaltung mit der Emotion: jeder Entwurf ist ein Ausdruck dessen, was sich nicht immer in Worte fassen lässt, aber in Form, Licht und Material sichtbar wird. Ideen sind für mich kein Ziel, sondern ein Weg: Sie führen mich durch Räume, die noch nicht existieren, und lassen mich das entdecken, was zwischen Kunst und Architektur liegt.</span><span data-i18n="en">I am not only an architect and artist, but above all a seeker of ideas that let spaces emerge. Boundless and free of definitions, I move between the disciplines, where illusions become visions and visions become spaces. For me, design begins with emotion: every design expresses what cannot always be put into words, but becomes visible in form, light and material. Ideas are not a goal for me but a path: they lead me through spaces that do not yet exist and let me discover what lies between art and architecture.</span><span data-i18n="es">No soy solo arquitecta y artista, sino sobre todo una buscadora de ideas que hacen nacer espacios. Sin fronteras y libre de definiciones, me muevo entre las disciplinas, allí donde de las ilusiones nacen visiones y de las visiones, espacios. Para mí, el diseño empieza con la emoción: cada proyecto expresa algo que no siempre se puede decir con palabras, pero que se hace visible en la forma, la luz y el material. Las ideas no son para mí una meta, sino un camino: me conducen por espacios que todavía no existen y me dejan descubrir lo que hay entre el arte y la arquitectura.</span></p>
 
     <figure style="margin:1.8rem 0 0; max-width:360px;"><img src="sddi.jpg" alt="S de Isasi" style="width:100%; height:auto; display:block; border:1.5px solid #cdb98a; padding:5px;"></figure>
 
     <div class="stats">
-      <div class="stat"><strong>0</strong><span>Beiträge</span></div>
-      <div class="stat"><strong>0</strong><span>Folgt</span></div>
-      <div class="stat"><strong>0</strong><span>Folgen</span></div>
+      <div class="stat"><strong>0</strong><span><span data-i18n="de" class="lang-active">Beiträge</span><span data-i18n="en">Posts</span><span data-i18n="es">Publicaciones</span></span></div>
+      <div class="stat"><strong>0</strong><span><span data-i18n="de" class="lang-active">Folgt</span><span data-i18n="en">Following</span><span data-i18n="es">Siguiendo</span></span></div>
+      <div class="stat"><strong>0</strong><span><span data-i18n="de" class="lang-active">Folgen</span><span data-i18n="en">Followers</span><span data-i18n="es">Seguidores</span></span></div>
     </div>
 
     <div class="section-tabs">
-      <div class="section-tab active">Arbeiten</div>
-      <div class="section-tab">Info</div>
-      <div class="section-tab">Gespeichert</div>
+      <div class="section-tab active" data-tab="arbeiten"><span data-i18n="de" class="lang-active">Arbeiten</span><span data-i18n="en">Works</span><span data-i18n="es">Obras</span></div>
+      <div class="section-tab" data-tab="info">Info</div>
+      <div class="section-tab" data-tab="gespeichert"><span data-i18n="de" class="lang-active">Gespeichert</span><span data-i18n="en">Saved</span><span data-i18n="es">Guardado</span></div>
     </div>
 
     <div id="panel-arbeiten" class="tab-panel"><div class="work-grid">
-      <div class="work-tile" style="background-image:url(isasi-rauminstallation.jpg); background-size:cover; background-position:center;"><span>Rauminstallation</span></div>
-      <div class="work-tile" style="background-image:url(s-de-isasi-profil-prozessfoto.jpg); background-size:cover; background-position:center;"><span>Werkprozess</span></div>
-      <div class="work-tile" style="background-image:url(isasi-entwurfsprozess-v2.jpg); background-size:cover; background-position:center;"><span>Entwurfsprozess</span></div>
-      <div class="work-tile" style="background-image:url(isasi-ideenraum-v2.jpg); background-size:cover; background-position:center;"><span>Ideenraum</span></div>
-      <div class="work-tile" style="background-image:url(isasi-farbmuster.jpg); background-size:cover; background-position:center;"><span>Farbwelt</span></div>
-      <div class="work-tile" style="background-image:url(isasi-klebeband.png); background-size:cover; background-position:center;"><span>Klebeband-Studie</span></div>
-      <div class="work-tile" style="background-image:url(isasi-materialsammlung.jpeg); background-size:cover; background-position:center;"><span>Materialsammlung</span></div>
-      <div class="work-tile" style="background-image:url(isasi-farbstudie-gelb.png); background-size:cover; background-position:center;"><span>Farbstudie</span></div>
-      <div class="work-tile" style="background-image:url(isasi-werkstudie-blau.jpeg); background-size:cover; background-position:center;"><span>Werkprozess II</span></div>
-      <div class="work-tile" style="background-image:url(isasi-windstudiejpg.jpg); background-size:cover; background-position:center;"><span>Windstudie</span></div>
-      <div class="work-tile" style="background-image:url(isasi-lichtstudiejpeg.jpeg); background-size:cover; background-position:center;"><span>Lichtstudie</span></div>
-      <div class="work-tile" style="background-image:url(isasi-raumstudie.jpeg); background-size:cover; background-position:center;"><span>Raumstudie</span></div>
-      <div class="work-tile" style="background-image:url(isasi-studie.jpeg); background-size:cover; background-position:center;"><span>Studie</span></div>
-      <div class="work-tile" style="background-image:url(isasi-wein-blut.jpeg); background-size:cover; background-position:center;"><span>Rotstudie</span></div>
+      <div class="work-tile" style="background-image:url(isasi-rauminstallation.jpg); background-size:cover; background-position:center;"><span><span data-i18n="de" class="lang-active">Rauminstallation</span><span data-i18n="en">Spatial installation</span><span data-i18n="es">Instalación espacial</span></span></div>
+      <div class="work-tile" style="background-image:url(s-de-isasi-profil-prozessfoto.jpg); background-size:cover; background-position:center;"><span><span data-i18n="de" class="lang-active">Werkprozess</span><span data-i18n="en">Work process</span><span data-i18n="es">Proceso de trabajo</span></span></div>
+      <div class="work-tile" style="background-image:url(isasi-entwurfsprozess-v2.jpg); background-size:cover; background-position:center;"><span><span data-i18n="de" class="lang-active">Entwurfsprozess</span><span data-i18n="en">Design process</span><span data-i18n="es">Proceso de diseño</span></span></div>
+      <div class="work-tile" style="background-image:url(isasi-ideenraum-v2.jpg); background-size:cover; background-position:center;"><span><span data-i18n="de" class="lang-active">Ideenraum</span><span data-i18n="en">Idea space</span><span data-i18n="es">Espacio de ideas</span></span></div>
+      <div class="work-tile" style="background-image:url(isasi-farbmuster.jpg); background-size:cover; background-position:center;"><span><span data-i18n="de" class="lang-active">Farbwelt</span><span data-i18n="en">Colour world</span><span data-i18n="es">Mundo de color</span></span></div>
+      <div class="work-tile" style="background-image:url(isasi-klebeband.png); background-size:cover; background-position:center;"><span><span data-i18n="de" class="lang-active">Klebeband-Studie</span><span data-i18n="en">Tape study</span><span data-i18n="es">Estudio con cinta adhesiva</span></span></div>
+      <div class="work-tile" style="background-image:url(isasi-materialsammlung.jpeg); background-size:cover; background-position:center;"><span><span data-i18n="de" class="lang-active">Materialsammlung</span><span data-i18n="en">Material collection</span><span data-i18n="es">Colección de materiales</span></span></div>
+      <div class="work-tile" style="background-image:url(isasi-farbstudie-gelb.png); background-size:cover; background-position:center;"><span><span data-i18n="de" class="lang-active">Farbstudie</span><span data-i18n="en">Colour study</span><span data-i18n="es">Estudio de color</span></span></div>
+      <div class="work-tile" style="background-image:url(isasi-werkstudie-blau.jpeg); background-size:cover; background-position:center;"><span><span data-i18n="de" class="lang-active">Werkprozess II</span><span data-i18n="en">Work process II</span><span data-i18n="es">Proceso de trabajo II</span></span></div>
+      <div class="work-tile" style="background-image:url(isasi-windstudiejpg.jpg); background-size:cover; background-position:center;"><span><span data-i18n="de" class="lang-active">Windstudie</span><span data-i18n="en">Wind study</span><span data-i18n="es">Estudio del viento</span></span></div>
+      <div class="work-tile" style="background-image:url(isasi-lichtstudiejpeg.jpeg); background-size:cover; background-position:center;"><span><span data-i18n="de" class="lang-active">Lichtstudie</span><span data-i18n="en">Light study</span><span data-i18n="es">Estudio de luz</span></span></div>
+      <div class="work-tile" style="background-image:url(isasi-raumstudie.jpeg); background-size:cover; background-position:center;"><span><span data-i18n="de" class="lang-active">Raumstudie</span><span data-i18n="en">Space study</span><span data-i18n="es">Estudio de espacio</span></span></div>
+      <div class="work-tile" style="background-image:url(isasi-studie.jpeg); background-size:cover; background-position:center;"><span><span data-i18n="de" class="lang-active">Studie</span><span data-i18n="en">Study</span><span data-i18n="es">Estudio</span></span></div>
+      <div class="work-tile" style="background-image:url(isasi-wein-blut.jpeg); background-size:cover; background-position:center;"><span><span data-i18n="de" class="lang-active">Rotstudie</span><span data-i18n="en">Red study</span><span data-i18n="es">Estudio en rojo</span></span></div>
     </div></div>
     <div id="panel-info" class="tab-panel" hidden>
       <ul class="info-list">
         <li><span class="k">e-mail</span><span class="v"><a href="mailto:raumespacio@offfen-schaffensmenschen.com">raumespacio@offfen-schaffensmenschen.com</a></span></li>
         <li><span class="k">instagram</span><span class="v"><a href="https://www.instagram.com/offfen.schaffensmenschen/" target="_blank" rel="noopener">@offfen.schaffensmenschen</a></span></li>
-        <li><span class="k">telefon</span><span class="v"><a href="tel:+4915562650433">015562650433</a></span></li>
+        <li><span class="k"><span data-i18n="de" class="lang-active">telefon</span><span data-i18n="en">phone</span><span data-i18n="es">teléfono</span></span><span class="v"><a href="tel:+4915562650433">015562650433</a></span></li>
       </ul>
-      <p class="info-hint">jede person entscheidet selbst, was hier steht.</p>
+      <p class="info-hint"><span data-i18n="de" class="lang-active">jede person entscheidet selbst, was hier steht.</span><span data-i18n="en">each person decides what appears here.</span><span data-i18n="es">cada persona decide qué aparece aquí.</span></p>
     </div>
   </main>
   <footer>
-    Schreib uns · Jetzt schreiben: <a href="mailto:raum@offfen-schaffensmenschen.com">raum@offfen-schaffensmenschen.com</a><br>
-    Schaffensmenschen · München · <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a><br><br>
-    Alle gezeigten Werke, Ideen und Prozesse bleiben geistiges Eigentum der jeweiligen Urheber:innen.
-    Nutzung, Vervielfältigung oder Weiterverwendung nur mit deren Zustimmung.
+    <span data-i18n="de" class="lang-active">Schreib uns</span><span data-i18n="en">Write to us</span><span data-i18n="es">Escríbenos</span> · <span data-i18n="de" class="lang-active">Jetzt schreiben</span><span data-i18n="en">Write now</span><span data-i18n="es">Escribe ahora</span>: <a href="mailto:raum@offfen-schaffensmenschen.com">raum@offfen-schaffensmenschen.com</a><br>
+    Schaffensmenschen · München · <a href="/impressum.html"><span data-i18n="de" class="lang-active">Impressum</span><span data-i18n="en">Legal notice</span><span data-i18n="es">Aviso legal</span></a> · <a href="/datenschutz.html"><span data-i18n="de" class="lang-active">Datenschutz</span><span data-i18n="en">Privacy</span><span data-i18n="es">Privacidad</span></a><br><br>
+    <span data-i18n="de" class="lang-active">Alle gezeigten Werke, Ideen und Prozesse bleiben geistiges Eigentum der jeweiligen Urheber:innen. Nutzung, Vervielfältigung oder Weiterverwendung nur mit deren Zustimmung.</span><span data-i18n="en">All works, ideas and processes shown remain the intellectual property of their respective creators. Use, reproduction or further use only with their consent.</span><span data-i18n="es">Todas las obras, ideas y procesos mostrados siguen siendo propiedad intelectual de sus respectivos autores y autoras. Uso, reproducción o cualquier uso posterior solo con su consentimiento.</span>
   </footer>
 
   <div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="grosse ansicht" hidden>
@@ -387,10 +404,10 @@
 <script>
     (function(){
       var tabs=document.querySelectorAll('.section-tab');
-      var panels={'Arbeiten':'panel-arbeiten','Info':'panel-info'};
+      var panels={'arbeiten':'panel-arbeiten','info':'panel-info'};
       tabs.forEach(function(t){
         t.addEventListener('click',function(){
-          var id=panels[t.textContent.trim()]; if(!id) return;
+          var id=panels[t.getAttribute('data-tab')]; if(!id) return;
           tabs.forEach(function(x){ x.classList.toggle('active',x===t); });
           Object.keys(panels).forEach(function(k){ var el=document.getElementById(panels[k]); if(el) el.hidden=(panels[k]!==id); });
         });
@@ -405,10 +422,10 @@
       var img=document.getElementById('lb-img'), ti=document.getElementById('lb-title'), tx=document.getElementById('lb-text');
       var cur=0, lastFocus=null;
       function urlOf(t){ var m=(t.style.backgroundImage||'').match(/url\(["']?([^"')]+)["']?\)/); return m?m[1]:''; }
-      function titleOf(t){ var s=t.querySelector('span'); return s?s.textContent.trim():''; }
+      function titleOf(t){ var s=t.querySelector('span'); if(!s) return ''; var a=s.querySelector('[data-i18n].lang-active'); return (a||s).textContent.trim(); }
       function show(i){
         cur=(i+tiles.length)%tiles.length; var t=tiles[cur];
-        img.src=urlOf(t); img.alt=titleOf(t); ti.textContent=titleOf(t); tx.textContent=t.getAttribute('data-text')||'';
+        img.src=urlOf(t); img.alt=titleOf(t); ti.textContent=titleOf(t); var lg=document.documentElement.lang||'de'; tx.textContent=t.getAttribute('data-text-'+lg)||t.getAttribute('data-text')||'';
       }
       function open(i){ lastFocus=document.activeElement; show(i); lb.hidden=false; lb.classList.add('open'); document.body.style.overflow='hidden'; document.getElementById('lb-close').focus(); }
       function close(){ lb.classList.remove('open'); lb.hidden=true; document.body.style.overflow=''; if(lastFocus&&lastFocus.focus) lastFocus.focus(); }
@@ -418,6 +435,7 @@
         t.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); open(i); } });
       });
       document.getElementById('lb-close').addEventListener('click',close);
+      document.addEventListener('langchange',function(){ if(!lb.hidden) show(cur); });
       document.getElementById('lb-prev').addEventListener('click',function(e){ e.stopPropagation(); show(cur-1); });
       document.getElementById('lb-next').addEventListener('click',function(e){ e.stopPropagation(); show(cur+1); });
       lb.addEventListener('click',function(e){ if(e.target===lb||e.target.classList.contains('lb-box')) close(); });
@@ -427,6 +445,23 @@
       });
       var sx=null; lb.addEventListener('touchstart',function(e){ sx=e.touches[0].clientX; },{passive:true});
       lb.addEventListener('touchend',function(e){ if(sx===null) return; var dx=e.changedTouches[0].clientX-sx; sx=null; if(Math.abs(dx)>50) show(cur+(dx<0?1:-1)); },{passive:true});
+    })();
+  </script>
+
+<script>
+    (function(){
+      var buttons=document.querySelectorAll('.lang-toggle button');
+      function apply(lang){
+        buttons.forEach(function(b){ b.classList.toggle('active', b.getAttribute('data-lang')===lang); });
+        document.querySelectorAll('[data-i18n]').forEach(function(el){ el.classList.toggle('lang-active', el.getAttribute('data-i18n')===lang); });
+        document.documentElement.lang=lang;
+        try{ document.dispatchEvent(new CustomEvent('langchange',{detail:lang})); }catch(e){}
+      }
+      buttons.forEach(function(b){ b.addEventListener('click',function(){
+        var l=b.getAttribute('data-lang'); apply(l); try{ localStorage.setItem('offfen-lang',l); }catch(e){}
+      }); });
+      var saved=null; try{ saved=localStorage.getItem('offfen-lang'); }catch(e){}
+      if(saved && saved!=='de') apply(saved);
     })();
   </script>
 </body>
