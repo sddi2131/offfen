@@ -174,6 +174,14 @@
   .a-vielesmehr .frame-inner{ background:linear-gradient(155deg,#a89f75,#6c6547) !important; color:#26231c !important; }
   @media (max-width:640px){ header.site-header{ flex-wrap:wrap; gap:0.7rem 1rem !important; padding:1rem 1.1rem !important; } header.site-header nav{ margin-left:0 !important; width:100%; flex-wrap:wrap; gap:0.5rem 1.1rem !important; } header.site-header a span, header.site-header nav a{ letter-spacing:0.12em !important; } }
   .empty-note a, .bio a{ color:#cdb98a !important; text-decoration-color:rgba(205,185,138,0.5); }
+
+  /* ===== Sprachumschalter ===== */
+  [data-i18n]{ display:none; }
+  [data-i18n].lang-active{ display:inline; }
+  p[data-i18n].lang-active{ display:block; }
+  .lang-toggle{ display:flex; gap:0.3rem; font-size:0.8rem; letter-spacing:0.04em; align-items:center; }
+  .lang-toggle button{ background:none; border:none; cursor:pointer; padding:0.2rem 0.3rem; font-size:0.8rem; text-transform:lowercase; }
+  .work-tile span span{ background:none !important; padding:0 !important; color:inherit !important; letter-spacing:inherit; }
 </style>
 </head>
 <body>
@@ -184,50 +192,78 @@
       <span style="font-family:'Space Grotesk', sans-serif; font-weight:400; font-size:0.85rem; letter-spacing:0.06em; color:var(--ink); opacity:0.8;">Raum schaffen</span>
     </a>
     <nav>
-      <a href="/menschen.html">Menschen</a>
-      <a href="/disziplinen.html">Zimmer</a>
+      <a href="/menschen.html"><span data-i18n="de" class="lang-active">Menschen</span><span data-i18n="en">People</span><span data-i18n="es">Personas</span></a>
+      <a href="/disziplinen.html"><span data-i18n="de" class="lang-active">Zimmer</span><span data-i18n="en">Rooms</span><span data-i18n="es">Espacios</span></a>
+      <div class="lang-toggle">
+        <button type="button" data-lang="de" class="active">DE</button>
+        <span>/</span>
+        <button type="button" data-lang="en">EN</button>
+        <span>/</span>
+        <button type="button" data-lang="es">ES</button>
+      </div>
     </nav>
   </header>
 
   <main>
-    <a class="back-link" href="disziplinen.html">← Zimmer</a>
-    <h1>Architektur</h1>
-    <p class="subline">Skizzen, Entwürfe und Rauminterventionen der Schaffensmenschen.</p>
+    <a class="back-link" href="disziplinen.html">← <span data-i18n="de" class="lang-active">Zimmer</span><span data-i18n="en">Rooms</span><span data-i18n="es">Espacios</span></a>
+    <h1><span data-i18n="de" class="lang-active">Architektur</span><span data-i18n="en">Architecture</span><span data-i18n="es">Arquitectura</span></h1>
+    <p class="subline lang-active" data-i18n="de">Skizzen, Entwürfe und Rauminterventionen der Schaffensmenschen.</p>
+    <p class="subline" data-i18n="en">Sketches, designs and spatial interventions by the Schaffensmenschen.</p>
+    <p class="subline" data-i18n="es">Bocetos, diseños e intervenciones espaciales de los Schaffensmenschen.</p>
 
     <div class="work-grid">
       <a class="work-tile" href="profil-isasi.html" style="background-image:url(isasi-galerie.jpg); background-size:cover; background-position:center;">
         <span class="by">S de Isasi</span>
-        <span>Rauminstallation</span>
+        <span><span data-i18n="de" class="lang-active">Rauminstallation</span><span data-i18n="en">Spatial installation</span><span data-i18n="es">Instalación espacial</span></span>
       </a>
       <div class="work-tile" style="background:linear-gradient(155deg, #b7b3ad, #6d6a65);">
         <span class="by">S de Isasi</span>
-        <span>Konzeptskizze</span>
+        <span><span data-i18n="de" class="lang-active">Konzeptskizze</span><span data-i18n="en">Concept sketch</span><span data-i18n="es">Boceto conceptual</span></span>
       </div>
       <a class="work-tile" href="profil-isasi.html" style="background-image:url(isasi-entwurfsprozess-v2.jpg); background-size:cover; background-position:center;">
         <span class="by">S de Isasi</span>
-        <span>Entwurfsprozess</span>
+        <span><span data-i18n="de" class="lang-active">Entwurfsprozess</span><span data-i18n="en">Design process</span><span data-i18n="es">Proceso de diseño</span></span>
       </a>
       <a class="work-tile" href="profil-isasi.html" style="background-image:url(s-de-isasi-profil-prozessfoto.jpg); background-size:cover; background-position:center;">
         <span class="by">S de Isasi</span>
-        <span>Werkprozess</span>
+        <span><span data-i18n="de" class="lang-active">Werkprozess</span><span data-i18n="en">Work process</span><span data-i18n="es">Proceso de trabajo</span></span>
       </a>
       <a class="work-tile" href="profil-isasi.html" style="background-image:url(isasi-ideenraum-v2.jpg); background-size:cover; background-position:center;">
         <span class="by">S de Isasi</span>
-        <span>Ideenraum</span>
+        <span><span data-i18n="de" class="lang-active">Ideenraum</span><span data-i18n="en">Idea space</span><span data-i18n="es">Espacio de ideas</span></span>
       </a>
       <a class="work-tile" href="profil-isasi.html" style="background-image:url(isasi-raumstudie.jpeg); background-size:cover; background-position:center;">
         <span class="by">S de Isasi</span>
-        <span>Raumstudie</span>
+        <span><span data-i18n="de" class="lang-active">Raumstudie</span><span data-i18n="en">Space study</span><span data-i18n="es">Estudio de espacio</span></span>
       </a>
     </div>
   </main>
 
   <footer>
-    Schreib uns · Jetzt schreiben: <a href="mailto:raum@offfen-schaffensmenschen.com">raum@offfen-schaffensmenschen.com</a><br>
-    Schaffensmenschen · München · <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a><br><br>
-    Alle gezeigten Werke, Ideen und Prozesse bleiben geistiges Eigentum der jeweiligen Urheber:innen.
-    Nutzung, Vervielfältigung oder Weiterverwendung nur mit deren Zustimmung.
+    <span data-i18n="de" class="lang-active">Schreib uns</span><span data-i18n="en">Write to us</span><span data-i18n="es">Escríbenos</span> ·
+    <span data-i18n="de" class="lang-active">Jetzt schreiben</span><span data-i18n="en">Write now</span><span data-i18n="es">Escribe ahora</span>:
+    <a href="mailto:raum@offfen-schaffensmenschen.com">raum@offfen-schaffensmenschen.com</a><br>
+    Schaffensmenschen · München ·
+    <a href="/impressum.html"><span data-i18n="de" class="lang-active">Impressum</span><span data-i18n="en">Legal notice</span><span data-i18n="es">Aviso legal</span></a> ·
+    <a href="/datenschutz.html"><span data-i18n="de" class="lang-active">Datenschutz</span><span data-i18n="en">Privacy</span><span data-i18n="es">Privacidad</span></a><br><br>
+    <span data-i18n="de" class="lang-active">Alle gezeigten Werke, Ideen und Prozesse bleiben geistiges Eigentum der jeweiligen Urheber:innen. Nutzung, Vervielfältigung oder Weiterverwendung nur mit deren Zustimmung.</span><span data-i18n="en">All works, ideas and processes shown remain the intellectual property of their respective creators. Use, reproduction or further use only with their consent.</span><span data-i18n="es">Todas las obras, ideas y procesos mostrados siguen siendo propiedad intelectual de sus respectivos autores y autoras. Uso, reproducción o cualquier uso posterior solo con su consentimiento.</span>
   </footer>
+
+<script>
+    (function(){
+      var buttons=document.querySelectorAll('.lang-toggle button');
+      function apply(lang){
+        buttons.forEach(function(b){ b.classList.toggle('active', b.getAttribute('data-lang')===lang); });
+        document.querySelectorAll('[data-i18n]').forEach(function(el){ el.classList.toggle('lang-active', el.getAttribute('data-i18n')===lang); });
+        document.documentElement.lang=lang;
+      }
+      buttons.forEach(function(b){ b.addEventListener('click',function(){
+        var l=b.getAttribute('data-lang'); apply(l); try{ localStorage.setItem('offfen-lang',l); }catch(e){}
+      }); });
+      var saved=null; try{ saved=localStorage.getItem('offfen-lang'); }catch(e){}
+      if(saved && saved!=='de') apply(saved);
+    })();
+  </script>
 
 </body>
 </html>
