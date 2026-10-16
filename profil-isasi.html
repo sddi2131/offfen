@@ -273,6 +273,26 @@
   .info-list .v a{ color:#cdb98a; }
   .info-list .v.leer{ color:rgba(239,230,200,0.35); }
   .info-hint{ margin-top:1rem; font-size:0.82rem; color:rgba(239,230,200,0.5); }
+
+  /* ===== grosse ansicht (lightbox) ===== */
+  #panel-arbeiten .work-tile{ cursor:zoom-in; transition:transform .25s ease, border-color .25s ease; }
+  #panel-arbeiten .work-tile:hover, #panel-arbeiten .work-tile:focus-visible{ border-color:rgba(205,185,138,0.7); outline:none; }
+  .lb{ position:fixed; inset:0; z-index:100; display:none; align-items:center; justify-content:center; padding:1.2rem;
+       background:rgba(30,28,23,0.99); }
+  .lb.open{ display:flex; }
+  .lb-box{ max-width:min(94vw,980px); width:100%; max-height:94vh; display:flex; flex-direction:column; align-items:center; gap:1rem; }
+  .lb-img{ max-width:100%; max-height:66vh; object-fit:contain; border:1px solid rgba(239,230,200,0.2); background:#2e2b24; }
+  .lb-cap{ width:100%; max-width:640px; text-align:left; overflow:auto; max-height:24vh; }
+  .lb-title{ margin:0 0 .35rem; font-size:1.05rem; letter-spacing:.06em; color:#efe6c8; font-weight:500; }
+  .lb-text{ margin:0; font-size:.95rem; line-height:1.55; color:rgba(239,230,200,0.78); }
+  .lb-text:empty{ display:none; }
+  .lb-btn{ position:absolute; background:none; border:1px solid rgba(239,230,200,0.3); color:#efe6c8; cursor:pointer;
+           width:2.6rem; height:2.6rem; font-size:1.3rem; line-height:1; border-radius:0; font-family:inherit; }
+  .lb-btn:hover{ border-color:#cdb98a; color:#cdb98a; }
+  .lb-close{ top:1rem; right:1rem; }
+  .lb-prev{ left:.8rem; top:42%; }
+  .lb-next{ right:.8rem; top:42%; }
+  @media (max-width:640px){ .lb-prev{ left:.4rem; top:auto; bottom:1rem; } .lb-next{ right:.4rem; top:auto; bottom:1rem; } .lb-img{ max-height:58vh; } }
 </style>
 </head>
 <body>
@@ -341,7 +361,7 @@
     </div></div>
     <div id="panel-info" class="tab-panel" hidden>
       <ul class="info-list">
-        <li><span class="k">e-mail</span><span class="v leer">noch nicht eingetragen</span></li>
+        <li><span class="k">e-mail</span><span class="v"><a href="mailto:raumespacio@offfen-schaffensmenschen.com">raumespacio@offfen-schaffensmenschen.com</a></span></li>
         <li><span class="k">instagram</span><span class="v"><a href="https://www.instagram.com/offfen.schaffensmenschen/" target="_blank" rel="noopener">@offfen.schaffensmenschen</a></span></li>
         <li><span class="k">telefon</span><span class="v"><a href="tel:+4915562650433">015562650433</a></span></li>
       </ul>
@@ -354,6 +374,16 @@
     Alle gezeigten Werke, Ideen und Prozesse bleiben geistiges Eigentum der jeweiligen Urheber:innen.
     Nutzung, Vervielfältigung oder Weiterverwendung nur mit deren Zustimmung.
   </footer>
+
+  <div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="grosse ansicht" hidden>
+    <button class="lb-btn lb-close" id="lb-close" aria-label="schliessen">&times;</button>
+    <button class="lb-btn lb-prev" id="lb-prev" aria-label="zurueck">&#8249;</button>
+    <button class="lb-btn lb-next" id="lb-next" aria-label="weiter">&#8250;</button>
+    <div class="lb-box">
+      <img class="lb-img" id="lb-img" alt="">
+      <div class="lb-cap"><h3 class="lb-title" id="lb-title"></h3><p class="lb-text" id="lb-text"></p></div>
+    </div>
+  </div>
 <script>
     (function(){
       var tabs=document.querySelectorAll('.section-tab');
@@ -365,6 +395,38 @@
           Object.keys(panels).forEach(function(k){ var el=document.getElementById(panels[k]); if(el) el.hidden=(panels[k]!==id); });
         });
       });
+    })();
+  </script>
+
+<script>
+    (function(){
+      var tiles=[].slice.call(document.querySelectorAll('#panel-arbeiten .work-tile'));
+      var lb=document.getElementById('lb'); if(!lb||!tiles.length) return;
+      var img=document.getElementById('lb-img'), ti=document.getElementById('lb-title'), tx=document.getElementById('lb-text');
+      var cur=0, lastFocus=null;
+      function urlOf(t){ var m=(t.style.backgroundImage||'').match(/url\(["']?([^"')]+)["']?\)/); return m?m[1]:''; }
+      function titleOf(t){ var s=t.querySelector('span'); return s?s.textContent.trim():''; }
+      function show(i){
+        cur=(i+tiles.length)%tiles.length; var t=tiles[cur];
+        img.src=urlOf(t); img.alt=titleOf(t); ti.textContent=titleOf(t); tx.textContent=t.getAttribute('data-text')||'';
+      }
+      function open(i){ lastFocus=document.activeElement; show(i); lb.hidden=false; lb.classList.add('open'); document.body.style.overflow='hidden'; document.getElementById('lb-close').focus(); }
+      function close(){ lb.classList.remove('open'); lb.hidden=true; document.body.style.overflow=''; if(lastFocus&&lastFocus.focus) lastFocus.focus(); }
+      tiles.forEach(function(t,i){
+        t.setAttribute('tabindex','0'); t.setAttribute('role','button'); t.setAttribute('aria-label',titleOf(t)+' gross ansehen');
+        t.addEventListener('click',function(){ open(i); });
+        t.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); open(i); } });
+      });
+      document.getElementById('lb-close').addEventListener('click',close);
+      document.getElementById('lb-prev').addEventListener('click',function(e){ e.stopPropagation(); show(cur-1); });
+      document.getElementById('lb-next').addEventListener('click',function(e){ e.stopPropagation(); show(cur+1); });
+      lb.addEventListener('click',function(e){ if(e.target===lb||e.target.classList.contains('lb-box')) close(); });
+      document.addEventListener('keydown',function(e){
+        if(lb.hidden) return;
+        if(e.key==='Escape') close(); else if(e.key==='ArrowLeft') show(cur-1); else if(e.key==='ArrowRight') show(cur+1);
+      });
+      var sx=null; lb.addEventListener('touchstart',function(e){ sx=e.touches[0].clientX; },{passive:true});
+      lb.addEventListener('touchend',function(e){ if(sx===null) return; var dx=e.changedTouches[0].clientX-sx; sx=null; if(Math.abs(dx)>50) show(cur+(dx<0?1:-1)); },{passive:true});
     })();
   </script>
 </body>
