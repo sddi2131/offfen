@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>offfen-schaffensraum · Vintage &amp; Fundstücke</title>
+<meta name="description" content="Vintage-Lampen, Möbel und Fundstücke aus dem offfen-schaffensraum. Anfrage per E-Mail.">
+<link rel="icon" href="schaffensraum-favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&family=Space+Grotesk:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --tafel:#2c3b2f; --tafel2:#3b513e; --moos:#687a5f;
+    --creme:#ece2c7; --sand:#cdb98a; --kohle:#232a24;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{ background:var(--tafel); color:var(--creme); font-family:'Jost',system-ui,sans-serif; line-height:1.6; -webkit-font-smoothing:antialiased; }
+  [data-i18n]{ display:none; } [data-i18n].lang-active{ display:inline; }
+  p[data-i18n].lang-active, div[data-i18n].lang-active{ display:block; }
+  a{ color:inherit; }
+  header{ display:flex; justify-content:space-between; align-items:center; padding:1rem 1.8rem; max-width:1100px; margin:0 auto; }
+  header .brand{ display:flex; align-items:center; gap:0.7rem; text-decoration:none; font-family:'Space Grotesk',sans-serif; font-weight:600; letter-spacing:0.04em; text-transform:lowercase; }
+  header .brand img{ width:38px; height:38px; }
+  nav{ display:flex; gap:1.4rem; align-items:center; font-size:0.92rem; text-transform:lowercase; letter-spacing:0.08em; }
+  nav a{ text-decoration:none; opacity:0.85; } nav a:hover{ opacity:1; color:var(--sand); }
+  .lang button{ background:none; border:0; color:var(--creme); font:inherit; opacity:0.5; cursor:pointer; padding:0 0.2rem; }
+  .lang button.active{ opacity:1; border-bottom:1px solid var(--sand); }
+  main{ max-width:1100px; margin:0 auto; padding:0 1.8rem; }
+  .hero{ text-align:center; padding:5vh 0 7vh; }
+  .hero img.logo{ width:min(320px,62vw); height:auto; filter:drop-shadow(0 14px 34px rgba(0,0,0,0.45)); }
+  h1{ font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:clamp(2rem,6vw,3.6rem); line-height:1.1; margin-top:2rem; text-transform:lowercase; }
+  .lede{ max-width:46ch; margin:1.4rem auto 0; font-size:clamp(1.05rem,2vw,1.25rem); color:rgba(236,226,199,0.82); }
+  .cta-row{ display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; margin-top:2.2rem; }
+  .cta{ display:inline-block; padding:0.85rem 1.6rem; text-decoration:none; font-weight:600; font-size:0.95rem; border-radius:2px; text-transform:lowercase; letter-spacing:0.05em; }
+  .cta.primary{ background:var(--sand); color:var(--kohle); } .cta.primary:hover{ background:var(--creme); }
+  .cta.secondary{ border:1.5px solid rgba(236,226,199,0.5); } .cta.secondary:hover{ background:var(--creme); color:var(--kohle); }
+  h2{ font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:clamp(1.5rem,3.5vw,2.2rem); text-transform:lowercase; text-align:center; }
+  .sub{ text-align:center; color:var(--sand); letter-spacing:0.2em; font-size:0.78rem; text-transform:lowercase; margin-bottom:0.6rem; }
+  .grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(250px,1fr)); gap:1.6rem; margin-top:2.4rem; }
+  .card{ background:var(--tafel2); border:1px solid rgba(236,226,199,0.14); display:flex; flex-direction:column; }
+  .card img{ width:100%; aspect-ratio:4/5; object-fit:cover; display:block; }
+  .card .info{ padding:1.1rem 1.2rem 1.3rem; display:flex; flex-direction:column; gap:0.35rem; flex:1; }
+  .card h3{ font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:1.15rem; text-transform:lowercase; }
+  .card p{ font-size:0.92rem; color:rgba(236,226,199,0.75); }
+  .card .preis{ color:var(--sand); font-size:0.85rem; letter-spacing:0.12em; text-transform:lowercase; }
+  .card a.anfrage{ margin-top:auto; padding-top:0.8rem; color:var(--sand); font-weight:600; text-decoration:none; text-transform:lowercase; letter-spacing:0.06em; }
+  .card a.anfrage:hover{ color:var(--creme); }
+  section{ margin-bottom:10vh; }
+  .schritte{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1.4rem; margin-top:2rem; }
+  .schritt{ border-top:2px solid var(--sand); padding-top:1rem; }
+  .schritt b{ display:block; font-family:'Space Grotesk',sans-serif; font-size:1.8rem; color:var(--sand); }
+  .band{ position:relative; margin:0 calc(50% - 50vw); height:min(60vh,460px); overflow:hidden; }
+  .band img{ width:100%; height:100%; object-fit:cover; filter:saturate(0.7) brightness(0.7); }
+  .band p{ position:absolute; inset:0; display:flex; align-items:center; justify-content:center; text-align:center; padding:1.5rem; font-family:'Space Grotesk',sans-serif; font-size:clamp(1.3rem,3.4vw,2.2rem); font-weight:500; text-transform:lowercase; text-shadow:0 2px 20px rgba(0,0,0,0.6); }
+  .lang{ white-space:nowrap; }
+  @media (max-width:560px){ header{ padding:0.8rem 1rem; } header .brand span{ display:none; } nav{ gap:0.9rem; font-size:0.85rem; } }
+  footer{ border-top:1px solid rgba(236,226,199,0.18); padding:2.4rem 1.8rem 3rem; text-align:center; font-size:0.88rem; color:rgba(236,226,199,0.75); }
+  footer a{ color:var(--sand); }
+</style>
+</head>
+<body>
+<header>
+  <a class="brand" href="#top"><img src="schaffensraum-logo.png" alt=""><span>offfen-schaffensraum</span></a>
+  <nav>
+    <a href="#fundstuecke"><span data-i18n="de" class="lang-active">fundstücke</span><span data-i18n="en">finds</span></a>
+    <a href="#anfrage"><span data-i18n="de" class="lang-active">anfrage</span><span data-i18n="en">enquiry</span></a>
+    <span class="lang"><button type="button" data-lang="de" class="active">DE</button>/<button type="button" data-lang="en">EN</button></span>
+  </nav>
+</header>
+<main id="top">
+  <section class="hero">
+    <img class="logo" src="schaffensraum-logo.png" alt="offfen-schaffensraum Logo">
+    <h1><span data-i18n="de" class="lang-active">dinge mit geschichte.</span><span data-i18n="en">things with a story.</span></h1>
+    <p class="lede">
+      <span data-i18n="de" class="lang-active">Vintage-Lampen, Möbel und Fundstücke aus dem offfen-schaffensraum. Einzelstücke, ausgesucht und neu gesehen.</span>
+      <span data-i18n="en">Vintage lamps, furniture and found objects from the offfen-schaffensraum. One-of-a-kind pieces, chosen and seen anew.</span>
+    </p>
+    <div class="cta-row">
+      <a class="cta primary" href="#fundstuecke"><span data-i18n="de" class="lang-active">fundstücke ansehen</span><span data-i18n="en">see the finds</span></a>
+      <a class="cta secondary" href="#anfrage"><span data-i18n="de" class="lang-active">so geht's</span><span data-i18n="en">how it works</span></a>
+    </div>
+  </section>
+
+  <section id="fundstuecke">
+    <p class="sub"><span data-i18n="de" class="lang-active">aktuell im raum</span><span data-i18n="en">currently in the space</span></p>
+    <h2><span data-i18n="de" class="lang-active">fundstücke</span><span data-i18n="en">finds</span></h2>
+    <div class="grid">
+      <article class="card">
+        <img src="schaffensraum-fund-stuehle.jpg" alt="Zwei Klappstühle, gelb und blau" loading="lazy">
+        <div class="info">
+          <h3><span data-i18n="de" class="lang-active">zwei klappstühle</span><span data-i18n="en">two folding chairs</span></h3>
+          <p><span data-i18n="de" class="lang-active">Gartenstühle aus Metall und Holz, gelb und blau gestrichen.</span><span data-i18n="en">Garden chairs of metal and wood, painted yellow and blue.</span></p>
+          <p class="preis"><span data-i18n="de" class="lang-active">preis auf anfrage</span><span data-i18n="en">price on request</span></p>
+          <a class="anfrage" href="mailto:schaffensraum@offfen-schaffensmenschen.com?subject=Anfrage%3A%20zwei%20Klappst%C3%BChle">anfragen →</a>
+        </div>
+      </article>
+      <article class="card">
+        <img src="schaffensraum-fund-stuhl.jpg" alt="Ein Klappstuhl vor rauer Wand" loading="lazy">
+        <div class="info">
+          <h3><span data-i18n="de" class="lang-active">klappstuhl, patiniert</span><span data-i18n="en">folding chair, patinated</span></h3>
+          <p><span data-i18n="de" class="lang-active">Zusammengeklappt, mit Spuren der Zeit.</span><span data-i18n="en">Folded, with traces of time.</span></p>
+          <p class="preis"><span data-i18n="de" class="lang-active">preis auf anfrage</span><span data-i18n="en">price on request</span></p>
+          <a class="anfrage" href="mailto:schaffensraum@offfen-schaffensmenschen.com?subject=Anfrage%3A%20Klappstuhl%20patiniert">anfragen →</a>
+        </div>
+      </article>
+      <article class="card">
+        <img src="schaffensraum-fund-spirale.jpg" alt="Verrostetes Metallgitter mit Spiralen" loading="lazy">
+        <div class="info">
+          <h3><span data-i18n="de" class="lang-active">rostiges gitter</span><span data-i18n="en">rusty grid</span></h3>
+          <p><span data-i18n="de" class="lang-active">Industrielles Fundstück mit Spiralen, rau und eindrucksvoll.</span><span data-i18n="en">Industrial find with spirals, rough and striking.</span></p>
+          <p class="preis"><span data-i18n="de" class="lang-active">preis auf anfrage</span><span data-i18n="en">price on request</span></p>
+          <a class="anfrage" href="mailto:schaffensraum@offfen-schaffensmenschen.com?subject=Anfrage%3A%20rostiges%20Gitter">anfragen →</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="anfrage">
+    <p class="sub"><span data-i18n="de" class="lang-active">ganz einfach</span><span data-i18n="en">simple</span></p>
+    <h2><span data-i18n="de" class="lang-active">so kommt ein stück zu dir</span><span data-i18n="en">how a piece comes to you</span></h2>
+    <div class="schritte">
+      <div class="schritt"><b>1</b><p><span data-i18n="de" class="lang-active">Du suchst dir ein Stück aus und tippst auf „anfragen“.</span><span data-i18n="en">You pick a piece and tap “enquire”.</span></p></div>
+      <div class="schritt"><b>2</b><p><span data-i18n="de" class="lang-active">Du schreibst uns eine kurze E-Mail. Wir antworten mit Preis und Details.</span><span data-i18n="en">You send us a short email. We reply with price and details.</span></p></div>
+      <div class="schritt"><b>3</b><p><span data-i18n="de" class="lang-active">Wir vereinbaren gemeinsam, wie das Stück zu dir kommt.</span><span data-i18n="en">Together we agree on how the piece reaches you.</span></p></div>
+    </div>
+    <div class="cta-row">
+      <a class="cta primary" href="mailto:schaffensraum@offfen-schaffensmenschen.com"><span data-i18n="de" class="lang-active">e-mail schreiben</span><span data-i18n="en">write an email</span></a>
+    </div>
+  </section>
+</main>
+
+<div class="band">
+  <img src="schaffensraum-raum.jpg" alt="Gewölbekeller im grünen Licht" loading="lazy">
+  <p><span data-i18n="de" class="lang-active">hier warten die dinge auf ihr nächstes leben.</span><span data-i18n="en">here the things wait for their next life.</span></p>
+</div>
+
+<footer>
+  <p>
+    <span data-i18n="de" class="lang-active">Ein Teil von</span><span data-i18n="en">Part of</span>
+    <a href="https://offfen-schaffensmenschen.com">offfen · schaffensmenschen</a><br>
+    <a href="mailto:schaffensraum@offfen-schaffensmenschen.com">schaffensraum@offfen-schaffensmenschen.com</a><br><br>
+    <a href="https://offfen-schaffensmenschen.com/impressum.html"><span data-i18n="de" class="lang-active">Impressum</span><span data-i18n="en">Legal notice</span></a> ·
+    <a href="https://offfen-schaffensmenschen.com/datenschutz.html"><span data-i18n="de" class="lang-active">Datenschutz</span><span data-i18n="en">Privacy</span></a>
+  </p>
+</footer>
+<script>
+(function(){
+  var btns=document.querySelectorAll('[data-lang]');
+  function set(l){
+    document.documentElement.lang=l;
+    document.querySelectorAll('[data-i18n]').forEach(function(e){ e.classList.toggle('lang-active', e.getAttribute('data-i18n')===l); });
+    btns.forEach(function(b){ b.classList.toggle('active', b.getAttribute('data-lang')===l); });
+    try{ localStorage.setItem('lang',l); }catch(e){}
+  }
+  btns.forEach(function(b){ b.addEventListener('click',function(){ set(b.getAttribute('data-lang')); }); });
+  var s=null; try{ s=localStorage.getItem('lang'); }catch(e){}
+  if(s==='en') set('en');
+})();
+</script>
+</body>
+</html>
