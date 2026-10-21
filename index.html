@@ -179,6 +179,12 @@
   @media (max-width: 640px){ .cta-row{ flex-direction:column; } .cta{ justify-content:center; } }
 
   /* Werk auf der Startseite */
+
+  .raum{ margin:0 auto 8vh; text-align:center; }
+  .raum-strip{ display:flex; gap:0.9rem; overflow-x:auto; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; padding:0.2rem 0.2rem 1rem; scrollbar-width:thin; }
+  .raum-strip img{ height:min(62vh,520px); width:auto; flex:0 0 auto; scroll-snap-align:center; border-radius:0; box-shadow:0 14px 40px rgba(0,0,0,0.45), 0 0 0 1px rgba(239,230,200,0.12); }
+  .raum .raum-label{ font-size:0.78rem; letter-spacing:0.3em; text-transform:lowercase; color:var(--gold); font-weight:600; margin-bottom:1.2rem; }
+  .raum .raum-text{ font-family:'Space Grotesk', sans-serif; font-weight:500; font-size:clamp(1.05rem,2vw,1.3rem); color:rgba(239,230,200,0.8); max-width:46ch; margin:1rem auto 0; line-height:1.5; }
   .werk{ text-align:center; margin:0 auto 8vh; }
   .werk figure{ display:inline-block; max-width:min(520px, 88vw); }
   .werk img{ width:100%; height:auto; display:block; border-radius:4px; box-shadow:0 14px 40px rgba(0,0,0,0.45); }
@@ -366,6 +372,15 @@
           <span data-i18n="de" class="lang-active">Entdecken was entsteht</span><span data-i18n="en">Discover what's emerging</span><span data-i18n="es">Descubre lo que está surgiendo</span>
         </a>
       </div>
+    </section>
+
+    <section class="raum">
+      <p class="raum-label"><span data-i18n="de" class="lang-active">unser raum</span><span data-i18n="en">our space</span></p>
+      <div class="raum-strip"><img src="raum-1.jpg" alt="Verlassenes Haus, überwuchert vom Grün" loading="eager"><img src="raum-2.jpg" alt="Enge Treppe nach unten" loading="lazy"><img src="raum-3.jpg" alt="Zwei Klappstühle, gelb und blau, vor einer Backsteinwand" loading="lazy"><img src="raum-4.jpg" alt="Ein einzelner Klappstuhl vor einer rauen Wand" loading="lazy"><img src="raum-5.jpg" alt="Verrostete Spirale an der Wand" loading="lazy"><img src="raum-6.jpg" alt="Leerer Raum mit Holzbalken" loading="lazy"><img src="raum-7.jpg" alt="Gewölbekeller im grünen Licht mit einer Gestalt" loading="lazy"></div>
+      <p class="raum-text">
+        <span data-i18n="de" class="lang-active">Hier wird OFFFEN ganz real: ein Raum für Atelier-Events und Begegnung.</span>
+        <span data-i18n="en">Here OFFFEN becomes real: a space for studio events and encounters.</span>
+      </p>
     </section>
 
     <section class="werk">
