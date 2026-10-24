@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Luca Dietrich — Schaffensmenschen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#121212;
+    --paper:#f3f1ec;
+    --gold:#c8a24a;
+    --beton:#b7b3ad;
+    --ziegel:#b73228;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html,body{
+    background-color:var(--paper);
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.15  0 0 0 0 0.11  0 0 0 0 0.07  0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-repeat:repeat;
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+  }
+
+  header.site-header{
+    display:flex;
+    align-items:center;
+    gap:0.9rem;
+    padding:1.3rem 1.6rem;
+    border-bottom:1px solid rgba(18,18,18,0.1);
+  }
+  .frame{
+    position:relative;
+    width:20px; height:24px;
+    flex-shrink:0;
+  }
+  .frame::before{
+    content:"";
+    position:absolute; inset:0;
+    border:1.4px solid var(--ink);
+    border-right:none;
+  }
+  header.site-header a.wordmark{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:400;
+    font-size:0.85rem;
+    letter-spacing:0.06em;
+    color:var(--ink);
+    text-decoration:none;
+    opacity:0.8;
+  }
+  header.site-header nav{ margin-left:auto; display:flex; gap:1.6rem; }
+  header.site-header nav a{
+    font-size:0.85rem;
+    color:rgba(18,18,18,0.5);
+    text-decoration:none;
+  }
+  header.site-header nav a.current{ color:var(--ink); font-weight:600; }
+
+  main{ max-width:900px; margin:0 auto; padding:0 1.8rem 5rem; }
+
+  .cover{
+    height:180px;
+    border-radius:0 0 4px 4px;
+    margin:0 -1.8rem;
+    position:relative;
+    background:linear-gradient(155deg, #b7b3ad, #8f8b85);
+    background-blend-mode:overlay;
+    background-image:
+      radial-gradient(ellipse at 25% 20%, rgba(255,255,255,0.15), transparent 55%),
+      radial-gradient(ellipse at 80% 85%, rgba(0,0,0,0.15), transparent 60%);
+  }
+
+  .profile-head{
+    display:flex;
+    align-items:flex-end;
+    gap:1.4rem;
+    margin-top:-46px;
+    padding:0 0.4rem;
+  }
+  .avatar{
+    width:96px; height:96px;
+    border-radius:2px;
+    border:3px solid var(--paper);
+    box-shadow:0 6px 16px rgba(0,0,0,0.15);
+    flex-shrink:0;
+    overflow:hidden;
+  }
+  .avatar img{
+    width:100%; height:100%;
+    object-fit:cover;
+    display:block;
+  }
+
+  .profile-meta{ flex:1; padding-bottom:0.3rem; }
+  .profile-meta h1{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:500;
+    font-size:1.6rem;
+  }
+  .profile-meta .role-line{
+    font-size:0.88rem;
+    color:rgba(18,18,18,0.55);
+    margin-top:0.25rem;
+  }
+
+  .follow-btn{
+    align-self:flex-end;
+    margin-bottom:0.3rem;
+    padding:0.6rem 1.3rem;
+    background:var(--ink);
+    color:var(--paper);
+    border:none;
+    border-radius:2px;
+    font-family:'Work Sans', sans-serif;
+    font-weight:600;
+    font-size:0.85rem;
+    cursor:pointer;
+  }
+
+  .chips{ display:flex; flex-wrap:wrap; gap:0.5rem; margin:1.6rem 0 0.4rem; }
+  .chip{
+    padding:0.35rem 0.8rem;
+    border-radius:2px;
+    border:1px solid rgba(18,18,18,0.15);
+    font-size:0.76rem;
+    color:rgba(18,18,18,0.6);
+  }
+  .chip.primary{
+    background:var(--gold);
+    border-color:var(--gold);
+    color:var(--ink);
+    font-weight:600;
+  }
+
+  .bio{
+    margin-top:1.3rem;
+    font-size:0.95rem;
+    line-height:1.65;
+    color:rgba(18,18,18,0.75);
+    max-width:56ch;
+  }
+
+  .stats{
+    display:flex;
+    gap:2.2rem;
+    margin-top:1.6rem;
+    padding-bottom:1.6rem;
+    border-bottom:1px solid rgba(18,18,18,0.1);
+  }
+  .stat strong{ display:block; font-size:1.1rem; font-family:'Space Grotesk', sans-serif; }
+  .stat span{ font-size:0.75rem; color:rgba(18,18,18,0.5); text-transform:uppercase; letter-spacing:0.05em; }
+
+  .section-tabs{
+    display:flex; gap:1.8rem;
+    margin-top:1.8rem;
+    border-bottom:1px solid rgba(18,18,18,0.1);
+  }
+  .section-tab{
+    padding-bottom:0.8rem;
+    font-size:0.88rem;
+    font-weight:600;
+    color:rgba(18,18,18,0.4);
+    position:relative;
+    cursor:pointer;
+  }
+  .section-tab.active{ color:var(--ink); }
+  .section-tab.active::after{
+    content:"";
+    position:absolute; left:0; right:0; bottom:-1px;
+    height:2px; background:var(--gold);
+  }
+
+  .work-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:0.9rem;
+    margin-top:1.6rem;
+  }
+  .work-tile{
+    aspect-ratio:1;
+    border-radius:2px;
+    position:relative;
+    overflow:hidden;
+    display:flex; align-items:flex-end;
+    padding:0.7rem;
+    background-blend-mode:overlay, overlay, normal;
+    background-image:
+      radial-gradient(ellipse at 25% 20%, rgba(255,255,255,0.12), transparent 55%),
+      radial-gradient(ellipse at 80% 85%, rgba(0,0,0,0.14), transparent 60%),
+      repeating-linear-gradient(96deg, rgba(0,0,0,0.05) 0px, transparent 3px, transparent 8px, rgba(255,255,255,0.05) 10px, transparent 15px);
+  }
+  .work-tile span{
+    font-size:0.72rem;
+    color:var(--paper);
+    background:rgba(18,18,18,0.55);
+    padding:0.2rem 0.5rem;
+    border-radius:2px;
+  }
+
+  @media (max-width: 640px){
+    .work-grid{ grid-template-columns:repeat(2,1fr); }
+    .profile-head{ flex-wrap:wrap; }
+    .follow-btn{ order:3; width:100%; margin-top:0.8rem; }
+  }
+
+  /* ===== Schiefertafel-Look (passend zur Startseite) ===== */
+  :root{ --ink:#efe6c8; --paper:#2e2b24; --gold:#cdb98a; --gold-line:rgba(239,230,200,0.07); --beton:#a89f75; --ziegel:#cdb98a; }
+  html,body{ background-color:#2e2b24 !important; color:#efe6c8 !important; font-family:'Jost','Work Sans',sans-serif !important;
+    background-image:none !important; }
+  body *{ text-transform:lowercase; }
+  h1,h2,h3,.person-name,.profile-meta h1,.stat strong{ font-family:'Jost',sans-serif !important; font-weight:500 !important; color:#efe6c8 !important; }
+  body::after{ content:""; position:fixed; inset:0; pointer-events:none; z-index:50; opacity:0.55; mix-blend-mode:soft-light;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.93  0 0 0 0 0.9  0 0 0 0 0.78  0 0 0 0.55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+  header.site-header{ position:relative; border-bottom:1px solid rgba(239,230,200,0.2) !important; }
+  header.site-header::after{ content:""; position:absolute; left:0; right:0; bottom:-4px; height:3px; pointer-events:none;
+    background:linear-gradient(180deg, rgba(126,118,83,0.55) 0 1px, rgba(168,159,117,0.35) 1px 2px, rgba(126,118,83,0.2) 2px 3px);
+    -webkit-mask:linear-gradient(90deg, transparent 0, #000 6%, #000 55%, rgba(0,0,0,0.35) 70%, #000 82%, transparent 100%);
+            mask:linear-gradient(90deg, transparent 0, #000 6%, #000 55%, rgba(0,0,0,0.35) 70%, #000 82%, transparent 100%); }
+  header.site-header a span, header.site-header nav a{ font-family:'Jost',sans-serif !important; letter-spacing:0.18em !important; font-size:0.74rem !important; font-weight:500 !important; color:rgba(239,230,200,0.6) !important; opacity:1 !important; }
+  header.site-header nav a.current{ color:#efe6c8 !important; }
+  .lang-toggle button{ text-transform:lowercase !important; font-family:'Jost',sans-serif !important; color:rgba(239,230,200,0.5) !important; letter-spacing:0.18em !important; }
+  .lang-toggle button.active{ color:#efe6c8 !important; border-bottom:2px solid #cdb98a !important; }
+  .lang-toggle span{ color:rgba(239,230,200,0.3) !important; }
+  .subline,.person-role,.profile-meta .role-line,.bio,.empty-note,.stat span,.back-link{ color:rgba(239,230,200,0.68) !important; }
+  .back-link{ letter-spacing:0.14em; }
+  footer, footer *{ color:rgba(239,230,200,0.55) !important; }
+  footer a{ text-decoration-color:rgba(239,230,200,0.3) !important; }
+  /* Karten und Kacheln */
+  .person-card{ background:rgba(239,230,200,0.04) !important; border:1px solid rgba(239,230,200,0.2) !important; border-radius:0 !important; color:#efe6c8 !important; }
+  .person-card:hover{ box-shadow:0 10px 24px rgba(0,0,0,0.4) !important; }
+  .person-avatar img{ filter:saturate(0.85) sepia(0.12); }
+  .work-tile{ border:1px solid rgba(239,230,200,0.18); border-radius:0 !important; }
+  .work-tile span{ background:rgba(46,43,36,0.78) !important; color:#efe6c8 !important; letter-spacing:0.06em; }
+  .work-tile .by{ background:none !important; color:rgba(239,230,200,0.85) !important; }
+  /* Profil */
+  .cover{ background:linear-gradient(180deg, #4c4731, #2e2b24) !important; border-bottom:1px solid rgba(239,230,200,0.2); border-radius:0 !important; }
+  .avatar{ border:2px solid #cdb98a !important; border-radius:0 !important; }
+  .follow-btn{ background:#cdb98a !important; color:#2e2b24 !important; border-radius:0 !important; font-family:'Jost',sans-serif !important; letter-spacing:0.14em; }
+  .chip{ border:1px solid rgba(239,230,200,0.3) !important; color:rgba(239,230,200,0.75) !important; border-radius:0 !important; }
+  .chip.primary{ background:#cdb98a !important; border-color:#cdb98a !important; color:#2e2b24 !important; }
+  .stats,.section-tabs{ border-bottom-color:rgba(239,230,200,0.2) !important; }
+  .section-tab{ color:rgba(239,230,200,0.45) !important; }
+  .section-tab.active{ color:#efe6c8 !important; }
+  .section-tab.active::after{ background:#cdb98a !important; }
+  /* Zimmer: Wand mit Rahmen in den Logo-Tönen */
+  .discipline-card{ background:transparent !important; box-shadow:none !important; border:1px solid rgba(239,230,200,0.28); border-radius:0 !important; padding:8px !important; }
+  .frame-inner{ border:1.5px solid #cdb98a !important; color:#efe6c8 !important; }
+  .frame-inner span{ font-family:'Jost',sans-serif !important; letter-spacing:0.14em; font-weight:500 !important; }
+  .a-kunst .frame-inner{ background:linear-gradient(155deg,#6b5f33,#3f3820) !important; }
+  .a-design .frame-inner{ background:linear-gradient(155deg,#3f3c33,#26231c) !important; }
+  .a-performance .frame-inner{ background:linear-gradient(155deg,#8a7430,#54461b) !important; }
+  .a-architektur .frame-inner{ background:linear-gradient(155deg,#7e7653,#4a452f) !important; }
+  .a-grafik .frame-inner{ background:linear-gradient(155deg,#55524a,#33312b) !important; }
+  .a-musik .frame-inner{ background:linear-gradient(155deg,#5a4e2c,#352e1a) !important; }
+  .a-vielesmehr .frame-inner{ background:linear-gradient(155deg,#a89f75,#6c6547) !important; color:#26231c !important; }
+  @media (max-width:640px){ header.site-header{ flex-wrap:wrap; gap:0.7rem 1rem !important; padding:1rem 1.1rem !important; } header.site-header nav{ margin-left:0 !important; width:100%; flex-wrap:wrap; gap:0.5rem 1.1rem !important; } header.site-header a span, header.site-header nav a{ letter-spacing:0.12em !important; } }
+  .empty-note a, .bio a{ color:#cdb98a !important; text-decoration-color:rgba(205,185,138,0.5); }
+  /* fix: footer & profile head */
+  footer{ max-width:900px; margin:0 auto; padding:2rem 1.8rem 3rem; font-size:0.82rem; line-height:1.7; }
+  .profile-head{ position:relative; z-index:2; }
+
+  /* Info-Reiter */
+  .tab-panel[hidden]{ display:none !important; }
+  .section-tab{ cursor:pointer; }
+  .info-list{ list-style:none; margin:0; padding:0.4rem 0 0; }
+  .info-list li{ display:flex; gap:1rem; align-items:baseline; padding:0.8rem 0; border-bottom:1px solid rgba(239,230,200,0.15); }
+  .info-list .k{ flex:0 0 6.5rem; font-size:0.78rem; letter-spacing:0.14em; text-transform:lowercase; color:rgba(239,230,200,0.5); }
+  .info-list .v{ color:#efe6c8; word-break:break-word; }
+  .info-list .v a{ color:#cdb98a; }
+  .info-list .v.leer{ color:rgba(239,230,200,0.35); }
+  .info-hint{ margin-top:1rem; font-size:0.82rem; color:rgba(239,230,200,0.5); }
+
+  /* ===== grosse ansicht (lightbox) ===== */
+  #panel-arbeiten .work-tile{ cursor:zoom-in; transition:transform .25s ease, border-color .25s ease; }
+  #panel-arbeiten .work-tile:hover, #panel-arbeiten .work-tile:focus-visible{ border-color:rgba(205,185,138,0.7); outline:none; }
+  .lb{ position:fixed; inset:0; z-index:100; display:none; align-items:center; justify-content:center; padding:1.2rem;
+       background:rgba(30,28,23,0.99); }
+  .lb.open{ display:flex; }
+  .lb-box{ max-width:min(94vw,980px); width:100%; max-height:94vh; display:flex; flex-direction:column; align-items:center; gap:1rem; }
+  .lb-img{ max-width:100%; max-height:66vh; object-fit:contain; border:1px solid rgba(239,230,200,0.2); background:#2e2b24; }
+  .lb-cap{ width:100%; max-width:640px; text-align:left; overflow:auto; max-height:24vh; }
+  .lb-title{ margin:0 0 .35rem; font-size:1.05rem; letter-spacing:.06em; color:#efe6c8; font-weight:500; }
+  .lb-text{ margin:0; font-size:.95rem; line-height:1.55; color:rgba(239,230,200,0.78); }
+  .lb-text:empty{ display:none; }
+  .lb-btn{ position:absolute; background:none; border:1px solid rgba(239,230,200,0.3); color:#efe6c8; cursor:pointer;
+           width:2.6rem; height:2.6rem; font-size:1.3rem; line-height:1; border-radius:0; font-family:inherit; }
+  .lb-btn:hover{ border-color:#cdb98a; color:#cdb98a; }
+  .lb-close{ top:1rem; right:1rem; }
+  .lb-prev{ left:.8rem; top:42%; }
+  .lb-next{ right:.8rem; top:42%; }
+  @media (max-width:640px){ .lb-prev{ left:.4rem; top:auto; bottom:1rem; } .lb-next{ right:.4rem; top:auto; bottom:1rem; } .lb-img{ max-height:58vh; } }
+
+  /* ===== sprachumschalter ===== */
+  .lang-toggle{ display:flex; gap:0.3rem; font-size:0.8rem; letter-spacing:0.04em; align-items:center; }
+  .lang-toggle button{ background:none; border:none; font-family:'Jost',sans-serif; font-size:0.8rem; letter-spacing:0.04em;
+    text-transform:uppercase; color:rgba(239,230,200,0.5); cursor:pointer; padding:0.2rem 0.3rem; }
+  .lang-toggle button.active{ color:#efe6c8; font-weight:600; border-bottom:2px solid #cdb98a; }
+  [data-i18n]{ display:none; }
+  [data-i18n].lang-active{ display:inline; }
+  .work-tile span span{ background:none !important; padding:0 !important; }
+  header.site-header nav{ display:flex; align-items:center; gap:1.1rem; flex-wrap:wrap; }
+</style>
+</head>
+<body>
+
+  <header class="site-header">
+  <a href="/" style="display:flex; align-items:center; gap:0.6rem; text-decoration:none;">
+      <img src="offfen-logo.jpeg" alt="OFFFEN Logo" style="height:28px; width:auto; border-radius:2px;">
+      <span style="font-family:'Space Grotesk', sans-serif; font-weight:400; font-size:0.85rem; letter-spacing:0.06em; color:var(--ink); opacity:0.8;">Raum schaffen</span>
+    </a>
+    <nav>
+      <a href="#"><span data-i18n="de" class="lang-active">Feed</span><span data-i18n="en">Feed</span><span data-i18n="es">Feed</span><span data-i18n="fr">Fil</span></a>
+      <a href="#"><span data-i18n="de" class="lang-active">Suche</span><span data-i18n="en">Search</span><span data-i18n="es">Buscar</span><span data-i18n="fr">Rechercher</span></a>
+      <a href="/menschen.html" class="current"><span data-i18n="de" class="lang-active">Menschen</span><span data-i18n="en">People</span><span data-i18n="es">Personas</span><span data-i18n="fr">Personnes</span></a>
+      <a href="/disziplinen.html"><span data-i18n="de" class="lang-active">Zimmer</span><span data-i18n="en">Rooms</span><span data-i18n="es">Espacios</span><span data-i18n="fr">Espaces</span></a>
+      <div class="lang-toggle">
+        <button type="button" data-lang="de" class="active">DE</button>
+        <span>/</span>
+        <button type="button" data-lang="en">EN</button>
+        <span>/</span>
+        <button type="button" data-lang="es">ES</button>
+        <span style="color:rgba(239,230,200,0.3);">/</span>
+        <button type="button" data-lang="fr">FR</button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="cover"></div>
+
+    <div class="profile-head">
+      <div class="avatar"><img src="luca-dietrich-avatar.jpg" alt="Luca Dietrich"></div>
+      <div class="profile-meta">
+        <h1>Luca Dietrich</h1>
+        <div class="role-line"><span data-i18n="de" class="lang-active">Architektur</span><span data-i18n="en">Architecture</span><span data-i18n="es">Arquitectura</span><span data-i18n="fr">Architecture</span></div>
+      </div>
+      <button class="follow-btn"><span data-i18n="de" class="lang-active">Folgen</span><span data-i18n="en">Follow</span><span data-i18n="es">Seguir</span><span data-i18n="fr">Suivre</span></button>
+    </div>
+
+    <div class="chips">
+      <span class="chip primary"><span data-i18n="de" class="lang-active">Architektur</span><span data-i18n="en">Architecture</span><span data-i18n="es">Arquitectura</span><span data-i18n="fr">Architecture</span></span>
+      <span class="chip"><span data-i18n="de" class="lang-active">Kunst</span><span data-i18n="en">Art</span><span data-i18n="es">Arte</span><span data-i18n="fr">Art</span></span>
+    </div>
+
+    <p class="bio"><span data-i18n="de" class="lang-active">Luca Dietrich ist Architekt. Seine künstlerische Praxis setzt sich mit Grenzen im Allgemeinen und den Grenzen der Architektur im Besonderen auseinander und stellt dabei bestehende Konventionen des Entwerfens und Bauens infrage. Auf OFFFEN zeigen wir mit seiner Zustimmung vier seiner Arbeiten.</span><span data-i18n="en">Luca Dietrich is an architect. His artistic practice engages with boundaries in general and the boundaries of architecture in particular, questioning established conventions of designing and building. On OFFFEN we show, with his consent, four of his works.</span><span data-i18n="es">Luca Dietrich es arquitecto. Su práctica artística aborda los límites en general y los límites de la arquitectura en particular, y cuestiona las convenciones establecidas del diseño y la construcción. En OFFFEN mostramos, con su consentimiento, cuatro de sus obras.</span><span data-i18n="fr">Luca Dietrich est architecte. Sa pratique artistique s'intéresse aux limites en général et aux limites de l'architecture en particulier, et remet en question les conventions établies de la conception et de la construction. Chez OFFFEN, nous montrons, avec son accord, quatre de ses œuvres.</span></p>
+
+
+    <div class="stats">
+      <div class="stat"><strong>0</strong><span><span data-i18n="de" class="lang-active">Beiträge</span><span data-i18n="en">Posts</span><span data-i18n="es">Publicaciones</span><span data-i18n="fr">Publications</span></span></div>
+      <div class="stat"><strong>0</strong><span><span data-i18n="de" class="lang-active">Folgt</span><span data-i18n="en">Following</span><span data-i18n="es">Siguiendo</span><span data-i18n="fr">Abonnements</span></span></div>
+      <div class="stat"><strong>0</strong><span><span data-i18n="de" class="lang-active">Folgen</span><span data-i18n="en">Followers</span><span data-i18n="es">Seguidores</span><span data-i18n="fr">Abonnés</span></span></div>
+    </div>
+
+    <div class="section-tabs">
+      <div class="section-tab active" data-tab="arbeiten"><span data-i18n="de" class="lang-active">Arbeiten</span><span data-i18n="en">Works</span><span data-i18n="es">Obras</span><span data-i18n="fr">Œuvres</span></div>
+      <div class="section-tab" data-tab="info">Info</div>
+      <div class="section-tab" data-tab="gespeichert"><span data-i18n="de" class="lang-active">Gespeichert</span><span data-i18n="en">Saved</span><span data-i18n="es">Guardado</span><span data-i18n="fr">Enregistré</span></div>
+    </div>
+
+    <div id="panel-arbeiten" class="tab-panel"><div class="work-grid">
+      <div class="work-tile" data-text="Werk von Luca Dietrich." data-text-en="Work by Luca Dietrich." data-text-es="Obra de Luca Dietrich." data-text-fr="Œuvre de Luca Dietrich." style="background-image:url(luca-dietrich-werk-1.jpg); background-size:cover; background-position:center;"><span><span data-i18n="de" class="lang-active">ohne titel</span><span data-i18n="en">untitled</span><span data-i18n="es">sin título</span><span data-i18n="fr">sans titre</span></span></div>
+      <div class="work-tile" data-text="Werk von Luca Dietrich." data-text-en="Work by Luca Dietrich." data-text-es="Obra de Luca Dietrich." data-text-fr="Œuvre de Luca Dietrich." style="background-image:url(luca-dietrich-werk-2.jpg); background-size:cover; background-position:center;"><span><span data-i18n="de" class="lang-active">ohne titel</span><span data-i18n="en">untitled</span><span data-i18n="es">sin título</span><span data-i18n="fr">sans titre</span></span></div>
+      <div class="work-tile" data-text="Werk von Luca Dietrich." data-text-en="Work by Luca Dietrich." data-text-es="Obra de Luca Dietrich." data-text-fr="Œuvre de Luca Dietrich." style="background-image:url(luca-dietrich-werk-3.jpg); background-size:cover; background-position:center;"><span><span data-i18n="de" class="lang-active">ohne titel</span><span data-i18n="en">untitled</span><span data-i18n="es">sin título</span><span data-i18n="fr">sans titre</span></span></div>
+      <div class="work-tile" data-text="Werk von Luca Dietrich." data-text-en="Work by Luca Dietrich." data-text-es="Obra de Luca Dietrich." data-text-fr="Œuvre de Luca Dietrich." style="background-image:url(luca-dietrich-werk-4.jpg); background-size:cover; background-position:center;"><span><span data-i18n="de" class="lang-active">ohne titel</span><span data-i18n="en">untitled</span><span data-i18n="es">sin título</span><span data-i18n="fr">sans titre</span></span></div>
+    </div></div>
+    <div id="panel-info" class="tab-panel" hidden>
+      <ul class="info-list">
+        <li><span class="k"><span data-i18n="de" class="lang-active">rolle</span><span data-i18n="en">role</span><span data-i18n="es">rol</span><span data-i18n="fr">rôle</span></span><span class="v"><span data-i18n="de" class="lang-active">architekt</span><span data-i18n="en">architect</span><span data-i18n="es">arquitecto</span><span data-i18n="fr">architecte</span></span></li>
+      </ul>
+      <p class="info-hint"><span data-i18n="de" class="lang-active">jede person entscheidet selbst, was hier steht.</span><span data-i18n="en">each person decides what appears here.</span><span data-i18n="es">cada persona decide qué aparece aquí.</span><span data-i18n="fr">chaque personne décide de ce qui apparaît ici.</span></p>
+    </div>
+  </main>
+  <footer>
+    <span data-i18n="de" class="lang-active">Schreib uns</span><span data-i18n="en">Write to us</span><span data-i18n="es">Escríbenos</span><span data-i18n="fr">Écris-nous</span> · <span data-i18n="de" class="lang-active">Jetzt schreiben</span><span data-i18n="en">Write now</span><span data-i18n="es">Escribe ahora</span><span data-i18n="fr">Écris maintenant</span>: <a href="mailto:raum@offfen-schaffensmenschen.com">raum@offfen-schaffensmenschen.com</a><br>
+    Schaffensmenschen · München · <a href="/impressum.html"><span data-i18n="de" class="lang-active">Impressum</span><span data-i18n="en">Legal notice</span><span data-i18n="es">Aviso legal</span><span data-i18n="fr">Mentions légales</span></a> · <a href="/datenschutz.html"><span data-i18n="de" class="lang-active">Datenschutz</span><span data-i18n="en">Privacy</span><span data-i18n="es">Privacidad</span><span data-i18n="fr">Confidentialité</span></a><br><br>
+    <span data-i18n="de" class="lang-active">Alle gezeigten Werke, Ideen und Prozesse bleiben geistiges Eigentum der jeweiligen Urheber:innen. Nutzung, Vervielfältigung oder Weiterverwendung nur mit deren Zustimmung.</span><span data-i18n="en">All works, ideas and processes shown remain the intellectual property of their respective creators. Use, reproduction or further use only with their consent.</span><span data-i18n="es">Todas las obras, ideas y procesos mostrados siguen siendo propiedad intelectual de sus respectivos autores y autoras. Uso, reproducción o cualquier uso posterior solo con su consentimiento.</span><span data-i18n="fr">Toutes les œuvres, idées et processus présentés restent la propriété intellectuelle de leurs auteurs et autrices respectifs. Utilisation, reproduction ou tout autre usage ultérieur uniquement avec leur accord.</span>
+  </footer>
+
+  <div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="grosse ansicht" hidden>
+    <button class="lb-btn lb-close" id="lb-close" aria-label="schliessen">&times;</button>
+    <button class="lb-btn lb-prev" id="lb-prev" aria-label="zurueck">&#8249;</button>
+    <button class="lb-btn lb-next" id="lb-next" aria-label="weiter">&#8250;</button>
+    <div class="lb-box">
+      <img class="lb-img" id="lb-img" alt="">
+      <div class="lb-cap"><h3 class="lb-title" id="lb-title"></h3><p class="lb-text" id="lb-text"></p></div>
+    </div>
+  </div>
+<script>
+    (function(){
+      var tabs=document.querySelectorAll('.section-tab');
+      var panels={'arbeiten':'panel-arbeiten','info':'panel-info'};
+      tabs.forEach(function(t){
+        t.addEventListener('click',function(){
+          var id=panels[t.getAttribute('data-tab')]; if(!id) return;
+          tabs.forEach(function(x){ x.classList.toggle('active',x===t); });
+          Object.keys(panels).forEach(function(k){ var el=document.getElementById(panels[k]); if(el) el.hidden=(panels[k]!==id); });
+        });
+      });
+    })();
+  </script>
+
+<script>
+    (function(){
+      var tiles=[].slice.call(document.querySelectorAll('#panel-arbeiten .work-tile'));
+      var lb=document.getElementById('lb'); if(!lb||!tiles.length) return;
+      var img=document.getElementById('lb-img'), ti=document.getElementById('lb-title'), tx=document.getElementById('lb-text');
+      var cur=0, lastFocus=null;
+      function urlOf(t){ var m=(t.style.backgroundImage||'').match(/url\(["']?([^"')]+)["']?\)/); return m?m[1]:''; }
+      function titleOf(t){ var s=t.querySelector('span'); if(!s) return ''; var a=s.querySelector('[data-i18n].lang-active'); return (a||s).textContent.trim(); }
+      function show(i){
+        cur=(i+tiles.length)%tiles.length; var t=tiles[cur];
+        img.src=urlOf(t); img.alt=titleOf(t); ti.textContent=titleOf(t); var lg=document.documentElement.lang||'de'; tx.textContent=t.getAttribute('data-text-'+lg)||t.getAttribute('data-text')||'';
+      }
+      function open(i){ lastFocus=document.activeElement; show(i); lb.hidden=false; lb.classList.add('open'); document.body.style.overflow='hidden'; document.getElementById('lb-close').focus(); }
+      function close(){ lb.classList.remove('open'); lb.hidden=true; document.body.style.overflow=''; if(lastFocus&&lastFocus.focus) lastFocus.focus(); }
+      tiles.forEach(function(t,i){
+        t.setAttribute('tabindex','0'); t.setAttribute('role','button'); t.setAttribute('aria-label',titleOf(t)+' gross ansehen');
+        t.addEventListener('click',function(){ open(i); });
+        t.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); open(i); } });
+      });
+      document.getElementById('lb-close').addEventListener('click',close);
+      document.addEventListener('langchange',function(){ if(!lb.hidden) show(cur); });
+      document.getElementById('lb-prev').addEventListener('click',function(e){ e.stopPropagation(); show(cur-1); });
+      document.getElementById('lb-next').addEventListener('click',function(e){ e.stopPropagation(); show(cur+1); });
+      lb.addEventListener('click',function(e){ if(e.target===lb||e.target.classList.contains('lb-box')) close(); });
+      document.addEventListener('keydown',function(e){
+        if(lb.hidden) return;
+        if(e.key==='Escape') close(); else if(e.key==='ArrowLeft') show(cur-1); else if(e.key==='ArrowRight') show(cur+1);
+      });
+      var sx=null; lb.addEventListener('touchstart',function(e){ sx=e.touches[0].clientX; },{passive:true});
+      lb.addEventListener('touchend',function(e){ if(sx===null) return; var dx=e.changedTouches[0].clientX-sx; sx=null; if(Math.abs(dx)>50) show(cur+(dx<0?1:-1)); },{passive:true});
+    })();
+  </script>
+
+<script>
+    (function(){
+      var buttons=document.querySelectorAll('.lang-toggle button');
+      function apply(lang){
+        buttons.forEach(function(b){ b.classList.toggle('active', b.getAttribute('data-lang')===lang); });
+        document.querySelectorAll('[data-i18n]').forEach(function(el){ el.classList.toggle('lang-active', el.getAttribute('data-i18n')===lang); });
+        document.documentElement.lang=lang;
+        try{ document.dispatchEvent(new CustomEvent('langchange',{detail:lang})); }catch(e){}
+      }
+      buttons.forEach(function(b){ b.addEventListener('click',function(){
+        var l=b.getAttribute('data-lang'); apply(l); try{ localStorage.setItem('offfen-lang',l); }catch(e){}
+      }); });
+      var saved=null; try{ saved=localStorage.getItem('offfen-lang'); }catch(e){}
+      if(saved && saved!=='de') apply(saved);
+    })();
+  </script>
+</body>
+</html>
