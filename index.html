@@ -354,6 +354,21 @@
     .werk .werk-stage{ box-shadow:none; max-height:none; }
     .werk .werk-dots{ margin-top:1.4rem; padding:0 1.8rem; }
   }
+
+  /* dein blick: zeichen setzen */
+  .werk .werk-blick{ margin-top:1.8rem; max-width:34rem; }
+  .werk .werk-blick[hidden]{ display:none; }
+  .werk .blick-titel{ font-family:'Work Sans', sans-serif; font-size:0.82rem; letter-spacing:0.14em; text-transform:lowercase; color:var(--gold); margin:0 0 0.7rem; }
+  .werk .blick-titel small{ color:var(--cream); opacity:0.6; letter-spacing:0.06em; margin-left:0.6rem; }
+  .werk .blick-zeichen{ display:flex; flex-wrap:wrap; gap:0.6rem; }
+  .werk .blick-btn{ display:inline-flex; align-items:center; gap:0.5rem; font-family:'Work Sans', sans-serif; font-size:0.82rem; letter-spacing:0.06em; text-transform:lowercase; color:var(--cream); background:transparent; border:1px solid rgba(239,230,200,0.45); padding:0.45rem 0.8rem; cursor:pointer; }
+  .werk .blick-btn:hover{ border-color:var(--gold); }
+  .werk .blick-btn .blick-sym{ display:inline-block; width:1.1rem; text-align:center; font-size:0.95rem; line-height:1; }
+  .werk .blick-btn .blick-zahl{ opacity:0.7; min-width:1ch; }
+  .werk .blick-btn.is-mine{ background:var(--cream); color:var(--dark); border-color:var(--cream); }
+  .werk .blick-btn.is-mine .blick-zahl{ opacity:1; }
+  .werk .werk-blick.is-done .blick-btn:not(.is-mine){ cursor:default; opacity:0.75; }
+  @media (max-width: 700px){ .werk .werk-blick{ padding:0 1.8rem; } }
   .werk .werk-antwort{ display:inline-block; margin:0 0 0 1.2rem; font-family:'Work Sans', sans-serif; font-size:0.82rem; letter-spacing:0.08em; text-transform:lowercase; color:var(--dark); background:var(--cream); padding:0.45rem 0.9rem; text-decoration:none; }
   .werk .werk-antwort:hover{ background:var(--gold); }
   @media (prefers-reduced-motion: reduce){ .werk .werk-stage .werk-img, .werk .werk-cap{ transition:none; } }
@@ -470,6 +485,10 @@
             <a class="werk-credit" href="profil-luca-dietrich.html"><span data-i18n="de" class="lang-active">Werk: Luca Dietrich</span><span data-i18n="en">Work: Luca Dietrich</span><span data-i18n="es">Obra: Luca Dietrich</span><span data-i18n="fr">Œuvre : Luca Dietrich</span></a>
             <a class="werk-antwort" href="https://ig.me/m/offfen.schaffensmenschen" target="_blank" rel="noopener"><span data-i18n="de" class="lang-active">deine antwort per nachricht →</span><span data-i18n="en">your answer by message →</span><span data-i18n="es">tu respuesta por mensaje →</span><span data-i18n="fr">ta réponse par message →</span></a>
           </figcaption>
+        </div>
+        <div class="werk-blick" hidden>
+          <p class="blick-titel"><span data-i18n="de" class="lang-active">dein blick</span><span data-i18n="en">your view</span><span data-i18n="es">tu mirada</span><span data-i18n="fr">ton regard</span><small><span data-i18n="de" class="lang-active">setz ein zeichen</span><span data-i18n="en">leave a sign</span><span data-i18n="es">deja un signo</span><span data-i18n="fr">laisse un signe</span></small></p>
+          <div class="blick-zeichen"><button type="button" class="blick-btn" data-z="ruhe" aria-label="ruhe"><span class="blick-sym" aria-hidden="true">○</span><span class="blick-name"><span data-i18n="de" class="lang-active">ruhe</span><span data-i18n="en">calm</span><span data-i18n="es">calma</span><span data-i18n="fr">calme</span></span><span class="blick-zahl">0</span></button><button type="button" class="blick-btn" data-z="funke" aria-label="funke"><span class="blick-sym" aria-hidden="true">✦</span><span class="blick-name"><span data-i18n="de" class="lang-active">funke</span><span data-i18n="en">spark</span><span data-i18n="es">chispa</span><span data-i18n="fr">étincelle</span></span><span class="blick-zahl">0</span></button><button type="button" class="blick-btn" data-z="raetsel" aria-label="rätsel"><span class="blick-sym" aria-hidden="true">◐</span><span class="blick-name"><span data-i18n="de" class="lang-active">rätsel</span><span data-i18n="en">riddle</span><span data-i18n="es">enigma</span><span data-i18n="fr">énigme</span></span><span class="blick-zahl">0</span></button><button type="button" class="blick-btn" data-z="spannung" aria-label="spannung"><span class="blick-sym" aria-hidden="true">△</span><span class="blick-name"><span data-i18n="de" class="lang-active">spannung</span><span data-i18n="en">tension</span><span data-i18n="es">tensión</span><span data-i18n="fr">tension</span></span><span class="blick-zahl">0</span></button></div>
         </div>
       </figure>
     </section>
@@ -623,6 +642,47 @@
     if(Math.abs(dx)>40){ show(cur+(dx<0?1:-1)); start(); }
   });
   start();
+})();
+</script>
+<script>
+(function(){
+  var box=document.querySelector('.werk-karussell');
+  var feld=document.querySelector('.werk-blick');
+  if(!box||!feld) return;
+  var IDS=['pierre','nick','lena','lentini','kaan','samuel','luca'];
+  var caps=[].slice.call(document.querySelectorAll('.werk-cap'));
+  var btns=[].slice.call(feld.querySelectorAll('.blick-btn'));
+  var daten=null, mein={};
+  try{ mein=JSON.parse(localStorage.getItem('offfen-blick')||'{}')||{}; }catch(e){ mein={}; }
+  function aktuell(){ var i=0; caps.forEach(function(c,k){ if(c.classList.contains('is-active')) i=k; }); return IDS[i]; }
+  function zeichnen(){
+    if(!daten) return;
+    var id=aktuell(), z=daten[id]||{}, m=mein[id];
+    btns.forEach(function(b){
+      var k=b.getAttribute('data-z');
+      b.querySelector('.blick-zahl').textContent=z[k]||0;
+      b.classList.toggle('is-mine',m===k);
+    });
+    feld.classList.toggle('is-done',!!m);
+  }
+  function laden(){
+    fetch('/api/blick',{cache:'no-store'}).then(function(r){ if(!r.ok) throw 0; return r.json(); })
+      .then(function(d){ daten=d; feld.hidden=false; zeichnen(); }).catch(function(){ feld.hidden=true; });
+  }
+  btns.forEach(function(b){
+    b.addEventListener('click',function(){
+      var id=aktuell(); if(mein[id]||!daten) return;
+      var k=b.getAttribute('data-z');
+      mein[id]=k; daten[id]=daten[id]||{}; daten[id][k]=(daten[id][k]||0)+1; zeichnen();
+      try{ localStorage.setItem('offfen-blick',JSON.stringify(mein)); }catch(e){}
+      fetch('/api/blick',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({werk:id,zeichen:k})})
+        .then(function(r){ if(!r.ok) throw 0; return r.json(); })
+        .then(function(d){ if(d&&d.zaehler){ daten[id]=d.zaehler; zeichnen(); } })
+        .catch(function(){});
+    });
+  });
+  new MutationObserver(zeichnen).observe(document.querySelector('.werk-caps'),{attributes:true,subtree:true,attributeFilter:['class']});
+  laden();
 })();
 </script>
 </body>
