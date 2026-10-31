@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>kunst schaffen. zeigen. sehen. grenzenlos. — OFFFEN</title>
+<meta name="description" content="offfen — schaffensmenschen. zeigen. sehen. weiterschaffen. ein raum für künstler: digital, international, kontakte statt gewinn.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="kunst schaffen. zeigen. sehen. grenzenlos. — OFFFEN">
+<meta property="og:description" content="zeigen. sehen. weiterschaffen. ein raum für künstler, digital und international.">
+<meta property="og:image" content="https://offfen-schaffensmenschen.com/offfen-vorschau.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:url" content="https://offfen-schaffensmenschen.com">
+<meta property="og:locale" content="de_DE">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --dark:#2e2b24;
+    --cream:#efe6c8;
+    --paper-warm:#e6dab6;
+    --ink:#2e2b24;
+    --gold:#c9a227;
+    --beton:#a89f75;
+    --ziegel:#c9a227;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html,body{
+    background-color:var(--dark);
+    background-image:none;
+    color:var(--cream); font-family:'Work Sans', sans-serif;
+  }
+
+  header.site-header{
+    display:flex; align-items:center; gap:0.9rem; padding:1.3rem 1.6rem;
+    border-bottom:1px solid rgba(239,230,200,0.12);
+  }
+  header.site-header a.wordmark{
+    font-family:'Space Grotesk', sans-serif; font-weight:400; font-size:0.85rem;
+    letter-spacing:0.06em; color:var(--cream); text-decoration:none; opacity:0.85;
+  }
+  header.site-header nav{ margin-left:auto; display:flex; align-items:center; gap:1.6rem; }
+  header.site-header nav a{ font-size:0.85rem; color:rgba(239,230,200,0.55); text-decoration:none; }
+
+  .lang-toggle{ display:flex; gap:0.3rem; font-size:0.8rem; letter-spacing:0.04em; }
+  .lang-toggle button{
+    background:none; border:none; font-family:'Work Sans', sans-serif;
+    font-size:0.8rem; letter-spacing:0.04em; text-transform:lowercase;
+    color:rgba(239,230,200,0.5); cursor:pointer; padding:0.2rem 0.3rem;
+  }
+  .lang-toggle button.active{
+    color:var(--cream); font-weight:600; border-bottom:2px solid var(--gold);
+  }
+
+  [data-i18n]{ display:none; }
+  [data-i18n].lang-active{ display:inline; }
+  p[data-i18n].lang-active,
+  div[data-i18n].lang-active{ display:block; }
+
+  main{ max-width:1000px; margin:0 auto; padding:0 1.8rem; }
+
+  .hero{ padding:6vh 0 6vh; text-align:center; }
+
+  .hero-logo{ margin-bottom:2.4rem; }
+  .hero-logo img{
+    width:min(360px, 60vw); height:auto; border-radius:4px;
+    box-shadow:0 10px 40px rgba(0,0,0,0.45), 0 0 60px rgba(205,185,138,0.10);
+  }
+
+  .eyebrow{
+    font-size:0.78rem; letter-spacing:0.3em; text-transform:lowercase;
+    color:var(--gold); font-weight:600; margin-bottom:1.6rem;
+  }
+
+  .manifest{
+    font-family:'Space Grotesk', sans-serif; font-weight:600;
+    font-size:clamp(2rem, 6vw, 4.2rem); line-height:1.1; letter-spacing:-0.01em;
+    color:var(--cream);
+  }
+  .manifest .strike{ position:relative; color:rgba(239,230,200,0.3); }
+  .manifest .strike::after{
+    content:""; position:absolute; left:-2%; right:-2%; top:50%; height:0.06em;
+    background:var(--ziegel); transform:translateY(-50%) rotate(-2deg);
+  }
+
+  .no-list{
+    font-family:'Space Grotesk', sans-serif; font-weight:500;
+    font-size:clamp(1.1rem, 2.4vw, 1.5rem); color:rgba(239,230,200,0.55);
+    margin-top:1.8rem;
+  }
+  .no-list .strike{ position:relative; }
+  .no-list .strike::after{
+    content:""; position:absolute; left:-3%; right:-3%; top:50%; height:0.07em;
+    background:var(--ziegel); transform:translateY(-50%) rotate(-1.5deg);
+  }
+
+  .lede{
+    font-size:clamp(1.05rem, 2vw, 1.3rem); color:rgba(239,230,200,0.75);
+    max-width:52ch; margin:2.2rem auto 0; line-height:1.55;
+  }
+
+  .cta-row{
+    display:flex; flex-wrap:wrap; justify-content:center; gap:1rem; margin-top:2.6rem;
+  }
+  .cta{
+    display:inline-flex; align-items:center; padding:0.9rem 1.6rem;
+    text-decoration:none; font-weight:600; font-size:0.92rem; border-radius:2px;
+  }
+  .cta.primary{ background:var(--gold); color:var(--dark); }
+  .cta.secondary{ border:1.5px solid rgba(239,230,200,0.5); color:var(--cream); }
+  .cta.primary:hover{ background:var(--cream); }
+  .cta.secondary:hover{ background:var(--cream); color:var(--dark); border-color:var(--cream); }
+
+  .disciplines-strip{
+    display:flex; flex-wrap:wrap; justify-content:center; gap:0.6rem;
+    margin-top:3.4rem; padding-top:2.2rem; border-top:1px solid rgba(239,230,200,0.14);
+  }
+  .discipline-tag{
+    font-size:0.8rem; padding:0.4rem 0.9rem; border:1px solid rgba(239,230,200,0.22);
+    border-radius:2px; color:rgba(239,230,200,0.7);
+  }
+
+  .statement{
+    text-align:center; margin:2vh 0 8vh; padding:3.4rem 0;
+    border-top:1px solid rgba(239,230,200,0.12); border-bottom:1px solid rgba(239,230,200,0.12);
+  }
+  .statement p{
+    font-family:'Space Grotesk', sans-serif; font-weight:500;
+    font-size:clamp(1.4rem, 3vw, 2.1rem); line-height:1.35; max-width:26ch; margin:0 auto;
+    color:var(--cream);
+  }
+  .statement .gold{ color:var(--gold); }
+
+  .ideen-werden{ margin:0 0 8vh; text-align:center; }
+  .ideen-werden .headline{
+    font-family:'Space Grotesk', sans-serif; font-weight:500; font-size:clamp(1.4rem, 3vw, 2.1rem);
+    color:var(--cream);
+  }
+  .ideen-werden .sub{ font-size:1rem; color:rgba(239,230,200,0.7); margin:1rem auto 0; max-width:40ch; }
+  .ideen-werden .cta{ display:inline-block; margin-top:1.8rem; }
+
+  .warum{
+    margin:0 0 8vh; text-align:center; background:var(--paper-warm);
+    padding:4rem 1.8rem; border-radius:4px;
+    box-shadow:0 20px 50px rgba(0,0,0,0.35);
+  }
+  .warum .headline{
+    font-family:'Space Grotesk', sans-serif; font-weight:500;
+    font-size:clamp(1.4rem, 3vw, 2.1rem); max-width:30ch; margin:0 auto;
+    color:var(--ink);
+  }
+  .warum .headline .gold{ color:var(--ziegel); }
+  .warum .body{
+    font-size:1.05rem; color:rgba(18,18,18,0.7); max-width:52ch;
+    margin:1.4rem auto 0; line-height:1.6;
+  }
+
+  .was-fuer-wen{
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:2.2rem;
+    margin:0 0 8vh; padding-top:3.4rem; border-top:1px solid rgba(239,230,200,0.14);
+  }
+  .was-fuer-wen .col{ text-align:left; }
+  .was-fuer-wen .col .label{
+    font-size:0.78rem; letter-spacing:0.2em; text-transform:lowercase;
+    color:var(--gold); font-weight:600; margin-bottom:0.9rem;
+  }
+  .was-fuer-wen .col p{
+    font-size:0.98rem; color:rgba(239,230,200,0.8); line-height:1.6;
+  }
+  @media (max-width: 760px){
+    .was-fuer-wen{ grid-template-columns:1fr; gap:2rem; }
+  }
+
+  footer{
+    padding:2rem 0 3rem; font-size:0.78rem; letter-spacing:0.02em; line-height:1.8;
+    color:rgba(239,230,200,0.5);
+  }
+  footer a{ color:rgba(239,230,200,0.7); text-decoration:underline; text-decoration-color:rgba(239,230,200,0.3); }
+
+  @media (max-width: 640px){ .cta-row{ flex-direction:column; } .cta{ justify-content:center; } }
+
+  /* Werk auf der Startseite */
+
+  .raum{ margin:0 auto 8vh; text-align:center; }
+  .raum-strip{ display:flex; gap:0.9rem; overflow-x:auto; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; padding:0.2rem 0.2rem 1rem; scrollbar-width:thin; }
+  .raum-strip img{ height:min(62vh,520px); width:auto; flex:0 0 auto; scroll-snap-align:center; border-radius:0; box-shadow:0 14px 40px rgba(0,0,0,0.45), 0 0 0 1px rgba(239,230,200,0.12); }
+  .raum .raum-label{ font-size:0.78rem; letter-spacing:0.3em; text-transform:lowercase; color:var(--gold); font-weight:600; margin-bottom:1.2rem; }
+  .raum .raum-link{ margin-top:1.2rem; font-size:0.9rem; letter-spacing:0.08em; text-transform:lowercase; }
+  .raum .raum-link a{ color:var(--gold); text-decoration:none; border-bottom:1px solid rgba(205,185,138,0.5); }
+  .raum .raum-link a:hover{ color:var(--cream); }
+  .raum .raum-text{ font-family:'Space Grotesk', sans-serif; font-weight:500; font-size:clamp(1.05rem,2vw,1.3rem); color:rgba(239,230,200,0.8); max-width:46ch; margin:1rem auto 0; line-height:1.5; }
+  .werk{ text-align:center; margin:0 auto 8vh; }
+  .werk figure{ display:inline-block; max-width:min(520px, 88vw); }
+  .werk img{ width:100%; height:auto; display:block; border-radius:4px; box-shadow:0 14px 40px rgba(0,0,0,0.45); }
+  .werk figcaption{ margin-top:1.1rem; font-family:'Space Grotesk', sans-serif; font-weight:500; font-size:1.05rem; color:var(--cream); }
+  .werk .werk-credit{ display:inline-block; margin-top:0.7rem; font-family:'Work Sans', sans-serif; font-weight:400; font-size:0.82rem; letter-spacing:0.08em; text-transform:lowercase; color:var(--cream); opacity:0.85; text-decoration:none; border-bottom:1px solid rgba(239,230,200,0.35); }
+  .werk .werk-credit:hover{ opacity:1; border-bottom-color:var(--gold); }
+  .werk figcaption small{ display:block; margin-top:0.35rem; font-family:'Work Sans', sans-serif; font-weight:400; font-size:0.78rem; letter-spacing:0.18em; text-transform:lowercase; color:var(--gold); }
+
+  /* ===== Architektonisch: Jost, Versalien, Haarlinien ===== */
+  header.site-header a.wordmark,
+  header.site-header nav a{ font-family:'Jost', sans-serif; text-transform:lowercase; letter-spacing:0.18em; font-size:0.74rem; font-weight:500; }
+  .eyebrow{ font-family:'Jost', sans-serif; letter-spacing:0.42em; font-weight:500; }
+  .manifest{ font-family:'Jost', sans-serif; font-weight:600; text-transform:lowercase; letter-spacing:0.02em; line-height:1.04; }
+  .no-list{ font-family:'Jost', sans-serif; text-transform:lowercase; letter-spacing:0.16em; font-weight:500; }
+  .statement p, .ideen-werden .headline, .warum .headline{ font-family:'Jost', sans-serif; text-transform:lowercase; letter-spacing:0.04em; font-weight:600; }
+  .was-fuer-wen .col .label{ font-family:'Jost', sans-serif; letter-spacing:0.28em; font-weight:600; }
+  .werk figcaption{ font-family:'Jost', sans-serif; letter-spacing:0.06em; text-transform:lowercase; }
+  .werk figcaption small{ font-family:'Jost', sans-serif; letter-spacing:0.28em; }
+  .cta{ font-family:'Jost', sans-serif; text-transform:lowercase; letter-spacing:0.18em; font-weight:600; font-size:0.8rem; border-radius:0; padding:1.05rem 1.9rem; }
+  .cta.primary{ background:var(--gold); color:#2e2b24; }
+  .cta.primary:hover{ background:var(--cream); }
+  .hero-logo img, .werk img, .warum{ border-radius:0; }
+  .hero-logo img{ box-shadow:0 18px 50px rgba(0,0,0,0.5), 0 0 0 1px rgba(239,230,200,0.12); }
+  .werk img{ box-shadow:0 18px 50px rgba(0,0,0,0.5), 0 0 0 1px rgba(239,230,200,0.12); }
+  .warum{ background:var(--paper-warm); box-shadow:0 20px 50px rgba(0,0,0,0.4); }
+  .warum .body{ color:rgba(46,43,36,0.78); }
+  .statement{ border-color:rgba(239,230,200,0.2); }
+  .was-fuer-wen{ border-color:rgba(239,230,200,0.2); }
+  .was-fuer-wen .col{ border-top:1px solid rgba(239,230,200,0.2); padding-top:1.1rem; }
+  header.site-header{ border-bottom-color:rgba(239,230,200,0.2); }
+
+  /* alles klein geschrieben */
+  body{ text-transform:lowercase; }
+  .manifest{ letter-spacing:0.005em; }
+  .eyebrow{ letter-spacing:0.3em; }
+  .was-fuer-wen .col .label, .werk figcaption small{ letter-spacing:0.22em; }
+
+  /* ===== Ausbruch ohne Effekt: keine Signalfarbe, kein Kippen ===== */
+  :root{ --gold:#efe6c8; --ziegel:#efe6c8; }
+  /* die Farbe kommt von den Werken und vom Logo, nicht von der Seite */
+  .eyebrow, .was-fuer-wen .col .label, .werk figcaption small, section p[style*="color:var(--gold)"]{ color:var(--beton) !important; }
+  /* "raum" und "illusionen" sind hohl: ein leerer Raum, eine Illusion */
+  .statement .gold{ color:var(--cream); opacity:0.5; }
+  .warum .headline .gold{ color:var(--ink); text-decoration:underline; text-decoration-thickness:3px; text-underline-offset:0.18em; }
+  /* durchgestrichen bleibt, nur in Weiß */
+  .manifest .strike::after, .no-list .strike::after{ background:var(--cream); transform:translateY(-50%); height:0.05em; }
+  .insta a, .insta-link{ border-bottom-color:rgba(239,230,200,0.5); }
+  header.site-header nav a:hover{ color:var(--cream); }
+  .lang-toggle button.active{ border-bottom-color:var(--cream); }
+  .cta.primary{ background:var(--cream); color:#2e2b24; }
+
+  /* das Werk bricht aus dem Raster aus: größer als die Spalte, über die Linien, die Linien enden davor */
+  .werk{ position:relative; z-index:5; text-align:left; max-width:1000px; margin:0 auto 12vh; padding:0 1.8rem; }
+  .werk figure{ display:block; width:min(640px, 100%); max-width:none; margin-left:auto; margin-right:-110px; transform:none; }
+  .werk img{ box-shadow:0 0 0 30px var(--dark), 0 30px 70px rgba(0,0,0,0.55); border-radius:0; }
+  .werk figcaption{ margin-top:2.6rem; text-align:left; }
+  .statement{ position:relative; z-index:1; margin-top:0; padding-top:5rem; }
+  @media (max-width: 1200px){ .werk figure{ margin-right:0; } }
+  @media (max-width: 700px){
+    .werk{ padding:0; }
+    .werk figure{ width:100vw; margin-left:calc(50% - 50vw); margin-right:0; }
+    .werk img{ box-shadow:none; }
+    .werk figcaption{ padding:0 1.8rem; }
+  }
+
+  @media (max-width: 520px){
+    header.site-header{ padding:0.8rem 0.9rem; gap:0.5rem; }
+    header.site-header a.wordmark{ font-size:0.66rem; letter-spacing:0.12em; white-space:nowrap; }
+    header.site-header nav{ gap:0.7rem; }
+    header.site-header nav a{ font-size:0.64rem; letter-spacing:0.1em; }
+    .lang-toggle button{ font-size:0.66rem; padding:0.1rem 0.28rem; }
+  }
+
+  .manifest{ line-height:1.3; }
+  @media (max-width: 520px){ .manifest{ font-size:clamp(1.55rem, 7.2vw, 2.2rem); } }
+
+  /* das Wort "offfen" im Text ist immer das Original-Logo */
+  .logo-inline{ height:1.5em; width:auto; display:inline-block; vertical-align:-0.42em; margin:0 0.1em; box-shadow:0 0 0 1px rgba(239,230,200,0.18); }
+  .eyebrow .logo-inline{ height:2.3em; vertical-align:-0.8em; }
+  .warum .logo-inline{ height:1.25em; vertical-align:-0.3em; box-shadow:0 0 0 1px rgba(46,43,36,0.2); }
+  .warum .body .logo-inline{ height:1.5em; vertical-align:-0.42em; }
+
+  /* Gezeichnete Linien nach Skizze: Zeile 1 offen und gesprengt, Zeile 2 geschlossen */
+  .manifest .frame{ display:inline-block; position:relative; padding:0.18em 0 0.12em; }
+  .manifest .ln{ display:block; position:relative; white-space:nowrap; }
+  .manifest .sp{ position:relative; display:inline-block; }
+  .manifest .gr{ position:relative; display:inline-block; }
+  /* linke Klammer um Zeile 1 */
+  .manifest .frame::before{ content:""; position:absolute; left:-0.5em; top:-0.15em; bottom:-0.3em; width:0; border-left:2px solid currentColor; }
+  /* Oberlinie über "wir sprengen" – reißt vor "grenzen" ab */
+  .manifest .sp::before{ content:""; position:absolute; left:-0.1em; right:1.7em; top:-0.14em; border-top:2px solid currentColor; }
+  /* Schweif über "grenzen": Linie, Schnecke, Ausbruch nach oben rechts */
+  .manifest .flick{ position:absolute; left:-1.55em; top:-0.62em; width:2.6em; height:1.1em; overflow:visible; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; pointer-events:none; }
+  /* wellige Unterkante von Zeile 1 */
+  .manifest .l1::after{ content:""; position:absolute; left:-0.5em; right:0; bottom:-0.14em; height:0.2em; background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='12' viewBox='0 0 60 12'%3E%3Cpath d='M-2 6 Q15 -1 30 6 T62 6' fill='none' stroke='%23cdb98a' stroke-width='1.5'/%3E%3C/svg%3E") repeat-x; background-size:1.3em 100%; }
+  /* rechte Klammer und gerade Schlusslinie um Zeile 2 */
+  .manifest .frame::after{ content:""; position:absolute; right:-0.5em; top:-0.15em; bottom:-0.3em; width:0; border-right:2px solid currentColor; }
+  .manifest .l2::after{ content:""; position:absolute; left:-0.5em; right:-0.5em; bottom:-0.02em; border-bottom:2px solid currentColor; }
+  .manifest .l2::before{ content:""; position:absolute; left:78%; top:calc(100% + 0.02em); height:0.5em; border-left:2px solid currentColor; }
+  .manifest .frame{ margin-bottom:0.5em; }
+  @media (max-width: 520px){ .manifest{ font-size:clamp(1.55rem, 7.2vw, 2.2rem); } }
+  .eyebrow{ margin-bottom:2.8rem; }
+
+  /* ===== Variante B: Senfgelb als Akzent, weiche Schrift ===== */
+  :root{ --cream:#efe6c8; --gold:#cdb98a; --ziegel:#cdb98a; }
+  .eyebrow, .was-fuer-wen .col .label, .werk figcaption small{ color:var(--gold) !important; }
+  .cta.primary{ background:var(--gold); color:#2e2b24; }
+  .cta.primary:hover{ background:#e0cfa6; }
+  .cta.secondary{ border-color:rgba(205,185,138,0.65); color:var(--gold); }
+  .cta.secondary:hover{ background:var(--gold); color:#2e2b24; border-color:var(--gold); }
+  .lang-toggle button.active{ border-bottom-color:var(--gold); }
+  .manifest .frame::before, .manifest .frame::after, .manifest .sp::before, .manifest .l2::after, .manifest .l2::before{ border-color:var(--gold); }
+  .manifest .flick{ stroke:var(--gold); }
+  .insta a{ border-bottom-color:rgba(205,185,138,0.7); }
+
+  /* ===== Schiefertafel: Kreide-Körnung und Pinselstreifen wie im Logo ===== */
+  body{ position:relative; }
+  body::after{ content:""; position:fixed; inset:0; pointer-events:none; z-index:50; opacity:0.55; mix-blend-mode:soft-light;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.93  0 0 0 0 0.9  0 0 0 0 0.78  0 0 0 0.55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+  header.site-header{ position:relative; }
+  header.site-header::after{ content:""; position:absolute; left:0; right:0; bottom:-4px; height:3px; pointer-events:none;
+    background:linear-gradient(180deg, rgba(126,118,83,0.55) 0 1px, rgba(168,159,117,0.35) 1px 2px, rgba(126,118,83,0.2) 2px 3px);
+    -webkit-mask:linear-gradient(90deg, transparent 0, #000 6%, #000 55%, rgba(0,0,0,0.35) 70%, #000 82%, transparent 100%);
+            mask:linear-gradient(90deg, transparent 0, #000 6%, #000 55%, rgba(0,0,0,0.35) 70%, #000 82%, transparent 100%); }
+
+  /* ===== Gründer ===== */
+  .gruender{ max-width:760px; margin:0 auto 9vh; padding:2.2rem 1.8rem 0; border-top:1px solid rgba(239,230,200,0.14); display:flex; gap:1.8rem; align-items:center; text-align:left; }
+  .gruender .foto{ width:118px; height:118px; flex-shrink:0; border:1.5px solid #cdb98a; padding:5px; }
+  .gruender .foto img{ width:100%; height:100%; object-fit:cover; display:block; filter:none; }
+  .gruender .label{ font-size:0.74rem; letter-spacing:0.2em; text-transform:lowercase; color:#cdb98a; font-weight:600; margin-bottom:0.5rem; }
+  .gruender .name{ font-family:'Jost',sans-serif; font-size:1.5rem; font-weight:500; text-transform:lowercase; color:var(--cream); }
+  .gruender .rolle{ font-size:0.88rem; color:rgba(239,230,200,0.6); text-transform:lowercase; margin:0.2rem 0 0.8rem; }
+  .gruender .text{ font-size:0.98rem; line-height:1.6; color:rgba(239,230,200,0.8); }
+  .gruender a{ color:#cdb98a; text-decoration:none; border-bottom:1px solid rgba(205,185,138,0.5); font-size:0.84rem; letter-spacing:0.12em; text-transform:lowercase; display:inline-block; margin-top:0.8rem; }
+  @media (max-width:560px){ .gruender{ flex-direction:column; align-items:flex-start; gap:1.2rem; } }
+
+  /* ===== Skizze: Raum mit Tür, Kreidestriche freihand ===== */
+  .manifest .frame::before,.manifest .frame::after,.manifest .sp::before,.manifest .l2::after,.manifest .l2::before{ border:0 !important; filter:none !important; opacity:1; background-repeat:repeat-y; background-size:14px 360px; }
+  .manifest .frame::before{ width:14px; left:calc(-0.5em - 7px); background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='360' viewBox='0 0 14 360'%3E%3Cdefs%3E%3Cfilter id='c' x='-30%25' y='-30%25' width='160%25' height='160%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' seed='3' result='n'/%3E%3CfeDisplacementMap in='SourceGraphic' in2='n' scale='2.4' result='d'/%3E%3CfeColorMatrix in='n' type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -2.1 1.55' result='m'/%3E%3CfeComposite in='d' in2='m' operator='in'/%3E%3C/filter%3E%3C/defs%3E%3Cg filter='url%28%23c%29'%3E%3Cpath d='M6.0 0.0 L6.1 10.0 L5.9 20.0 L6.1 30.0 L6.2 40.0 L5.7 50.0 L5.1 60.0 L5.5 70.0 L5.2 80.0 L5.1 90.0 L5.7 100.0 L5.6 110.0 L6.0 120.0 L6.0 130.0 L6.2 140.0 L5.7 150.0 L5.9 160.0 L6.3 170.0 L6.4 180.0 L6.7 190.0 L6.9 200.0 L6.3 210.0 L6.7 220.0 L6.8 230.0 L6.5 240.0 L6.0 250.0 L6.4 260.0 L6.4 270.0 L6.6 280.0 L7.1 290.0 L7.3 300.0 L7.7 310.0 L7.5 320.0 L7.7 330.0 L7.6 340.0 L7.7 350.0 L7.7 360.0 ' fill='none' stroke='%23efe6c8' stroke-width='4.4' stroke-linecap='round' stroke-linejoin='round' opacity='0.82'/%3E%3Cpath d='M5.8 0.0 L5.4 10.0 L6.0 20.0 L5.9 30.0 L6.1 40.0 L5.8 50.0 L5.8 60.0 L5.7 70.0 L5.5 80.0 L5.6 90.0 L5.7 100.0 L6.3 110.0 L6.5 120.0 L7.1 130.0 L7.6 140.0 L7.9 150.0 L7.9 160.0 L7.4 170.0 L7.9 180.0 L7.9 190.0 L7.9 200.0 L7.9 210.0 L7.9 220.0 L7.5 230.0 L7.9 240.0 L7.9 250.0 L7.6 260.0 L7.0 270.0 L7.5 280.0 L7.9 290.0 L7.3 300.0 L7.7 310.0 L7.6 320.0 L7.1 330.0 L6.8 340.0 L7.2 350.0 L7.7 360.0 ' fill='none' stroke='%23efe6c8' stroke-width='2.8' stroke-linecap='round' stroke-linejoin='round' opacity='0.55' stroke-dasharray='30 3 12 5 44 2'/%3E%3Cpath d='M6.4 0.0 L5.7 10.0 L6.0 20.0 L5.8 30.0 L6.4 40.0 L7.1 50.0 L7.1 60.0 L7.9 70.0 L7.6 80.0 L7.0 90.0 L7.1 100.0 L6.4 110.0 L5.9 120.0 L5.7 130.0 L5.9 140.0 L5.4 150.0 L4.6 160.0 L5.2 170.0 L4.9 180.0 L5.7 190.0 L6.3 200.0 L6.1 210.0 L6.0 220.0 L6.1 230.0 L6.3 240.0 L6.4 250.0 L6.5 260.0 L6.7 270.0 L7.4 280.0 L7.4 290.0 L7.3 300.0 L7.7 310.0 L7.3 320.0 L7.0 330.0 L7.7 340.0 L7.8 350.0 L7.8 360.0 ' fill='none' stroke='%23efe6c8' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round' opacity='0.7' stroke-dasharray='18 6 40 3 9 4'/%3E%3C/g%3E%3C/svg%3E"); }
+  .manifest .frame::after{ width:14px; right:calc(-0.5em - 7px); background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='360' viewBox='0 0 14 360'%3E%3Cdefs%3E%3Cfilter id='c' x='-30%25' y='-30%25' width='160%25' height='160%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' seed='8' result='n'/%3E%3CfeDisplacementMap in='SourceGraphic' in2='n' scale='2.4' result='d'/%3E%3CfeColorMatrix in='n' type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -2.1 1.55' result='m'/%3E%3CfeComposite in='d' in2='m' operator='in'/%3E%3C/filter%3E%3C/defs%3E%3Cg filter='url%28%23c%29'%3E%3Cpath d='M6.7 0.0 L7.2 10.0 L6.8 20.0 L7.0 30.0 L6.5 40.0 L6.2 50.0 L6.8 60.0 L6.5 70.0 L6.6 80.0 L6.6 90.0 L6.5 100.0 L6.5 110.0 L6.1 120.0 L6.5 130.0 L6.0 140.0 L5.7 150.0 L5.7 160.0 L5.7 170.0 L5.7 180.0 L6.2 190.0 L6.0 200.0 L5.7 210.0 L5.7 220.0 L6.3 230.0 L5.7 240.0 L5.9 250.0 L5.7 260.0 L5.9 270.0 L5.7 280.0 L6.0 290.0 L6.0 300.0 L6.1 310.0 L6.6 320.0 L6.7 330.0 L6.3 340.0 L5.8 350.0 L6.3 360.0 ' fill='none' stroke='%23efe6c8' stroke-width='4.4' stroke-linecap='round' stroke-linejoin='round' opacity='0.82'/%3E%3Cpath d='M7.3 0.0 L8.0 10.0 L8.1 20.0 L8.4 30.0 L8.9 40.0 L8.6 50.0 L8.4 60.0 L8.9 70.0 L8.4 80.0 L8.8 90.0 L8.2 100.0 L8.5 110.0 L8.8 120.0 L9.4 130.0 L9.4 140.0 L9.4 150.0 L8.9 160.0 L8.4 170.0 L8.5 180.0 L8.5 190.0 L7.9 200.0 L8.5 210.0 L8.5 220.0 L8.8 230.0 L8.4 240.0 L8.0 250.0 L7.3 260.0 L7.1 270.0 L6.8 280.0 L6.7 290.0 L6.5 300.0 L7.0 310.0 L7.5 320.0 L7.1 330.0 L6.9 340.0 L6.4 350.0 L6.7 360.0 ' fill='none' stroke='%23efe6c8' stroke-width='2.8' stroke-linecap='round' stroke-linejoin='round' opacity='0.55' stroke-dasharray='30 3 12 5 44 2'/%3E%3Cpath d='M6.9 0.0 L7.4 10.0 L7.0 20.0 L6.3 30.0 L6.7 40.0 L6.4 50.0 L5.9 60.0 L5.8 70.0 L5.5 80.0 L5.5 90.0 L5.5 100.0 L5.5 110.0 L5.7 120.0 L5.5 130.0 L5.5 140.0 L5.5 150.0 L5.5 160.0 L5.5 170.0 L5.5 180.0 L6.0 190.0 L6.0 200.0 L6.3 210.0 L7.1 220.0 L6.4 230.0 L5.6 240.0 L5.5 250.0 L5.5 260.0 L5.6 270.0 L6.0 280.0 L5.8 290.0 L6.5 300.0 L5.7 310.0 L6.3 320.0 L5.8 330.0 L6.4 340.0 L5.7 350.0 L6.4 360.0 ' fill='none' stroke='%23efe6c8' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round' opacity='0.7' stroke-dasharray='18 6 40 3 9 4'/%3E%3C/g%3E%3C/svg%3E"); background-position:0 -90px; }
+  .manifest .sp::before{ height:14px; top:calc(-0.14em - 7px); background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='360' height='14' viewBox='0 0 360 14'%3E%3Cdefs%3E%3Cfilter id='c' x='-30%25' y='-30%25' width='160%25' height='160%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' seed='5' result='n'/%3E%3CfeDisplacementMap in='SourceGraphic' in2='n' scale='2.4' result='d'/%3E%3CfeColorMatrix in='n' type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -2.1 1.55' result='m'/%3E%3CfeComposite in='d' in2='m' operator='in'/%3E%3C/filter%3E%3C/defs%3E%3Cg filter='url%28%23c%29'%3E%3Cpath d='M0.0 7.9 L10.0 8.1 L20.0 8.5 L30.0 9.0 L40.0 9.0 L50.0 9.0 L60.0 8.4 L70.0 8.4 L80.0 8.9 L90.0 9.0 L100.0 9.0 L110.0 8.5 L120.0 8.5 L130.0 8.2 L140.0 8.3 L150.0 8.3 L160.0 7.8 L170.0 7.4 L180.0 7.2 L190.0 7.7 L200.0 8.0 L210.0 7.6 L220.0 7.9 L230.0 7.5 L240.0 7.6 L250.0 7.2 L260.0 6.6 L270.0 7.0 L280.0 6.7 L290.0 6.4 L300.0 7.0 L310.0 7.4 L320.0 7.2 L330.0 7.7 L340.0 7.8 L350.0 8.0 L360.0 7.6 ' fill='none' stroke='%23efe6c8' stroke-width='4.4' stroke-linecap='round' stroke-linejoin='round' opacity='0.82'/%3E%3Cpath d='M0.0 7.0 L10.0 7.7 L20.0 8.2 L30.0 8.0 L40.0 7.8 L50.0 7.3 L60.0 6.8 L70.0 6.2 L80.0 5.9 L90.0 6.1 L100.0 5.4 L110.0 5.6 L120.0 5.4 L130.0 5.2 L140.0 5.6 L150.0 5.6 L160.0 5.3 L170.0 5.3 L180.0 5.6 L190.0 5.2 L200.0 5.8 L210.0 5.2 L220.0 5.5 L230.0 6.0 L240.0 5.3 L250.0 5.7 L260.0 5.5 L270.0 5.7 L280.0 5.2 L290.0 5.2 L300.0 5.2 L310.0 5.8 L320.0 5.4 L330.0 5.7 L340.0 6.3 L350.0 7.0 L360.0 6.7 ' fill='none' stroke='%23efe6c8' stroke-width='2.8' stroke-linecap='round' stroke-linejoin='round' opacity='0.55' stroke-dasharray='30 3 12 5 44 2'/%3E%3Cpath d='M0.0 6.4 L10.0 6.9 L20.0 6.3 L30.0 6.7 L40.0 7.1 L50.0 7.7 L60.0 7.0 L70.0 7.7 L80.0 7.0 L90.0 6.8 L100.0 7.0 L110.0 7.6 L120.0 7.4 L130.0 8.0 L140.0 8.1 L150.0 7.8 L160.0 7.5 L170.0 7.0 L180.0 6.3 L190.0 5.8 L200.0 6.1 L210.0 6.9 L220.0 6.3 L230.0 5.6 L240.0 6.4 L250.0 6.4 L260.0 6.3 L270.0 5.9 L280.0 6.0 L290.0 6.5 L300.0 6.5 L310.0 6.3 L320.0 5.6 L330.0 6.3 L340.0 5.5 L350.0 5.5 L360.0 6.1 ' fill='none' stroke='%23efe6c8' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round' opacity='0.7' stroke-dasharray='18 6 40 3 9 4'/%3E%3C/g%3E%3C/svg%3E"); background-repeat:repeat-x; background-size:360px 14px; }
+  .manifest .l2::after{ height:14px; bottom:calc(-0.02em - 7px); left:calc(-0.5em - 7px); right:auto; width:calc(66% + 0.5em); background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='360' height='14' viewBox='0 0 360 14'%3E%3Cdefs%3E%3Cfilter id='c' x='-30%25' y='-30%25' width='160%25' height='160%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' seed='5' result='n'/%3E%3CfeDisplacementMap in='SourceGraphic' in2='n' scale='2.4' result='d'/%3E%3CfeColorMatrix in='n' type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -2.1 1.55' result='m'/%3E%3CfeComposite in='d' in2='m' operator='in'/%3E%3C/filter%3E%3C/defs%3E%3Cg filter='url%28%23c%29'%3E%3Cpath d='M0.0 7.9 L10.0 8.1 L20.0 8.5 L30.0 9.0 L40.0 9.0 L50.0 9.0 L60.0 8.4 L70.0 8.4 L80.0 8.9 L90.0 9.0 L100.0 9.0 L110.0 8.5 L120.0 8.5 L130.0 8.2 L140.0 8.3 L150.0 8.3 L160.0 7.8 L170.0 7.4 L180.0 7.2 L190.0 7.7 L200.0 8.0 L210.0 7.6 L220.0 7.9 L230.0 7.5 L240.0 7.6 L250.0 7.2 L260.0 6.6 L270.0 7.0 L280.0 6.7 L290.0 6.4 L300.0 7.0 L310.0 7.4 L320.0 7.2 L330.0 7.7 L340.0 7.8 L350.0 8.0 L360.0 7.6 ' fill='none' stroke='%23efe6c8' stroke-width='4.4' stroke-linecap='round' stroke-linejoin='round' opacity='0.82'/%3E%3Cpath d='M0.0 7.0 L10.0 7.7 L20.0 8.2 L30.0 8.0 L40.0 7.8 L50.0 7.3 L60.0 6.8 L70.0 6.2 L80.0 5.9 L90.0 6.1 L100.0 5.4 L110.0 5.6 L120.0 5.4 L130.0 5.2 L140.0 5.6 L150.0 5.6 L160.0 5.3 L170.0 5.3 L180.0 5.6 L190.0 5.2 L200.0 5.8 L210.0 5.2 L220.0 5.5 L230.0 6.0 L240.0 5.3 L250.0 5.7 L260.0 5.5 L270.0 5.7 L280.0 5.2 L290.0 5.2 L300.0 5.2 L310.0 5.8 L320.0 5.4 L330.0 5.7 L340.0 6.3 L350.0 7.0 L360.0 6.7 ' fill='none' stroke='%23efe6c8' stroke-width='2.8' stroke-linecap='round' stroke-linejoin='round' opacity='0.55' stroke-dasharray='30 3 12 5 44 2'/%3E%3Cpath d='M0.0 6.4 L10.0 6.9 L20.0 6.3 L30.0 6.7 L40.0 7.1 L50.0 7.7 L60.0 7.0 L70.0 7.7 L80.0 7.0 L90.0 6.8 L100.0 7.0 L110.0 7.6 L120.0 7.4 L130.0 8.0 L140.0 8.1 L150.0 7.8 L160.0 7.5 L170.0 7.0 L180.0 6.3 L190.0 5.8 L200.0 6.1 L210.0 6.9 L220.0 6.3 L230.0 5.6 L240.0 6.4 L250.0 6.4 L260.0 6.3 L270.0 5.9 L280.0 6.0 L290.0 6.5 L300.0 6.5 L310.0 6.3 L320.0 5.6 L330.0 6.3 L340.0 5.5 L350.0 5.5 L360.0 6.1 ' fill='none' stroke='%23efe6c8' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round' opacity='0.7' stroke-dasharray='18 6 40 3 9 4'/%3E%3C/g%3E%3C/svg%3E"); background-repeat:repeat-x; background-size:360px 14px; background-position:-120px 0; }
+  .manifest .l2::before{ left:66%; margin-left:0; top:calc(100% - 14px); width:70px; height:46px; border:0; background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='70' height='46' viewBox='0 0 70 46'%3E%3Cdefs%3E%3Cfilter id='c' x='-30%25' y='-30%25' width='160%25' height='160%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' seed='13' result='n'/%3E%3CfeDisplacementMap in='SourceGraphic' in2='n' scale='2.4' result='d'/%3E%3CfeColorMatrix in='n' type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -2.1 1.55' result='m'/%3E%3CfeComposite in='d' in2='m' operator='in'/%3E%3C/filter%3E%3C/defs%3E%3Cg filter='url%28%23c%29' fill='none' stroke='%23efe6c8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 7 L5.5 38' stroke-width='4.2' opacity='.85'/%3E%3Cpath d='M64 7 L64.5 38' stroke-width='4.2' opacity='.85'/%3E%3Cpath d='M7 8 L26 15 L26 41 L7 36' stroke-width='3' opacity='.8'/%3E%3Cpath d='M12 36 Q36 46 62 36' stroke-width='1.6' stroke-dasharray='6 5' opacity='.6'/%3E%3Ccircle cx='22' cy='28' r='1.4' stroke-width='2.4'/%3E%3C/g%3E%3C/svg%3E") no-repeat; background-size:70px 46px; }
+  .manifest .l2 .rr{ position:absolute; left:calc(66% + 68px); right:calc(-0.5em - 7px); bottom:calc(-0.02em - 7px); height:14px; background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='360' height='14' viewBox='0 0 360 14'%3E%3Cdefs%3E%3Cfilter id='c' x='-30%25' y='-30%25' width='160%25' height='160%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' seed='5' result='n'/%3E%3CfeDisplacementMap in='SourceGraphic' in2='n' scale='2.4' result='d'/%3E%3CfeColorMatrix in='n' type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -2.1 1.55' result='m'/%3E%3CfeComposite in='d' in2='m' operator='in'/%3E%3C/filter%3E%3C/defs%3E%3Cg filter='url%28%23c%29'%3E%3Cpath d='M0.0 7.9 L10.0 8.1 L20.0 8.5 L30.0 9.0 L40.0 9.0 L50.0 9.0 L60.0 8.4 L70.0 8.4 L80.0 8.9 L90.0 9.0 L100.0 9.0 L110.0 8.5 L120.0 8.5 L130.0 8.2 L140.0 8.3 L150.0 8.3 L160.0 7.8 L170.0 7.4 L180.0 7.2 L190.0 7.7 L200.0 8.0 L210.0 7.6 L220.0 7.9 L230.0 7.5 L240.0 7.6 L250.0 7.2 L260.0 6.6 L270.0 7.0 L280.0 6.7 L290.0 6.4 L300.0 7.0 L310.0 7.4 L320.0 7.2 L330.0 7.7 L340.0 7.8 L350.0 8.0 L360.0 7.6 ' fill='none' stroke='%23efe6c8' stroke-width='4.4' stroke-linecap='round' stroke-linejoin='round' opacity='0.82'/%3E%3Cpath d='M0.0 7.0 L10.0 7.7 L20.0 8.2 L30.0 8.0 L40.0 7.8 L50.0 7.3 L60.0 6.8 L70.0 6.2 L80.0 5.9 L90.0 6.1 L100.0 5.4 L110.0 5.6 L120.0 5.4 L130.0 5.2 L140.0 5.6 L150.0 5.6 L160.0 5.3 L170.0 5.3 L180.0 5.6 L190.0 5.2 L200.0 5.8 L210.0 5.2 L220.0 5.5 L230.0 6.0 L240.0 5.3 L250.0 5.7 L260.0 5.5 L270.0 5.7 L280.0 5.2 L290.0 5.2 L300.0 5.2 L310.0 5.8 L320.0 5.4 L330.0 5.7 L340.0 6.3 L350.0 7.0 L360.0 6.7 ' fill='none' stroke='%23efe6c8' stroke-width='2.8' stroke-linecap='round' stroke-linejoin='round' opacity='0.55' stroke-dasharray='30 3 12 5 44 2'/%3E%3Cpath d='M0.0 6.4 L10.0 6.9 L20.0 6.3 L30.0 6.7 L40.0 7.1 L50.0 7.7 L60.0 7.0 L70.0 7.7 L80.0 7.0 L90.0 6.8 L100.0 7.0 L110.0 7.6 L120.0 7.4 L130.0 8.0 L140.0 8.1 L150.0 7.8 L160.0 7.5 L170.0 7.0 L180.0 6.3 L190.0 5.8 L200.0 6.1 L210.0 6.9 L220.0 6.3 L230.0 5.6 L240.0 6.4 L250.0 6.4 L260.0 6.3 L270.0 5.9 L280.0 6.0 L290.0 6.5 L300.0 6.5 L310.0 6.3 L320.0 5.6 L330.0 6.3 L340.0 5.5 L350.0 5.5 L360.0 6.1 ' fill='none' stroke='%23efe6c8' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round' opacity='0.7' stroke-dasharray='18 6 40 3 9 4'/%3E%3C/g%3E%3C/svg%3E") repeat-x; background-size:360px 14px; background-position:-200px 0; }
+  .manifest .l1::after{ filter:none; opacity:1; height:0.3em; bottom:-0.2em; background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='480' height='14' viewBox='0 0 480 14'%3E%3Cdefs%3E%3Cfilter id='c' x='-30%25' y='-30%25' width='160%25' height='160%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' seed='4' result='n'/%3E%3CfeDisplacementMap in='SourceGraphic' in2='n' scale='2.4' result='d'/%3E%3CfeColorMatrix in='n' type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -2.1 1.55' result='m'/%3E%3CfeComposite in='d' in2='m' operator='in'/%3E%3C/filter%3E%3C/defs%3E%3Cg filter='url%28%23c%29'%3E%3Cpath d='M0 7 Q10.7 11.8 24.0 7.0 Q34.9 12.1 48.0 7.0 Q60.0 3.1 72.0 6.2 Q85.7 10.6 96.0 7.5 Q106.9 2.9 120.0 6.9 Q134.0 11.7 144.0 6.3 Q155.3 11.9 168.0 7.2 Q181.8 1.8 192.0 7.5 Q202.5 2.4 216.0 7.1 Q227.4 10.8 240.0 7.3 Q251.9 1.6 264.0 6.5 Q276.7 1.7 288.0 7.0 Q301.3 2.2 312.0 6.4 Q324.1 11.2 336.0 6.9 Q347.5 11.3 360.0 6.2 Q370.4 10.5 384.0 6.3 Q396.4 2.6 408.0 6.7 Q421.9 1.9 432.0 6.5 Q443.4 11.2 456.0 7.2 Q467.2 1.8 480.0 7.7' fill='none' stroke='%23cdb98a' stroke-width='2.4' stroke-linecap='round' opacity='.85'/%3E%3C/g%3E%3C/svg%3E") repeat-x; background-size:auto 100%; }
+
+  /* Karussell: die zuletzt gezeigten Künstler, je ein Bild */
+  .werk .werk-stage{ position:relative; width:100%; aspect-ratio:4/5; max-height:76vh; background:var(--dark); }
+  .werk .werk-stage .werk-img{ position:absolute; inset:0; width:100%; height:100%; object-fit:contain; box-shadow:none; opacity:0; transition:opacity 0.9s ease; pointer-events:none; }
+  .werk .werk-stage .werk-img.is-active{ opacity:1; pointer-events:auto; }
+  .werk .werk-karussell{ box-shadow:none; }
+  .werk .werk-stage{ box-shadow:0 0 0 30px var(--dark), 0 30px 70px rgba(0,0,0,0.55); }
+  .werk .werk-dots{ display:flex; gap:0.7rem; margin-top:2.6rem; }
+  .werk .werk-dot{ width:11px; height:11px; border-radius:50%; border:1px solid var(--cream); background:transparent; opacity:0.6; cursor:pointer; padding:0; }
+  .werk .werk-dot.is-active{ background:var(--cream); opacity:1; }
+  .werk .werk-caps{ display:grid; }
+  .werk .werk-cap{ grid-area:1/1; margin-top:1.4rem; opacity:0; visibility:hidden; transition:opacity 0.6s ease; }
+  .werk .werk-cap.is-active{ opacity:1; visibility:visible; }
+  @media (max-width: 700px){
+    .werk .werk-stage{ box-shadow:none; max-height:none; }
+    .werk .werk-dots{ margin-top:1.4rem; padding:0 1.8rem; }
+  }
+  .werk .werk-antwort{ display:inline-block; margin:0 0 0 1.2rem; font-family:'Work Sans', sans-serif; font-size:0.82rem; letter-spacing:0.08em; text-transform:lowercase; color:var(--dark); background:var(--cream); padding:0.45rem 0.9rem; text-decoration:none; }
+  .werk .werk-antwort:hover{ background:var(--gold); }
+  @media (prefers-reduced-motion: reduce){ .werk .werk-stage .werk-img, .werk .werk-cap{ transition:none; } }
+</style>
+</head>
+<body>
+
+  <header class="site-header">
+    <a class="wordmark" href="/">Raum schaffen</a>
+    <nav>
+      <a href="/menschen.html">Menschen</a>
+      <a href="/disziplinen.html">Zimmer</a>
+      <div class="lang-toggle">
+        <button type="button" data-lang="de" class="active">DE</button>
+        <span style="color:rgba(239,230,200,0.3);">/</span>
+        <button type="button" data-lang="en">EN</button>
+        <span style="color:rgba(239,230,200,0.3);">/</span>
+        <button type="button" data-lang="es">ES</button>
+        <span style="color:rgba(239,230,200,0.3);">/</span>
+        <button type="button" data-lang="fr">FR</button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-logo">
+        <img src="offfen-logo.jpeg" alt="OFFFEN Logo">
+      </div>
+      <p class="eyebrow"><img class="logo-inline" src="offfen-logo.jpeg" alt="offfen"> — Schaffensmenschen</p>
+      <h1 class="manifest">
+        <span data-i18n="de" class="lang-active"><span class="frame"><span class="ln l1"><span class="sp">Wir sprengen</span> <span class="gr">Grenzen<svg class="flick" viewBox="0 0 260 110" aria-hidden="true"><defs><filter id="kr1" x="-10%" y="-30%" width="120%" height="160%"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="3" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3" result="d"/><feColorMatrix in="n" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -2.1 1.55" result="m"/><feComposite in="d" in2="m" operator="in"/></filter></defs><g filter="url(#kr1)" stroke="#efe6c8" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M-2,56 C20,54 50,57 92,54 C116,52 134,50 140,32 C145,13 119,8 108,23 C97,37 112,55 134,50 C160,44 190,20 224,-7" stroke-width="4.6" opacity=".85"/><path d="M-2,56 C20,54 50,57 92,54 C116,52 134,50 140,32 C145,13 119,8 108,23 C97,37 112,55 134,50 C160,44 190,20 224,-7" stroke-width="2.2" transform="translate(1.2,1.4)" stroke-dasharray="26 4 14 6 40 3" opacity=".6"/></g></svg></span>.</span><span class="ln l2">Wir schaffen Raum.<span class="rr" aria-hidden="true"></span></span></span></span>
+        <span data-i18n="en"><span class="frame"><span class="ln l1"><span class="sp">We break</span> <span class="gr">boundaries<svg class="flick" viewBox="0 0 260 110" aria-hidden="true"><defs><filter id="kr2" x="-10%" y="-30%" width="120%" height="160%"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="4" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3" result="d"/><feColorMatrix in="n" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -2.1 1.55" result="m"/><feComposite in="d" in2="m" operator="in"/></filter></defs><g filter="url(#kr2)" stroke="#efe6c8" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M-2,56 C20,54 50,57 92,54 C116,52 134,50 140,32 C145,13 119,8 108,23 C97,37 112,55 134,50 C160,44 190,20 224,-7" stroke-width="4.6" opacity=".85"/><path d="M-2,56 C20,54 50,57 92,54 C116,52 134,50 140,32 C145,13 119,8 108,23 C97,37 112,55 134,50 C160,44 190,20 224,-7" stroke-width="2.2" transform="translate(1.2,1.4)" stroke-dasharray="26 4 14 6 40 3" opacity=".6"/></g></svg></span>.</span><span class="ln l2">We create space.<span class="rr" aria-hidden="true"></span></span></span></span><span data-i18n="es"><span class="frame"><span class="ln l1"><span class="sp">Rompemos</span> <span class="gr">límites<svg class="flick" viewBox="0 0 260 110" aria-hidden="true"><defs><filter id="kr3" x="-10%" y="-30%" width="120%" height="160%"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="5" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3" result="d"/><feColorMatrix in="n" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -2.1 1.55" result="m"/><feComposite in="d" in2="m" operator="in"/></filter></defs><g filter="url(#kr3)" stroke="#efe6c8" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M-2,56 C20,54 50,57 92,54 C116,52 134,50 140,32 C145,13 119,8 108,23 C97,37 112,55 134,50 C160,44 190,20 224,-7" stroke-width="4.6" opacity=".85"/><path d="M-2,56 C20,54 50,57 92,54 C116,52 134,50 140,32 C145,13 119,8 108,23 C97,37 112,55 134,50 C160,44 190,20 224,-7" stroke-width="2.2" transform="translate(1.2,1.4)" stroke-dasharray="26 4 14 6 40 3" opacity=".6"/></g></svg></span>.</span><span class="ln l2">Creamos espacio.<span class="rr" aria-hidden="true"></span></span></span></span><span data-i18n="fr"><span class="frame"><span class="ln l1"><span class="sp">Nous brisons les</span> <span class="gr">limites<svg class="flick" viewBox="0 0 260 110" aria-hidden="true"><defs><filter id="kr4" x="-10%" y="-30%" width="120%" height="160%"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="6" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3" result="d"/><feColorMatrix in="n" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -2.1 1.55" result="m"/><feComposite in="d" in2="m" operator="in"/></filter></defs><g filter="url(#kr4)" stroke="#efe6c8" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M-2,56 C20,54 50,57 92,54 C116,52 134,50 140,32 C145,13 119,8 108,23 C97,37 112,55 134,50 C160,44 190,20 224,-7" stroke-width="4.6" opacity=".85"/><path d="M-2,56 C20,54 50,57 92,54 C116,52 134,50 140,32 C145,13 119,8 108,23 C97,37 112,55 134,50 C160,44 190,20 224,-7" stroke-width="2.2" transform="translate(1.2,1.4)" stroke-dasharray="26 4 14 6 40 3" opacity=".6"/></g></svg></span>.</span><span class="ln l2">Nous créons de l'espace.<span class="rr" aria-hidden="true"></span></span></span></span>
+      </h1>
+      <p class="lede">
+        <span data-i18n="de" class="lang-active">zeigen. sehen. weiterschaffen.<br><br>offfen ist der ort dafür: ein raum für künstler, digital und international. grenzen auf, kontakte statt gewinn.<br><br>zeig, was gerade entsteht — ein foto, eine skizze, eine frage. worauf wartest du?</span>
+        <span data-i18n="en">show. see. keep creating.<br><br>offfen is the place for it: an open space for artists, digital and international. open boundaries, contacts instead of profit.<br><br>show what's taking shape — a photo, a sketch, a question. what are you waiting for?</span><span data-i18n="es">mostrar. ver. seguir creando.<br><br>offfen es el lugar para ello: un espacio abierto para artistas, digital e internacional. fronteras abiertas, contactos en lugar de beneficio.<br><br>muestra lo que está surgiendo: una foto, un boceto, una pregunta. ¿qué esperas?</span><span data-i18n="fr">montrer. voir. continuer à créer.<br><br>offfen est le lieu pour cela : un espace ouvert aux artistes, numérique et international. des frontières ouvertes, des contacts plutôt que du profit.<br><br>montre ce qui est en train de naître : une photo, une esquisse, une question. qu'attends-tu ?</span>
+      </p>
+      <div class="cta-row">
+        <a class="cta primary" href="mailto:raum@offfen-schaffensmenschen.com?subject=Ein%20Detail%20von%20mir">
+          <span data-i18n="de" class="lang-active">Schick ein Detail</span><span data-i18n="en">Send a detail</span><span data-i18n="es">Envía un detalle</span><span data-i18n="fr">Envoie un détail</span>
+        </a>
+        <a class="cta secondary" href="/was-entsteht.html">
+          <span data-i18n="de" class="lang-active">Entdecken was entsteht</span><span data-i18n="en">Discover what's emerging</span><span data-i18n="es">Descubre lo que está surgiendo</span><span data-i18n="fr">Découvre ce qui naît</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="raum">
+      <p class="raum-label"><span data-i18n="de" class="lang-active">unser raum</span><span data-i18n="en">our space</span><span data-i18n="es">nuestro espacio</span><span data-i18n="fr">notre espace</span></p>
+      <div class="raum-strip"><img src="raum-1.jpg" alt="Verlassenes Haus, überwuchert vom Grün" loading="eager"><img src="raum-2.jpg" alt="Enge Treppe nach unten" loading="lazy"><img src="raum-3.jpg" alt="Zwei Klappstühle, gelb und blau, vor einer Backsteinwand" loading="lazy"><img src="raum-4.jpg" alt="Ein einzelner Klappstuhl vor einer rauen Wand" loading="lazy"><img src="raum-5.jpg" alt="Verrostete Spirale an der Wand" loading="lazy"><img src="raum-6.jpg" alt="Leerer Raum mit Holzbalken" loading="lazy"><img src="raum-7.jpg" alt="Gewölbekeller im grünen Licht mit einer Gestalt" loading="lazy"></div>
+      <p class="raum-text">
+        <span data-i18n="de" class="lang-active">Hier wird OFFFEN ganz real: ein Raum für Atelier-Events und Begegnung.</span>
+        <span data-i18n="en">Here OFFFEN becomes real: a space for studio events and encounters.</span>
+        <span data-i18n="es">Aquí OFFFEN se hace real: un espacio para eventos de taller y encuentros.</span><span data-i18n="fr">Ici, OFFFEN devient réel : un espace pour des événements d'atelier et des rencontres.</span>
+      </p>
+      <p class="raum-link">
+        <a href="/schaffensraum.html"><span data-i18n="de" class="lang-active">Vintage &amp; Fundstücke aus dem Schaffensraum →</span><span data-i18n="en">Vintage &amp; found objects from the Schaffensraum →</span><span data-i18n="es">Vintage y objetos encontrados del Schaffensraum →</span><span data-i18n="fr">Vintage et objets trouvés du Schaffensraum →</span></a>
+      </p>
+    </section>
+
+    <section class="werk">
+      <figure class="werk-karussell">
+        <div class="werk-stage">
+          <img class="werk-img is-active" src="pierre-werk-1.jpg" alt="Gemälde in dunklem Blau und Grün, aus dem Dunkel treten Umrisse hervor" loading="eager">
+          <img class="werk-img" src="werk-nick-essence.webp" alt="Ein gestreifter Fisch über einem jungen Mädchen mit dunklem Haar, Zeichnung in Schwarz auf hellem Grund" loading="lazy">
+          <img class="werk-img" src="lena-werk-3.jpg" alt="Zeichnung einer Straße mit Häusern von oben, feine Bleistiftlinien" loading="lazy">
+          <img class="werk-img" src="lentini-stuhl.jpg" alt="Ein weißer Stuhl vor einem Grund aus Rot, Blau und Papierschichten" loading="lazy">
+          <img class="werk-img" src="kaan-werk-1.jpg" alt="Collage aus gestreiften Papieren in Gelb, Rosa und Grau" loading="lazy">
+          <img class="werk-img" src="samuel-cristo.jpg" alt="Schwarz-weißes Porträt mit Dornenkrone, Blick direkt in die Kamera" loading="lazy">
+        </div>
+        <div class="werk-dots"><button type="button" class="werk-dot is-active" aria-label="1 / 6"></button><button type="button" class="werk-dot" aria-label="2 / 6"></button><button type="button" class="werk-dot" aria-label="3 / 6"></button><button type="button" class="werk-dot" aria-label="4 / 6"></button><button type="button" class="werk-dot" aria-label="5 / 6"></button><button type="button" class="werk-dot" aria-label="6 / 6"></button></div>
+        <div class="werk-caps">
+          <figcaption class="werk-cap is-active">
+            <span data-i18n="de" class="lang-active">Wo beginnt dieses Licht?</span><span data-i18n="en">Where does this light begin?</span><span data-i18n="es">¿Dónde empieza esta luz?</span><span data-i18n="fr">Où commence cette lumière ?</span>
+            <small><span data-i18n="de" class="lang-active">zuletzt gezeigt</span><span data-i18n="en">recently shown</span><span data-i18n="es">mostrado hace poco</span><span data-i18n="fr">montré récemment</span></small>
+            <a class="werk-credit" href="profil-pierre-dole.html"><span data-i18n="de" class="lang-active">Werk: Pierre Dole</span><span data-i18n="en">Work: Pierre Dole</span><span data-i18n="es">Obra: Pierre Dole</span><span data-i18n="fr">Œuvre : Pierre Dole</span></a>
+            <a class="werk-antwort" href="https://ig.me/m/offfen.schaffensmenschen" target="_blank" rel="noopener"><span data-i18n="de" class="lang-active">deine antwort per nachricht →</span><span data-i18n="en">your answer by message →</span><span data-i18n="es">tu respuesta por mensaje →</span><span data-i18n="fr">ta réponse par message →</span></a>
+          </figcaption>
+          <figcaption class="werk-cap">
+            <span data-i18n="de" class="lang-active">Was erkennst du?</span><span data-i18n="en">What do you see?</span><span data-i18n="es">¿Qué ves?</span><span data-i18n="fr">Que vois-tu ?</span>
+            <small><span data-i18n="de" class="lang-active">zuletzt gezeigt</span><span data-i18n="en">recently shown</span><span data-i18n="es">mostrado hace poco</span><span data-i18n="fr">montré récemment</span></small>
+            <a class="werk-credit" href="profil-nick-ghafari.html"><span data-i18n="de" class="lang-active">Werk: Nick Ghafari</span><span data-i18n="en">Work: Nick Ghafari</span><span data-i18n="es">Obra: Nick Ghafari</span><span data-i18n="fr">Œuvre : Nick Ghafari</span></a>
+            <a class="werk-antwort" href="https://ig.me/m/offfen.schaffensmenschen" target="_blank" rel="noopener"><span data-i18n="de" class="lang-active">deine antwort per nachricht →</span><span data-i18n="en">your answer by message →</span><span data-i18n="es">tu respuesta por mensaje →</span><span data-i18n="fr">ta réponse par message →</span></a>
+          </figcaption>
+          <figcaption class="werk-cap">
+            <span data-i18n="de" class="lang-active">Wohin führt diese Straße?</span><span data-i18n="en">Where does this street lead?</span><span data-i18n="es">¿A dónde lleva esta calle?</span><span data-i18n="fr">Où mène cette rue ?</span>
+            <small><span data-i18n="de" class="lang-active">zuletzt gezeigt</span><span data-i18n="en">recently shown</span><span data-i18n="es">mostrado hace poco</span><span data-i18n="fr">montré récemment</span></small>
+            <a class="werk-credit" href="profil-lena.html"><span data-i18n="de" class="lang-active">Werk: Lena Isasi</span><span data-i18n="en">Work: Lena Isasi</span><span data-i18n="es">Obra: Lena Isasi</span><span data-i18n="fr">Œuvre : Lena Isasi</span></a>
+            <a class="werk-antwort" href="https://ig.me/m/offfen.schaffensmenschen" target="_blank" rel="noopener"><span data-i18n="de" class="lang-active">deine antwort per nachricht →</span><span data-i18n="en">your answer by message →</span><span data-i18n="es">tu respuesta por mensaje →</span><span data-i18n="fr">ta réponse par message →</span></a>
+          </figcaption>
+          <figcaption class="werk-cap">
+            <span data-i18n="de" class="lang-active">Wer saß hier zuletzt?</span><span data-i18n="en">Who sat here last?</span><span data-i18n="es">¿Quién se sentó aquí por última vez?</span><span data-i18n="fr">Qui s'est assis ici en dernier ?</span>
+            <small><span data-i18n="de" class="lang-active">zuletzt gezeigt</span><span data-i18n="en">recently shown</span><span data-i18n="es">mostrado hace poco</span><span data-i18n="fr">montré récemment</span></small>
+            <a class="werk-credit" href="profil-lentini.html"><span data-i18n="de" class="lang-active">Werk: lentini.arte</span><span data-i18n="en">Work: lentini.arte</span><span data-i18n="es">Obra: lentini.arte</span><span data-i18n="fr">Œuvre : lentini.arte</span></a>
+            <a class="werk-antwort" href="https://ig.me/m/offfen.schaffensmenschen" target="_blank" rel="noopener"><span data-i18n="de" class="lang-active">deine antwort per nachricht →</span><span data-i18n="en">your answer by message →</span><span data-i18n="es">tu respuesta por mensaje →</span><span data-i18n="fr">ta réponse par message →</span></a>
+          </figcaption>
+          <figcaption class="werk-cap">
+            <span data-i18n="de" class="lang-active">Wo fängst du an zu schauen?</span><span data-i18n="en">Where do you start looking?</span><span data-i18n="es">¿Por dónde empiezas a mirar?</span><span data-i18n="fr">Par où commences-tu à regarder ?</span>
+            <small><span data-i18n="de" class="lang-active">zuletzt gezeigt</span><span data-i18n="en">recently shown</span><span data-i18n="es">mostrado hace poco</span><span data-i18n="fr">montré récemment</span></small>
+            <a class="werk-credit" href="profil-kaan.html"><span data-i18n="de" class="lang-active">Werk: Kaan Işcan</span><span data-i18n="en">Work: Kaan Işcan</span><span data-i18n="es">Obra: Kaan Işcan</span><span data-i18n="fr">Œuvre : Kaan Işcan</span></a>
+            <a class="werk-antwort" href="https://ig.me/m/offfen.schaffensmenschen" target="_blank" rel="noopener"><span data-i18n="de" class="lang-active">deine antwort per nachricht →</span><span data-i18n="en">your answer by message →</span><span data-i18n="es">tu respuesta por mensaje →</span><span data-i18n="fr">ta réponse par message →</span></a>
+          </figcaption>
+          <figcaption class="werk-cap">
+            <span data-i18n="de" class="lang-active">Was sagen diese Augen?</span><span data-i18n="en">What do these eyes say?</span><span data-i18n="es">¿Qué dicen estos ojos?</span><span data-i18n="fr">Que disent ces yeux ?</span>
+            <small><span data-i18n="de" class="lang-active">zuletzt gezeigt</span><span data-i18n="en">recently shown</span><span data-i18n="es">mostrado hace poco</span><span data-i18n="fr">montré récemment</span></small>
+            <a class="werk-credit" href="profil-samuel.html"><span data-i18n="de" class="lang-active">Werk: Samuel Guerrero</span><span data-i18n="en">Work: Samuel Guerrero</span><span data-i18n="es">Obra: Samuel Guerrero</span><span data-i18n="fr">Œuvre : Samuel Guerrero</span></a>
+            <a class="werk-antwort" href="https://ig.me/m/offfen.schaffensmenschen" target="_blank" rel="noopener"><span data-i18n="de" class="lang-active">deine antwort per nachricht →</span><span data-i18n="en">your answer by message →</span><span data-i18n="es">tu respuesta por mensaje →</span><span data-i18n="fr">ta réponse par message →</span></a>
+          </figcaption>
+        </div>
+      </figure>
+    </section>
+
+    <section class="statement">
+      <p>
+        <span data-i18n="de" class="lang-active">Aus <span class="gold">Illusionen</span> werden Visionen. Aus Visionen werden Räume.</span>
+        <span data-i18n="en">From <span class="gold">illusions</span> come visions. From visions come spaces.</span><span data-i18n="es">De <span class="gold">ilusiones</span> nacen visiones. De visiones nacen espacios.</span><span data-i18n="fr">Des <span class="gold">illusions</span> naissent des visions. Des visions naissent des espaces.</span>
+      </p>
+    </section>
+
+    <section class="warum">
+      <p class="headline">
+        <span data-i18n="de" class="lang-active">Warum <img class="logo-inline" src="offfen-logo.jpeg" alt="offfen">.</span>
+        <span data-i18n="en">Why <img class="logo-inline" src="offfen-logo.jpeg" alt="offfen">.</span><span data-i18n="es">Por qué <img class="logo-inline" src="offfen-logo.jpeg" alt="offfen">.</span><span data-i18n="fr">Pourquoi <img class="logo-inline" src="offfen-logo.jpeg" alt="offfen">.</span>
+      </p>
+      <p class="body">
+        <span data-i18n="de" class="lang-active">Ein Werk ist mehr als sein Ergebnis. Dahinter stehen Fragen: Was bewegt dich? Was inspiriert dich? Wo hat es angefangen?
+        Zwischenstände, Umwege und Versuche ohne Namen hatten bisher keinen Ort.
+        <img class="logo-inline" src="offfen-logo.jpeg" alt="offfen"> ist dieser Ort: Hier ist der Prozess genauso interessant wie das Ergebnis selbst.</span>
+        <span data-i18n="en">A work is more than its result. Behind it are questions: What moves you? What inspires you? Where did it begin?
+        Stages, detours and attempts without a name had no place to go.
+        <img class="logo-inline" src="offfen-logo.jpeg" alt="offfen"> is that place: here the process is as interesting as the result itself.</span><span data-i18n="es">Una obra es más que su resultado. Detrás hay preguntas: ¿Qué te mueve? ¿Qué te inspira? ¿Dónde empezó?
+        Las etapas intermedias, los desvíos y los intentos sin nombre no tenían dónde ir.
+        <img class="logo-inline" src="offfen-logo.jpeg" alt="offfen"> es ese lugar: aquí el proceso es tan interesante como el resultado mismo.</span><span data-i18n="fr">Une œuvre est plus que son résultat. Derrière elle, il y a des questions : qu'est-ce qui te touche ? qu'est-ce qui t'inspire ? où tout a-t-il commencé ?
+        Les étapes intermédiaires, les détours et les essais sans nom n'avaient nulle part où aller.
+        <img class="logo-inline" src="offfen-logo.jpeg" alt="offfen"> est ce lieu : ici, le processus est aussi intéressant que le résultat lui-même.</span>
+      </p>
+      <p class="body" style="font-weight:600; color:var(--ink); margin-top:1.6rem;">
+        <span data-i18n="de" class="lang-active">Anders heißt: ohne Erlaubnis.</span>
+        <span data-i18n="en">Different means: without permission.</span><span data-i18n="es">Diferente significa: sin pedir permiso.</span><span data-i18n="fr">Différent, ça veut dire : sans demander la permission.</span>
+      </p>
+    </section>
+
+    <section class="was-fuer-wen">
+      <div class="col">
+        <p class="label"><span data-i18n="de" class="lang-active">Was</span><span data-i18n="en">What</span><span data-i18n="es">Qué</span><span data-i18n="fr">Quoi</span></p>
+        <p>
+          <span data-i18n="de" class="lang-active">Hier zeigst du, was dich bewegt und inspiriert und wie daraus etwas wird. Skizzen, Versuche, Fragen — und ab und zu das fertige Werk.</span>
+          <span data-i18n="en">Here you show what moves and inspires you, and how something grows from it. Sketches, attempts, questions — and sometimes the finished work.</span><span data-i18n="es">Aquí muestras lo que te mueve y te inspira, y cómo de eso nace algo. Bocetos, intentos, preguntas, y de vez en cuando la obra terminada.</span><span data-i18n="fr">Ici, tu montres ce qui te touche et t'inspire, et comment quelque chose en naît. Esquisses, essais, questions, et de temps en temps l'œuvre achevée.</span>
+        </p>
+      </div>
+      <div class="col">
+        <p class="label"><span data-i18n="de" class="lang-active">Für wen</span><span data-i18n="en">For whom</span><span data-i18n="es">Para quién</span><span data-i18n="fr">Pour qui</span></p>
+        <p>
+          <span data-i18n="de" class="lang-active">Für alle, die etwas schaffen — ganz gleich in welcher Form, welchem Stadium oder welcher Sprache.
+          Mit oder ohne fertiges Portfolio.</span>
+          <span data-i18n="en">For anyone who creates — in whatever form, stage or language.
+          With or without a finished portfolio.</span><span data-i18n="es">Para todas las personas que crean, sea cual sea la forma, la etapa o el idioma.
+          Con o sin portafolio terminado.</span><span data-i18n="fr">Pour toutes les personnes qui créent, quelle que soit la forme, l'étape ou la langue.
+          Avec ou sans portfolio achevé.</span>
+        </p>
+      </div>
+      <div class="col">
+        <p class="label"><span data-i18n="de" class="lang-active">Was kann ich tun</span><span data-i18n="en">What can I do</span><span data-i18n="es">Qué puedo hacer</span><span data-i18n="fr">Que puis-je faire</span></p>
+        <p>
+          <span data-i18n="de" class="lang-active">Zeig, was gerade entsteht, ein Foto reicht. Sieh, woran andere arbeiten. Gib Rückmeldung und hol dir welche.</span>
+          <span data-i18n="en">Show what's taking shape, a photo is enough. See what others are working on. Give feedback and get some.</span><span data-i18n="es">Muestra lo que está surgiendo, una foto basta. Mira en qué trabajan otras personas. Da tu opinión y recibe la de ellas.</span><span data-i18n="fr">Montre ce qui est en train de naître, une photo suffit. Regarde sur quoi travaillent les autres. Donne ton avis et reçois celui des autres.</span>
+        </p>
+      </div>
+    </section>
+
+    <section class="gruender">
+      <div class="foto"><img src="bernd-neichsner.jpg" alt="Bernd Neichsner"></div>
+      <div>
+        <p class="label"><span data-i18n="de" class="lang-active">Die Idee</span><span data-i18n="en">The idea</span><span data-i18n="es">La idea</span><span data-i18n="fr">L'idée</span></p>
+        <p class="name">Bernd Neichsner</p>
+        <p class="rolle"><span data-i18n="de" class="lang-active">Visionär hinter OFFFEN</span><span data-i18n="en">Visionary behind OFFFEN</span><span data-i18n="es">Visionario detrás de OFFFEN</span><span data-i18n="fr">Visionnaire derrière OFFFEN</span></p>
+        <p class="text">
+          <span data-i18n="de" class="lang-active">Von ihm stammt die Idee: ein Raum, in dem Schaffende zeigen, was sie bewegt und wie ihr Werk entsteht — der Prozess ist so interessant wie das Ergebnis.</span>
+          <span data-i18n="en">The idea is his: a space where creators show what moves them and how their work comes to be — the process is as interesting as the result.</span><span data-i18n="es">Suya es la idea: un espacio donde quienes crean muestran lo que los mueve y cómo nace su obra: el proceso es tan interesante como el resultado.</span><span data-i18n="fr">L'idée est de lui : un espace où celles et ceux qui créent montrent ce qui les touche et comment naît leur œuvre. Le processus est aussi intéressant que le résultat.</span>
+        </p>
+        <a href="profil.html"><span data-i18n="de" class="lang-active">Zum Profil</span><span data-i18n="en">To the profile</span><span data-i18n="es">Ir al perfil</span><span data-i18n="fr">Voir le profil</span></a>
+      </div>
+    </section>
+
+    <section class="ideen-werden">
+      <p class="headline"><span data-i18n="de" class="lang-active">Ideen im Werden.</span><span data-i18n="en">Ideas in the making.</span><span data-i18n="es">Ideas en proceso.</span><span data-i18n="fr">Des idées en chemin.</span></p>
+      <p class="sub"><span data-i18n="de" class="lang-active">Deine Idee muss noch nicht fertig sein.</span><span data-i18n="en">Your idea doesn't need to be finished yet.</span><span data-i18n="es">Tu idea todavía no tiene que estar terminada.</span><span data-i18n="fr">Ton idée n'a pas encore besoin d'être achevée.</span></p>
+      <a class="cta primary" href="mailto:raum@offfen-schaffensmenschen.com?subject=Ein%20Detail%20von%20mir">
+        <span data-i18n="de" class="lang-active">Schick ein Detail</span><span data-i18n="en">Send a detail</span><span data-i18n="es">Envía un detalle</span><span data-i18n="fr">Envoie un détail</span>
+      </a>
+    </section>
+
+    <section style="text-align:center; margin:0 0 6vh; padding-top:2.6rem; border-top:1px solid rgba(239,230,200,0.14);">
+      <p style="font-size:0.78rem; letter-spacing:0.2em; text-transform:lowercase; color:var(--gold); font-weight:600; margin-bottom:0.8rem;">
+        <span data-i18n="de" class="lang-active">Folg dem Prozess</span><span data-i18n="en">Follow the process</span><span data-i18n="es">Sigue el proceso</span><span data-i18n="fr">Suis le processus</span>
+      </p>
+      <a href="https://instagram.com/offfen.schaffensmenschen" target="_blank" rel="noopener" style="font-family:'Space Grotesk', sans-serif; font-size:1.3rem; color:var(--cream); text-decoration:none; border-bottom:1px solid rgba(239,230,200,0.4);">
+        @offfen.schaffensmenschen
+      </a>
+    </section>
+
+    <footer>
+      <span data-i18n="de" class="lang-active">Schreib uns</span><span data-i18n="en">Write to us</span><span data-i18n="es">Escríbenos</span><span data-i18n="fr">Écris-nous</span> ·
+      <span data-i18n="de" class="lang-active">Jetzt schreiben</span><span data-i18n="en">Write now</span><span data-i18n="es">Escribe ahora</span><span data-i18n="fr">Écris maintenant</span>:
+      <a href="mailto:raum@offfen-schaffensmenschen.com">raum@offfen-schaffensmenschen.com</a><br>
+      Schaffensmenschen · München ·
+      <a href="/impressum.html"><span data-i18n="de" class="lang-active">Impressum</span><span data-i18n="en">Legal notice</span><span data-i18n="es">Aviso legal</span><span data-i18n="fr">Mentions légales</span></a> ·
+      <a href="/datenschutz.html"><span data-i18n="de" class="lang-active">Datenschutz</span><span data-i18n="en">Privacy</span><span data-i18n="es">Privacidad</span><span data-i18n="fr">Confidentialité</span></a><br><br>
+      <span data-i18n="de" class="lang-active">Alle gezeigten Werke, Ideen und Prozesse bleiben geistiges Eigentum der jeweiligen Urheber:innen.
+      Nutzung, Vervielfältigung oder Weiterverwendung nur mit deren Zustimmung.</span>
+      <span data-i18n="en">All works, ideas and processes shown remain the intellectual property of their respective creators.
+      Use, reproduction or further use only with their consent.</span><span data-i18n="es">Todas las obras, ideas y procesos mostrados siguen siendo propiedad intelectual de sus respectivos autores y autoras.
+      Uso, reproducción o cualquier uso posterior solo con su consentimiento.</span><span data-i18n="fr">Toutes les œuvres, idées et processus présentés restent la propriété intellectuelle de leurs auteurs et autrices respectifs.
+      Utilisation, reproduction ou tout autre usage ultérieur uniquement avec leur accord.</span>
+    </footer>
+  </main>
+
+  <script>
+    (function(){
+      var buttons=document.querySelectorAll('.lang-toggle button');
+      function apply(lang){
+        buttons.forEach(function(b){ b.classList.toggle('active', b.getAttribute('data-lang')===lang); });
+        document.querySelectorAll('[data-i18n]').forEach(function(el){ el.classList.toggle('lang-active', el.getAttribute('data-i18n')===lang); });
+        document.documentElement.lang=lang;
+      }
+      buttons.forEach(function(b){ b.addEventListener('click',function(){
+        var l=b.getAttribute('data-lang'); apply(l); try{ localStorage.setItem('offfen-lang',l); }catch(e){}
+      }); });
+      var saved=null; try{ saved=localStorage.getItem('offfen-lang'); }catch(e){}
+      if(saved && saved!=='de') apply(saved);
+    })();
+  </script>
+
+  <script defer src="/_vercel/insights/script.js"></script>
+
+<script>
+(function(){
+  var imgs=[].slice.call(document.querySelectorAll('.werk-img'));
+  var caps=[].slice.call(document.querySelectorAll('.werk-cap'));
+  var dots=[].slice.call(document.querySelectorAll('.werk-dot'));
+  if(imgs.length<2) return;
+  var cur=0, timer=null;
+  function show(i){
+    cur=(i+imgs.length)%imgs.length;
+    [imgs,caps,dots].forEach(function(l){ l.forEach(function(el,k){ el.classList.toggle('is-active',k===cur); }); });
+  }
+  function start(){
+    if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    stop(); timer=setInterval(function(){ show(cur+1); },5000);
+  }
+  function stop(){ if(timer){ clearInterval(timer); timer=null; } }
+  dots.forEach(function(d,k){ d.addEventListener('click',function(){ show(k); start(); }); });
+  var box=document.querySelector('.werk-karussell');
+  box.addEventListener('mouseenter',stop); box.addEventListener('mouseleave',start);
+  var x0=null;
+  box.addEventListener('touchstart',function(e){ x0=e.touches[0].clientX; },{passive:true});
+  box.addEventListener('touchend',function(e){
+    if(x0===null) return; var dx=e.changedTouches[0].clientX-x0; x0=null;
+    if(Math.abs(dx)>40){ show(cur+(dx<0?1:-1)); start(); }
+  });
+  start();
+})();
+</script>
+</body>
+</html>
