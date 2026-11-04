@@ -433,7 +433,8 @@
     <section class="werk">
       <figure class="werk-karussell">
         <div class="werk-stage">
-          <img class="werk-img is-active" src="anna-werk-1.jpg" alt="Abstraktes Gemälde in Weiß, Schwarz, Rot und Hellblau mit einem gelben Strich" loading="eager">
+          <img class="werk-img is-active" src="lupo-werk-1.jpg" alt="Gemälde eines Malers vor der Staffelei, umgeben von lachenden Gesichtern, in Türkis und Blau" loading="eager">
+          <img class="werk-img" src="anna-werk-1.jpg" alt="Abstraktes Gemälde in Weiß, Schwarz, Rot und Hellblau mit einem gelben Strich" loading="eager">
           <img class="werk-img" src="wsk-werk-1.jpg" alt="Bunter Diamant in Regenbogenfarben vor explodierenden Strahlen in Pink, Blau und Gelb" loading="eager">
           <img class="werk-img" src="dkr79-werk-1.jpg" alt="Gemälde in Türkis, Grün und Blau mit schwarzen Linien, darin ein rotes Auge" loading="eager">
           <img class="werk-img" src="pierre-werk-1.jpg" alt="Gemälde in dunklem Blau und Grün, aus dem Dunkel treten Umrisse hervor" loading="lazy">
@@ -443,9 +444,15 @@
           <img class="werk-img" src="samuel-cristo.jpg" alt="Schwarz-weißes Porträt mit Dornenkrone, Blick direkt in die Kamera" loading="lazy">
           <img class="werk-img" src="luca-dietrich-werk-2.jpg" alt="Skulptur aus feinen schwarzen Linien, die sich zu einer schwebenden Form kreuzen" loading="lazy">
         </div>
-        <div class="werk-dots"><button type="button" class="werk-dot is-active" aria-label="1 / 9"></button><button type="button" class="werk-dot" aria-label="2 / 9"></button><button type="button" class="werk-dot" aria-label="3 / 9"></button><button type="button" class="werk-dot" aria-label="4 / 9"></button><button type="button" class="werk-dot" aria-label="5 / 9"></button><button type="button" class="werk-dot" aria-label="6 / 9"></button><button type="button" class="werk-dot" aria-label="7 / 9"></button><button type="button" class="werk-dot" aria-label="8 / 9"></button><button type="button" class="werk-dot" aria-label="9 / 9"></button></div>
+        <div class="werk-dots"><button type="button" class="werk-dot is-active" aria-label="1 / 10"></button><button type="button" class="werk-dot" aria-label="2 / 10"></button><button type="button" class="werk-dot" aria-label="3 / 10"></button><button type="button" class="werk-dot" aria-label="4 / 10"></button><button type="button" class="werk-dot" aria-label="5 / 10"></button><button type="button" class="werk-dot" aria-label="6 / 10"></button><button type="button" class="werk-dot" aria-label="7 / 10"></button><button type="button" class="werk-dot" aria-label="8 / 10"></button><button type="button" class="werk-dot" aria-label="9 / 10"></button><button type="button" class="werk-dot" aria-label="10 / 10"></button></div>
         <div class="werk-caps">
           <figcaption class="werk-cap is-active">
+            <span data-i18n="de" class="lang-active">Wer lacht hier, und warum?</span><span data-i18n="en">Who is laughing here, and why?</span><span data-i18n="es">¿Quién se ríe aquí, y por qué?</span><span data-i18n="fr">Qui rit ici, et pourquoi ?</span>
+            <small><span data-i18n="de" class="lang-active">zuletzt gezeigt</span><span data-i18n="en">recently shown</span><span data-i18n="es">mostrado hace poco</span><span data-i18n="fr">montré récemment</span></small>
+            <a class="werk-credit" href="profil-lupo-sol.html"><span data-i18n="de" class="lang-active">Werk: Lupo Sol</span><span data-i18n="en">Work: Lupo Sol</span><span data-i18n="es">Obra: Lupo Sol</span><span data-i18n="fr">Œuvre : Lupo Sol</span></a>
+            <a class="werk-antwort" href="https://ig.me/m/offfen.schaffensmenschen" target="_blank" rel="noopener"><span data-i18n="de" class="lang-active">deine antwort per nachricht →</span><span data-i18n="en">your answer by message →</span><span data-i18n="es">tu respuesta por mensaje →</span><span data-i18n="fr">ta réponse par message →</span></a>
+          </figcaption>
+          <figcaption class="werk-cap">
             <span data-i18n="de" class="lang-active">Wo beginnt dieser Raum?</span><span data-i18n="en">Where does this space begin?</span><span data-i18n="es">¿Dónde empieza este espacio?</span><span data-i18n="fr">Où commence cet espace ?</span>
             <small><span data-i18n="de" class="lang-active">zuletzt gezeigt</span><span data-i18n="en">recently shown</span><span data-i18n="es">mostrado hace poco</span><span data-i18n="fr">montré récemment</span></small>
             <a class="werk-credit" href="profil-anna-beyer.html"><span data-i18n="de" class="lang-active">Werk: Anna Beyer</span><span data-i18n="en">Work: Anna Beyer</span><span data-i18n="es">Obra: Anna Beyer</span><span data-i18n="fr">Œuvre : Anna Beyer</span></a>
@@ -663,7 +670,7 @@
   var box=document.querySelector('.werk-karussell');
   var feld=document.querySelector('.werk-blick');
   if(!box||!feld) return;
-  var IDS=['anna','wsk','dkr79','pierre','nick','lentini','kaan','samuel','luca'];
+  var IDS=['lupo','anna','wsk','dkr79','pierre','nick','lentini','kaan','samuel','luca'];
   var caps=[].slice.call(document.querySelectorAll('.werk-cap'));
   var btns=[].slice.call(feld.querySelectorAll('.blick-btn'));
   var daten=null, mein={};
