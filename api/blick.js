@@ -1,8 +1,10 @@
-// dein blick: zählt, wie oft ein zeichen unter einem werk gesetzt wurde.
-// gespeichert werden nur zähler, keine namen, keine ip-adressen.
+// dein blick: zÃ¤hlt, wie oft ein zeichen unter einem werk gesetzt wurde.
+// gespeichert werden nur zÃ¤hler, keine namen, keine ip-adressen.
 const URL_ = process.env.KV_REST_API_URL;
 const TOKEN = process.env.KV_REST_API_TOKEN;
 const WERKE = ['sara', 'izalord', 'torres', 'nico', 'horekb', 'k', 'anna2', 'lupo', 'anna', 'wsk', 'dkr79', 'pierre', 'nick', 'lena', 'lentini', 'kaan', 'samuel', 'luca'];
+const ZEICHEN = ['ruhe', 'funke', 'raetsel', 'spannung'];
+
 async function redis(befehle) {
   const r = await fetch(URL_ + '/pipeline', {
     method: 'POST',
@@ -50,6 +52,6 @@ module.exports = async (req, res) => {
     }
     res.status(405).json({ fehler: 'methode' });
   } catch (e) {
-    res.status(500).json({ fehler: 'fehler' });
+    res.status(500).json({ fehler: 'fehler', grund: String(e && e.message) });
   }
 };
