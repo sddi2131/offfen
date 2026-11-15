@@ -2,7 +2,7 @@
 // gespeichert werden nur zähler, keine namen, keine ip-adressen.
 const URL_ = process.env.KV_REST_API_URL;
 const TOKEN = process.env.KV_REST_API_TOKEN;
-const WERKE = ['sara', 'izalord', 'torres', 'nico', 'horekb', 'k', 'anna2', 'lupo', 'anna', 'wsk', 'dkr79', 'pierre', 'nick', 'lena', 'lentini', 'kaan', 'samuel', 'luca', 'claudia', 'cino', 'millan', 'roberto', 'k2', 'lentini2', 'lentini3'];
+const WERKE = ['sara', 'izalord', 'torres', 'nico', 'horekb', 'k', 'anna2', 'lupo', 'anna', 'wsk', 'dkr79', 'pierre', 'nick', 'lena', 'lentini', 'kaan', 'samuel', 'luca', 'claudia', 'cino', 'millan', 'roberto', 'k2', 'lentini2', 'lentini3', 'farbraum'];
 const ZEICHEN = ['ruhe', 'funke', 'raetsel', 'spannung'];
 
 async function redis(befehle) {
